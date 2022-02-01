@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Attacking Access Control Models in Modern Web Applications"
-author: john
+author: imran
 categories: [ Access-control,Blogpost,Websec ]
 image: assets/images/ABACM/8.png
 ---
