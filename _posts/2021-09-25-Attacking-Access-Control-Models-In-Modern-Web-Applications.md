@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Attacking Access Control Models in Modern Web Applications"
