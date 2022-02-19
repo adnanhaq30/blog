@@ -88,7 +88,7 @@ We proposed the following Solutions to the customer which would have completely 
 
 
 
-## Summary
+## Conclusion
 
 - Have a firm understanding of the target app.
 - Know various roles against their permitted access.
@@ -98,4 +98,8 @@ We proposed the following Solutions to the customer which would have completely 
 If you've made so far, it should be clear to you that there was no *technical part involved* in this and yet it was maked **P2 severity issue**.
 
 
+## About us
 
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
