@@ -206,3 +206,12 @@ During our experience in testing 100's access control models, we came across sev
 I hope this helps. If you have any questions, suggestions or requests, Pleas contact us on [Twitter](https://twitter.com/snap_sec)
 
 See you next time.
+
+
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
