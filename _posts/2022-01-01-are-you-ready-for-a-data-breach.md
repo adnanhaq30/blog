@@ -63,11 +63,13 @@ An attack on one of your business partners or clients could also be caused by an
 
 ## Legal Penalties
 
+![1](/blog/assets/images/4/6.png)
+
+
 When the European Union implemented the General Data Protection Regulation (GDPR) with fines of up to 4% of annual revenue, it introduced some of the harshest penalties for a breach of data protection laws anywhere in the world. In doing this, the Data Protection Authorities created tremendous leverage to gain compliance with the regulations, ensure consent is received from data subjects and to reduce the likelihood of personal data violation.
 
 However, despite these threats, there have still been some record-breaking GDPR fines issued to high-profile organizations, an indication that some are always prepared to take risks with regards to the data processing of client information.
 
-![1](/blog/assets/images/4/6.png)
 
 
 
