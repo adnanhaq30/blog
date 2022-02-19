@@ -3,7 +3,7 @@ layout: post
 title:  "Are you ready for a data breach?"
 author: imran
 categories: [databreach,blog,general ]
-image: /blog/assets/images/4/0.png
+image: assets/images/4/0.png
 ---
 
 
