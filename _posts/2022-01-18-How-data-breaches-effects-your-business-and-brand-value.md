@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Are you ready for a data breach?"
+title:  "How data breaches effects your business and brand value"
 author: imran
 categories: [databreach,blog,general ]
 image: assets/images/4/0.png
