@@ -3,7 +3,7 @@ layout: post
 title:  "[Security Simplified] - Reflected XSS"
 author: imran
 categories: [ Jekyll, tutorial,imran ]
-image: assets/images/SecuritySimplified/rxss-1/0.jpg
+image: assets/images/SecuritySimplified/rxss-1/0.png
 ---
 
 
