@@ -14,7 +14,7 @@ image: assets/images/SecuritySimplified/rxss-1/0.png
 _Cross-site scripting (also known as XSS) is a web security vulnerability that allows an attacker to compromise the interactions that users have with a vulnerable application, Reflected XSS arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way, Which eventually allows attackers to design specially creafted URL which if visited by victim will run attacker controlled javascript code with victims browser and can lead to different attacks purely based on the code written by the attacker._  - Portswigger
 
 
-## Vulnerable Code Snipped
+## Vulnerable Code Snippet
 
 
 ```php
