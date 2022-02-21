@@ -1,9 +1,8 @@
-
 ---
 layout: post
 title:  "A Hacker Mindset"
 author: mubashir
-categories: [ Jekyll, tutorial,imran ]
+categories: [ general,mubashir ]
 image: assets/images/7/1.jpg
 ---
 
