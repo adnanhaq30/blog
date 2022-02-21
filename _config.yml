@@ -29,6 +29,14 @@ authors:
     web: https://twitter.com/PeerzadaBasit
     twitter: https://twitter.com/PeerzadaBasit
     description: "Peerzada abdul basit is an Appsec Engineer at snapsec."
+  mubashir:
+    name: "Mubashir Paray"
+    display_name: "Mubashir Paray"    
+    gravatar: 406f10d9c3f635060b2129861f1b5c54
+    email: mubashirmehraj789@gmail.com
+    web: https://twitter.com/mubashirparay7
+    twitter: https://twitter.com/mubashirparay7
+    description: "Mubashir Paray is an Appsec Engineer at snapsec, He likes to talk about security, mental health and personal development."
 
 # Plugins
 plugins:
