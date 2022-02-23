@@ -8,7 +8,7 @@ image: assets/images/6/1.png
 
 
 
-The complexity of the modern applications has increased exponentially in the past decade. Unfortunately, this has also increased the attacker surface and hence increased the total number of attacks that have been launched on such applications. One such attack being business logic vulnerability.
+The complexity of the modern applications has increased exponentially in the past decade. Unfortunately, this has also increased the attacker surface and hence increased the total number of vulnerabilities that have been found on such applications. One such type being business logic vulnerabilities.
 
 
 ## So what is a business logic vulnerability?
