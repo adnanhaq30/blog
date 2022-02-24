@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Business Logic issues in Modern Web apps"
+title:  "Business Logic issues in Modern Web Apps"
 author: ab
 categories: [ blog, business-logic,broken-access-control ]
 image: assets/images/6/1.png
