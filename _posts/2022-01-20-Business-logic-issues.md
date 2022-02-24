@@ -64,9 +64,9 @@ It is important that business analyst’s, application architects and developers
 
 __Business Logic Specific Security Testing:__
 
-Traditional Penetration Testing of often focused on finding less logical and more technical bugs in web application, It defenetly help security professionals evaluate the effectiveness of information security measures within their organizations but the whole often overlooks on the testing logical part of the application, Because of the fact majorrity of the testing methodologies and offensive approaches are often more shifted towards the technical perespective of bugs and less shifted towards finding an exploiting logical part of the application.
+Traditional Penetration Testing of often focused on finding less logical and more technical bugs in web applications, It defenetly help security professionals evaluate the effectiveness of information security measures within their organizations but these methodologies often overlook on testing logical part of the application, Because of the fact majority of testing methodologies are more shifted towards the technical perespective of bugs and less shifted towards finding and exploiting logical part of the applications.
 
-that's why Snapsec have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities.
+that's why We at Snapsec have a specialized testing methodology which ensures indepth testing of your business logic and other latest security vulnerabilities.
 
 If you are looking for a team which values your security and ensures that you are fully secure against business logic issue and other online security threats, feel free to get in touch with us [support@snapsec.co](mailto:support@snapsec.co)
 
