@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A Hacker Mindset - Snapsec"
+title:  "A Hacker Mindset"
 author: mubashir
 categories: [ general,mubashir ]
 image: assets/images/7/1.png
