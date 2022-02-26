@@ -41,7 +41,7 @@ Finding a potential vulnerability in a system can have endless opportunities but
 
 ### SYSTEMIZING : Drive to uderstand systmes: 
 
-![x](/blog/assets/images/7/3.png)
+![x](/blog/assets/images/7/4.png)
 
 
 >  It is always easier to destroy a complex system than to selectively alter it ― Roby James
