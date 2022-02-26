@@ -73,8 +73,7 @@ Ethics are important, not because you have to be ethical to successfully hack st
 
 There’s not much more to it than that. Social skills are not really required. Intelligence is helpful, as in anything, but secondary to the other attributes I mentioned.
 
-This briefly  summarizes the hackers mindset in a few points.
-
+The mentioned points will give you a condensed perespective of a typical hackers mindset, heir specific traits and mindset. There is surely more to it but these are the fundamentals of a hackers mindset if understood well you can employ them to build a same mindset.
 
 
 ## About us
