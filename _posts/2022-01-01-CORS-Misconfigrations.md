@@ -12,7 +12,7 @@ image: assets/images/8/0.png
 
 If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. Before CORS, websites used to implement Same-Origin-Policy which allowed websites to get resources only from their own domain, which is good to prevent CSRF-like attacks, even though SOP does allow websites to embed certain cross-origin images, css, scripts, etc. However, it doesn’t allow websites to make other requests like AJAX requests. SOP limits the flexibility of websites. This is where CORS comes into play. It allows websites to fetch and use resources from different domains without affecting the security of websites.
 
-# What is CORS:
+## What is CORS:
 
 
 ![1](/blog/assets/images/8/1.png)
@@ -28,7 +28,7 @@ So how do we define origin? Well, origin can be defined as the combination of:
 
 So from above definition we see that `http://example.com` and `https://example.com` are two completely different hosts.
 
-# How is CORS implemented
+## How is CORS implemented
 
 When we want a website different than our own to access the resources on our server or API, we have to include the trusted origins on our server or we can add a wildcard(*). Wildcard means anyone can access our resources regardless of their origin. For example, if we want to allow specific domains to access our server resources, we have to enable the CORS in server configuration. This can be done like:
 
@@ -52,7 +52,7 @@ The server response typically looks like:
 💡 Access-Control-Allow-Arigin: [http://example.com](http://example.com)                                                        Access-control-allow-credentials: true
 ```
 
-# Types of CORS requests
+## Types of CORS requests
 
 ![1](/blog/assets/images/8/2.png)
 
@@ -101,7 +101,7 @@ Access-Control-Allow-Headers: Content-type, Authorization-Bearer
 
 If any of the information in the response headers does not match the actual parameters of the request, the browser will not send the actual request, thus preventing unwanted side-effects from the server receiving the cross-origin request.
 
-# CORS misconfigration and exploitation
+## CORS misconfigration and exploitation
 
 ![1](/blog/assets/images/8/3.png)
 
@@ -150,7 +150,7 @@ Suppose we have a website, [secure.com](http://secure.com/) and it has some whit
 
 If any websites has whitelist NULL origin and returns ACAC set to `true`  this website can be vulnerable and can be exploited via sandboxed iframes.
 
-# Conclusion
+## Conclusion
 
 Cors was implemented to make it possible for websites to share resources with each other with least impact on security. However, this introduced a vast number of security risks. If CORS is not properly configured it can lead to high security impact on the website, affecting Confidentiality, Integrity and Availability of company data.
 
