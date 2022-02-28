@@ -34,14 +34,12 @@ When we want a website different than our own to access the resources on our ser
 
 ```
 💡 “origins: “https://example.com:8080”
-
 ```
 
 Or we if we want to give access to all website we add
 
 ```
 💡  origins: *
-
 ```
 
 By default, CORS does not include cookies in cross-origin requests. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
@@ -52,7 +50,6 @@ The server response typically looks like:
 
 ```
 💡 Access-Control-Allow-Arigin: [http://example.com](http://example.com)                                                        Access-control-allow-credentials: true
-
 ```
 
 # Types of CORS requests
@@ -89,9 +86,7 @@ for example:
 💡 Origin: example.com
 
 Access-Control-Request-Method: DELETE
-
 Access-Control-Request-Headers: Content-type, Authorization-Bearer
-
 ```
 
 The response from server would look like:
@@ -100,7 +95,6 @@ The response from server would look like:
 💡 Access-Control-Allow-Origin: example.com
 
 Access-Control-Allow-Methods: PUT,DELETE,PATCH,GET,POST,HEAD
-
 Access-Control-Allow-Headers: Content-type, Authorization-Bearer
 
 ```
