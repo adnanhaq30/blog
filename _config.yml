@@ -37,6 +37,14 @@ authors:
     web: https://twitter.com/mubashirparay7
     twitter: https://twitter.com/mubashirparay7
     description: "Mubashir Paray is an Appsec Engineer at snapsec, He likes to talk about security, mental health and personal development."
+  adnan:
+    name: "Adnan Shah"
+    display_name: "Adnan Shah"    
+    gravatar: 0e3a0093693366e9374745064c0adb25
+    email: adnanhaq30@gmail.com
+    web: https://twitter.com/adnan_shah__
+    twitter: https://twitter.com/adnan_shah__
+    description: "Adnan Shah is an Appsec Engineer and a passionate adventurer."
 
 # Plugins
 plugins:
