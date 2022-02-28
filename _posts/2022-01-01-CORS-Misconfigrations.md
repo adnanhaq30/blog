@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Options for creating a new site with Jekyll"
+title:  "CORS Misconfigurations"
 author: john
 categories: [ general,blog-post,imran ]
 image: assets/images/8/0.png
