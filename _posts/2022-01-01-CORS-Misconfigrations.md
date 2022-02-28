@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "CORS Misconfigurations"
-author: john
+author: adnan
 categories: [ general,blog-post,imran ]
 image: assets/images/8/0.png
 
