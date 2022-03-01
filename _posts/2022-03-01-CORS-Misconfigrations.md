@@ -129,14 +129,9 @@ Each application is build different hence needs a different CORS configrations. 
 
 Here are few common misconfigrations and how to exploit them:
 
-## Wildcard(*) misconfigration:
+#### Wildcard(*) misconfigration:
 
-Wildcard means that any domain can access the resources of the server. The misconfiguration in this can cause serious security risk. 
-
-
-1. **Basic Reflected CORS Misconfig**
-
-This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set to is reflected back in the `Access-Control-Allow-Origin` header in the response. 
+When the browser receives the response, the browser checks the `Access-Control-Allow-Origin header` to see if it matches the origin of the request. If not, the response is blocked. The check passes such as in this example if either the `Access-Control-Allow-Origin` matches the `single origin exactly` or contains the wildcard `*` operator, Wildcard means that any domain can access the resources of the server.
 
 ```
 💡 Get /api/userinfo
@@ -152,14 +147,30 @@ After sending the above request if server responds with
 Access-Control-Allow-Credentials: true
 ```
 
+
+#### Basic Reflected CORS Misconfig
+
+This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set to is reflected back in the `Access-Control-Allow-Origin` header in the response. 
+
+```
+💡 Get /api/userinfo
+
+Host: vulnerablewebsite.com
+Origin: attacker.com
+```
+
+After sending the above request if server responds with
+
+```
+💡 Access-Control-Allow-Origin: attacker.com
+Access-Control-Allow-Credentials: true
+```
+
 This is a worst case scenario of a misconfigured server which can be easily exploited and can be used to steal user data and credentials, hence affecting the confidentiality and integrity of data.
 
 
  
- 
- 
- 
- 3. **Bad regex implementation**
+#### Bad regex implementation
  
 One of the most common ways to check if the Origin is trusted is to test it against a Regular Expression. Almost all Programming languages provides easy and very powerful Regular Expression modules/functions to check if a Origin in the request matches trusted Origin. Sometimes, functions or regular expression itself  either misused or not very well creafted by developers and when you see this it can be possible to bypass weak input validation functions. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
 
@@ -186,7 +197,7 @@ Access-Control-Allow-Credentials: true
 
 
 
-4. **Whitelisted All Subdomains misconfigration:**
+#### Whitelisted All Subdomains misconfigration
 
 Mistakes often arise when implementing CORS origin whitelists. Some organizations decide to allow access from all their subdomains including the ones not in existence yet(like *.example.com). And some applications allow access from various other organizations' domains, including their subdomains.
 
@@ -214,7 +225,7 @@ The following type of CORS misconfigration is only exploitable when attacker man
 
 Suppose we have a website, secure.com and it has some whitelisted subdomains in CORS policy. Since these subdomains trust each other completely, if the subdomain is vulnerable to XSS, attacker can exploit the XSS in vulnerable subdomain and inject some JavaScript that uses CORS to retrieve sensitive information from the securesite.com that trusts the vulnerable application.
 
-5. **NULL origin:**
+#### NULL origin:
 
 During our experiance in Testing CORS on hundrends of websites, We found Some websites returns `Access-Control-Allow-Origin:NULL` and `Access-Control-Allow-Credentials:true` when ogigin is set to NULL (`origin:Null`) , The following type of CORS misconfigration is exploitable using the [sandboxed iframe technique](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack).
 
