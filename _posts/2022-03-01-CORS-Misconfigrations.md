@@ -10,7 +10,7 @@ image: assets/images/8/0.png
 
 
 
-If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, As an example any resource loaded from api.web.com cannot be accessed bt ui.web.com ... It's alot messier than i thougt...... Well here the CORS, The method allows websites to load resources from different domains securely.  
+If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, which means any resource loaded from api.web.com cannot be accessed by ui.web.com. Which again leads us to the same problem, Well here comes the CORS, The method that allows different websites share resources securly.   
 
 ## What is CORS:
 
