@@ -13,6 +13,9 @@ image: assets/images/8/0.png
 If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, which means any resource loaded from api.web.com cannot be accessed by ui.web.com. Which again leads us to the same problem, because if API and UI hosted on two different domains would never be able to access resources from each other, It would make no sense to seperate them at the first place.  That where CORS(Cross Origin Resource Sharing) comes to the picture, The method that allows different websites share resources to each other without breaking the SOP.
 
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How to Look for &quot;Insecure CORS Configuration&quot; vulnerabilities. <br><br>[A thread 🧵]<a href="https://twitter.com/hashtag/appsec?src=hash&amp;ref_src=twsrc%5Etfw">#appsec</a> <a href="https://twitter.com/hashtag/bugbounty?src=hash&amp;ref_src=twsrc%5Etfw">#bugbounty</a> <a href="https://twitter.com/hashtag/bugbountytips?src=hash&amp;ref_src=twsrc%5Etfw">#bugbountytips</a> <a href="https://twitter.com/hashtag/cybersecurity?src=hash&amp;ref_src=twsrc%5Etfw">#cybersecurity</a></p>&mdash; Snap Sec (@snap_sec) <a href="https://twitter.com/snap_sec/status/1467528029773520897?ref_src=twsrc%5Etfw">December 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 ## What is CORS:
 
 
@@ -43,11 +46,11 @@ Or we if we want to give access to all website we add
 💡  Allowed origins: *
 ```
 
-In response the Server Response Must Look like this, Which should include the following two headers: 
+The Server Response Must Look like this, Which should include the following headers: 
 
 ```
-💡 Access-Control-Allow-Arigin: http://example.com
-💡 Access-control-allow-credentials: true
+💡 Access-Control-Allow-Arigin
+💡 Access-control-allow-credentials
 ```
 
 
@@ -85,7 +88,9 @@ Response from the destination would be either of the following:
 2. **Access-Control-Allow-Origin: * (which conveys that all domains are allowed)**
 3. **An error if the cross-origin requests are not allowed (which conveys that access is not allowed)**
 
-**Preflight requests:** Any request with the method of **PUT and DELETE** is deemed as unsafe methods because they affect the integrity of server data. Therefore, before these requests are made to the server, an extra **OPTIONS** request is sent by the browser, this request is called preflight check request. There are several headers that need to be sent with options request:
+**Preflight requests:** Any request with the special HTTML Methods eg (**PUT/PATCH/DELETE**) is deemed as unsafe methods because they affect the integrity of server data. Therefore, before these requests are made to the server, an extra pre-flight **OPTIONS** request is sent by the browser, this request is called preflight check request. Because its always sent before browser makes the actual request. 
+
+The following information is sent to the server in the pre-flight request:
 
 - **Origin** — The origin header that would be included with the actual request being made by the website.
 - **Access-Control-Request-Method** — The method of the actual request being made by the website.
@@ -95,22 +100,25 @@ for example:
 
 ```
 💡 Origin: example.com
-
 Access-Control-Request-Method: DELETE
 Access-Control-Request-Headers: Content-type, Authorization-Bearer
 ```
 
-The response from server would look like:
+An example response from server would look like this:
 
 ```
 💡 Access-Control-Allow-Origin: example.com
-
 Access-Control-Allow-Methods: PUT,DELETE,PATCH,GET,POST,HEAD
 Access-Control-Allow-Headers: Content-type, Authorization-Bearer
 
 ```
 
+In this case the actual request is originated from `example.com` and so the browser decided the make the follwoing pre-flight request which contains information that the origin example.com wants to send a HTTP Delete Request to the server. In return the server Responsds with `Access-Control-Allow-Origin: example.com` which indicates that origin `example.com` is allowed to make the following HTTP Request types mentioned in the `Access-Control-Allow-Methods` header which is  PUT,DELETE,PATCH,GET,POST,HEAD in this case.
+
 If any of the information in the response headers does not match the actual parameters of the request, the browser will not send the actual request, thus preventing unwanted side-effects from the server receiving the cross-origin request.
+
+
+
 
 ## CORS misconfigration and exploitation
 
@@ -121,11 +129,16 @@ Each application is build different hence needs a different CORS configrations. 
 
 Here are few common misconfigrations and how to exploit them:
 
-1. **Wildcard(*) misconfigration:** 
+## Wildcard(*) misconfigration:
 
-Wildcard means that any domain can access the resources of the server. The misconfiguration in this can cause serious security risk. For example:
+Wildcard means that any domain can access the resources of the server. The misconfiguration in this can cause serious security risk. 
 
-```
+
+1. **Basic Reflected CORS Misconfig**
+
+This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set to is reflected back in the `Access-Control-Allow-Origin` header in the response. 
+
+```http
 💡 Get /api/userinfo
 
 Host: vulnerablewebsite.com
@@ -134,36 +147,83 @@ Origin: attacker.com
 
 After sending the above request if server responds with
 
-```
+```http
 💡 Access-Control-Allow-Origin: *
 Access-Control-Allow-Credentials: true
 ```
 
 This is a worst case scenario of a misconfigured server which can be easily exploited and can be used to steal user data and credentials, hence affecting the confidentiality and integrity of data.
 
-1. **Whitelisted domain misconfigration:**
 
-Mistakes often arise when implementing CORS origin whitelists. Some organizations decide to allow access from all their subdomains including the ones not in existence yet(like *.example.com). And some applications allow access from various other organizations' domains, including their subdomains. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
+ 
+ 
+ 
+ 
+ 3. **Bad regex implementation**
+ 
+One of the most common ways to check if the Origin is trusted is to test it against a Regular Expression. Almost all Programming languages provides easy and very powerful Regular Expression modules/functions to check if a Origin in the request matches trusted Origin. Sometimes, functions or regular expression itself  either misused or not very well creafted by developers and when you see this it can be possible to bypass weak input validation functions. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
+
+Example: Lets say i want to whitelist all the subdomains of the example.com , So i created an weak regex which is `example\.com` which will match strings which contain example.com in them. But the fact that `example.com.attacker.com` is also matched to the expression but this subdomain is not the subdomain of example.co and Hence would allow attacker to perform attack from attacker.com.
+
+
 
 The attacker can use the following methods of origin on vulnerable website :
 
-1. Origin: http://evil.vulnerable.com [allowing access from all subdomains]
-2. Origin: http://evilvulnerable.com [matching a certain part of url like ‘vulnerable’ in this example]
-3. Origin: vulnerable.com.evil.com
+```
+💡 Get /api/userinfo
+
+Host: vulnerablewebsite.com
+Origin: example.com.attacker.com
+```
+
+After sending the above request if server responds with
+
+```
+💡 Access-Control-Allow-Origin: example.com.attacker.com
+Access-Control-Allow-Credentials: true
+```
+
+
+
+
+4. **Whitelisted All Subdomains misconfigration:**
+
+Mistakes often arise when implementing CORS origin whitelists. Some organizations decide to allow access from all their subdomains including the ones not in existence yet(like *.example.com). And some applications allow access from various other organizations' domains, including their subdomains.
+
+The attacker can use the following methods of origin on vulnerable website :
+
+```
+💡 Get /api/userinfo
+
+Host: vulnerablewebsite.com
+Origin: attacker.attacker.com
+```
+
+After sending the above request if server responds with
+
+```
+💡 Access-Control-Allow-Origin: attacker.attacker.com
+Access-Control-Allow-Credentials: true
+```
 
 If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
 
-1. **Exploiting CORS via XSS:**
+**Exploiting CORS via XSS:**
 
-Suppose we have a website, [secure.com](http://secure.com/) and it has some whitelisted subdomains in CORS policy. Since these domains trust each other completely, if the subdomain is vulnerable to XSS, attacker can exploit the XSS in vulnerable subdomain and inject some JavaScript that uses CORS to retrieve sensitive information from the [securesite.com](http://securesite.com/) that trusts the vulnerable application.
+The following type of CORS misconfigration is only exploitable when attacker manages to find XSS or subdomain takeover vulnerability in any of victims subdomains
 
-1. **Whitelisted NULL origin:**
+Suppose we have a website, secure.com and it has some whitelisted subdomains in CORS policy. Since these subdomains trust each other completely, if the subdomain is vulnerable to XSS, attacker can exploit the XSS in vulnerable subdomain and inject some JavaScript that uses CORS to retrieve sensitive information from the securesite.com that trusts the vulnerable application.
 
-If any websites has whitelist NULL origin and returns ACAC set to `true`  this website can be vulnerable and can be exploited via sandboxed iframes.
+5. **NULL origin:**
+
+During our experiance in Testing CORS on hundrends of websites, We found Some websites returns `Access-Control-Allow-Origin:NULL` and `Access-Control-Allow-Credentials:true` when ogigin is set to NULL (`origin:Null`) , The following type of CORS misconfigration is exploitable using the [sandboxed iframe technique](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack).
+
+
 
 ## Conclusion
 
 Cors was implemented to make it possible for websites to share resources with each other with least impact on security. However, this introduced a vast number of security risks. If CORS is not properly configured it can lead to high security impact on the website, affecting Confidentiality, Integrity and Availability of company data.
+
 
 
 ## About us
