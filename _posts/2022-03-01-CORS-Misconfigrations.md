@@ -2,7 +2,7 @@
 layout: post
 title:  "CORS Misconfigurations"
 author: adnan
-categories: [ general,blog-post,imran ]
+categories: [ writeup,cors,adnan ]
 image: assets/images/8/0.png
 
 ---
