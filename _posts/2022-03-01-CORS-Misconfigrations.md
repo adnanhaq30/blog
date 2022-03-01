@@ -138,7 +138,7 @@ Wildcard means that any domain can access the resources of the server. The misco
 
 This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set to is reflected back in the `Access-Control-Allow-Origin` header in the response. 
 
-```http
+```
 💡 Get /api/userinfo
 
 Host: vulnerablewebsite.com
@@ -147,7 +147,7 @@ Origin: attacker.com
 
 After sending the above request if server responds with
 
-```http
+```
 💡 Access-Control-Allow-Origin: *
 Access-Control-Allow-Credentials: true
 ```
