@@ -48,14 +48,14 @@ Or we if we want to give access to all website we add
 The Server Response Must Look like this, Which should include the following headers: 
 
 ```
-💡 Access-Control-Allow-Arigin
+💡 Access-Control-Allow-Origin
 💡 Access-control-allow-credentials
 ```
 
 
 __💡 Access-Control-Allow-Origin__
 
- Access-Control-Allow-Arigin header in the response indicates whether the response can be shared with requested origin or not, The value of Access-Control-Allow-Origin header is basically a criteria whethere the origin domin who originate the request is allowed to access the response or not. 
+ Access-Control-Allow-Origin header in the response indicates whether the response can be shared with requested origin or not, The value of Access-Control-Allow-Origin header is basically a criteria whethere the origin domin who originate the request is allowed to access the response or not. 
  
 
 __💡 Access-control-allow-credentials__:
