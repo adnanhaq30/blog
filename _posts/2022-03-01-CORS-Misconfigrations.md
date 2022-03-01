@@ -34,13 +34,13 @@ So from above definition we see that `http://example.com` and `https://example.c
 When we want a website different than our own to access the resources on our server or API, we have to include the trusted origins on our server or we can add a wildcard(*). Wildcard means anyone can access our resources regardless of their origin. For example, if we want to allow specific domains to access our server resources, we have to enable the CORS in server configuration. This can be done like:
 
 ```
-💡 “origins: “https://example.com:8080”
+💡 “Allowed origins: “https://example.com:8080”
 ```
 
 Or we if we want to give access to all website we add
 
 ```
-💡  origins: *
+💡  Allowed origins: *
 ```
 
 By default, CORS does not include cookies in cross-origin requests. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
