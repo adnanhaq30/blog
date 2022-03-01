@@ -10,7 +10,7 @@ image: assets/images/8/0.png
 
 
 
-If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. Before CORS, websites used to implement Same-Origin-Policy which allowed websites to get resources only from their own domain, which is good to prevent CSRF-like attacks, even though SOP does allow websites to embed certain cross-origin images, css, scripts, etc. However, it doesn’t allow websites to make other requests like AJAX requests. SOP limits the flexibility of websites. This is where CORS comes into play. It allows websites to fetch and use resources from different domains without affecting the security of websites.
+If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, As an example any resource loaded from api.web.com cannot be accessed bt ui.web.com ... It's alot messier than i thougt...... Well here the CORS, The method allows websites to load resources from different domains securely.  
 
 ## What is CORS:
 
