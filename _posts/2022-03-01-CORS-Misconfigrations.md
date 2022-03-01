@@ -43,23 +43,32 @@ Or we if we want to give access to all website we add
 💡  Allowed origins: *
 ```
 
-By default, CORS does not include cookies in cross-origin requests. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
-
-However, this header alone is not enough. The server *must* respond with the `Access-Control-Allow-Credentials` header. Responding with this header to `true` means that the server allows cookies (or other user credentials) to be included in cross-origin requests.
-
-The server response typically looks like:
+In response the Server Response Must Look like this, Which should include the following two headers: 
 
 ```
 💡 Access-Control-Allow-Arigin: http://example.com
-Access-control-allow-credentials: true
+💡 Access-control-allow-credentials: true
 ```
+
+
+__💡 Access-Control-Allow-Origin__
+
+ Access-Control-Allow-Arigin header in the response indicates whether the response can be shared with requested origin or not, The value of Access-Control-Allow-Origin header is basically a criteria whethere the origin domin who originate the request is allowed to access the response or not. 
+ 
+
+__💡 Access-control-allow-credentials__:
+
+By default, CORS does not include cookies in cross-origin requests. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
+
+The server *must* respond with the `Access-Control-Allow-Credentials` header. Responding with this header to `true` means that the server allows cookies (or other user credentials) to be included in cross-origin requests.
+
 
 ## Types of CORS requests
 
 ![1](/blog/assets/images/8/2.png)
 
 
-There are two types of CORS requests viz
+When two different domains access cross origin resource, There are two types of CORS requests made:
 
 - Simple request
 - Preflight request
@@ -108,7 +117,7 @@ If any of the information in the response headers does not match the actual para
 ![1](/blog/assets/images/8/3.png)
 
 
-Misconfiguration in CORS has a high impact on the security of a website. A CORS misconfiguration can leave the application at a high-risk of compromise resulting in an impact on the confidentiality and integrity of data by allowing third-party sites to carry out privileged requests to vulnerable websites by posing as authenticated users. The malicious website can also retrieve user setting information or saved payments, cookies etc etc
+Each application is build different hence needs a different CORS configrations. And if CORS configration are not strictly adhrered to the requirements of the application it can lead to Misconfigration issue which may result a security issue with a High impact on the security of a website. A CORS misconfiguration can leave the application-users at a high-risk of compromise of their sensitve information resulting in an impact on the confidentiality and integrity of data by allowing third-party sites to carry out privileged requests to vulnerable websites by posing as authenticated users. The malicious website can also retrieve user setting information or saved payments, cookies etc etc
 
 Here are few common misconfigrations and how to exploit them:
 
