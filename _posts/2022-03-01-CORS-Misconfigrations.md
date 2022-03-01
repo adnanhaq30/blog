@@ -13,7 +13,6 @@ image: assets/images/8/0.png
 If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, which means any resource loaded from api.web.com cannot be accessed by ui.web.com. Which again leads us to the same problem, because if API and UI hosted on two different domains would never be able to access resources from each other, It would make no sense to seperate them at the first place.  That where CORS(Cross Origin Resource Sharing) comes to the picture, The method that allows different websites share resources to each other without breaking the SOP.
 
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How to Look for &quot;Insecure CORS Configuration&quot; vulnerabilities. <br><br>[A thread 🧵]<a href="https://twitter.com/hashtag/appsec?src=hash&amp;ref_src=twsrc%5Etfw">#appsec</a> <a href="https://twitter.com/hashtag/bugbounty?src=hash&amp;ref_src=twsrc%5Etfw">#bugbounty</a> <a href="https://twitter.com/hashtag/bugbountytips?src=hash&amp;ref_src=twsrc%5Etfw">#bugbountytips</a> <a href="https://twitter.com/hashtag/cybersecurity?src=hash&amp;ref_src=twsrc%5Etfw">#cybersecurity</a></p>&mdash; Snap Sec (@snap_sec) <a href="https://twitter.com/snap_sec/status/1467528029773520897?ref_src=twsrc%5Etfw">December 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 ## What is CORS:
@@ -234,6 +233,11 @@ During our experiance in Testing CORS on hundrends of websites, We found Some we
 ## Conclusion
 
 Cors was implemented to make it possible for websites to share resources with each other with least impact on security. However, this introduced a vast number of security risks. If CORS is not properly configured it can lead to high security impact on the website, affecting Confidentiality, Integrity and Availability of company data.
+
+
+Additionally, We recently published a thread about How to Look for `Insecure CORS Configuration` vulnerabilities. If you haven’t read that already, we urge you to spend the time reading it and give us a follow too.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How to Look for &quot;Insecure CORS Configuration&quot; vulnerabilities. <br><br>[A thread 🧵]<a href="https://twitter.com/hashtag/appsec?src=hash&amp;ref_src=twsrc%5Etfw">#appsec</a> <a href="https://twitter.com/hashtag/bugbounty?src=hash&amp;ref_src=twsrc%5Etfw">#bugbounty</a> <a href="https://twitter.com/hashtag/bugbountytips?src=hash&amp;ref_src=twsrc%5Etfw">#bugbountytips</a> <a href="https://twitter.com/hashtag/cybersecurity?src=hash&amp;ref_src=twsrc%5Etfw">#cybersecurity</a></p>&mdash; Snap Sec (@snap_sec) <a href="https://twitter.com/snap_sec/status/1467528029773520897?ref_src=twsrc%5Etfw">December 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
