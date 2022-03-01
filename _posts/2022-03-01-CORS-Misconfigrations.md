@@ -24,7 +24,7 @@ CORS stands for CROSS ORIGIN RESOURCE SHARING. This method allows websites to lo
 So how do we define origin? Well, origin can be defined as the combination of:
 
 1. Protocol: Protocol could be a HTTP or HTTPS.
-2. Host: This is where your website lives. like [example.com](http://example.com) or it could be an IP address
+2. Host: This is where your website lives. like example.com or it could be an IP address
 3. Port: These are communication endpoints. Default port of HTTP is `80` and or HTTPS it is `443`
 
 So from above definition we see that `http://example.com` and `https://example.com` are two completely different hosts.
@@ -50,7 +50,8 @@ However, this header alone is not enough. The server *must* respond with the 
 The server response typically looks like:
 
 ```
-💡 Access-Control-Allow-Arigin: [http://example.com](http://example.com)                                                        Access-control-allow-credentials: true
+💡 Access-Control-Allow-Arigin: http://example.com
+Access-control-allow-credentials: true
 ```
 
 ## Types of CORS requests
@@ -71,7 +72,7 @@ The request with the origin header would go as:
 
 Response from the destination would be either of the following:
 
-1. **Access- Control-Allow-Origin: [http://example.com](http://xyz.com/) (which conveys that this domain is allowed)**
+1. **Access- Control-Allow-Origin: http://example.com (which conveys that this domain is allowed)**
 2. **Access-Control-Allow-Origin: * (which conveys that all domains are allowed)**
 3. **An error if the cross-origin requests are not allowed (which conveys that access is not allowed)**
 
@@ -137,8 +138,8 @@ Mistakes often arise when implementing CORS origin whitelists. Some organization
 
 The attacker can use the following methods of origin on vulnerable website :
 
-1. Origin: [evil.vulnerable.com](http://evil.vulnerable.com) [allowing access from all subdomains]
-2. Origin: [evilvulnerable.com](http://evilvulnerable.com) [matching a certain part of url like ‘vulnerable’ in this example
+1. Origin: http://evil.vulnerable.com [allowing access from all subdomains]
+2. Origin: http://evilvulnerable.com [matching a certain part of url like ‘vulnerable’ in this example]
 3. Origin: vulnerable.com.evil.com
 
 If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
