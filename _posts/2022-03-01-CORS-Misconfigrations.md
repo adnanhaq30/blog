@@ -10,7 +10,7 @@ image: assets/images/8/0.png
 
 
 
-If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on a api.web.com and the UI on ui.web.com, But due to the security mechanism called SOP the context and resources of each website is isolated from each other, which means any resource loaded from api.web.com cannot be accessed by ui.web.com. Which again leads us to the same problem, because if API and UI hosted on two different domains would never be able to access resources from each other, It would make no sense to seperate them at the first place.  That where CORS(Cross Origin Resource Sharing) comes to the picture, The method that allows different websites share resources to each other without breaking the SOP.
+If you are a developer, you already know that it’s nearly impossible to keep every resource in one place. It’s expensive (because everything has to be managed by one party) and it gets quite messy. So you maybe thinking that developers can potentially use two different domains to sepereate resources on different servers. An API on an `api.web.com` and the User Interface `on ui.web.com`, But due to the security mechanism called [SOP](https://portswigger.net/web-security/cors/same-origin-policy) the context and resources of each website is isolated from each other, which means any resource loaded from api.web.com cannot be accessed by ui.web.com. Which again leads us to the same problem, because if API and UI hosted on two different domains would never be able to access resources from each other, It would make no sense to seperate them at the first place.  Thats where the CORS(Cross Origin Resource Sharing) comes to the picture, The method that allows different websites share resources to each other without breaking the SOP.
 
 
 
@@ -21,7 +21,7 @@ If you are a developer, you already know that it’s nearly impossible to keep e
 ![1](/blog/assets/images/8/1.png)
 
 
-CORS stands for CROSS ORIGIN RESOURCE SHARING. This method allows websites to load resources from different domains securely. These resources are usually fonts, images/videos, CSS, ajax requests etc etc. CORS adds flexibility to Same-Origin-Policy which blocks reading resources from different origins by default. With Same-Origin-Policy, JavaScript can only make calls to URLs that live on the same origin as the location where the script is running. For example, if a JavaScript app wishes to make an AJAX call to an API running on a different domain, it would be blocked from doing so thanks to the same-origin policy. To overcome this problem, CORS was introduced. CORS allows servers to specify certain trusted ‘origins’ they are willing to permit requests from.
+CORS stands for CROSS ORIGIN RESOURCE SHARING. This method allows websites to load resources from different domains securely. These resources are usually fonts, images/videos, CSS, ajax requests containing API responses. CORS adds flexibility to Same-Origin-Policy which blocks reading resources from different origins by default. With Same-Origin-Policy, JavaScript can only make calls to URLs that live on the same origin as the location where the script is running. For example, if a JavaScript app wishes to make an AJAX call to an API running on a different domain, it would be blocked from doing so. To overcome this problem, CORS was introduced. CORS allows servers to specify certain trusted ‘origins’ they are willing to permit requests from.
 
 So how do we define origin? Well, origin can be defined as the combination of:
 
@@ -29,11 +29,11 @@ So how do we define origin? Well, origin can be defined as the combination of:
 2. Host: This is where your website lives. like example.com or it could be an IP address
 3. Port: These are communication endpoints. Default port of HTTP is `80` and or HTTPS it is `443`
 
-So from above definition we see that `http://example.com` and `https://example.com` are two completely different hosts.
+So in order for two Requests's to have the same origin they must be identical in terms of `Protocol, Host, and Port`.  That means from the above definition we see that `http://example.com` and `https://example.com` are two completely different hosts.
 
 ## How is CORS implemented
 
-When we want a website different than our own to access the resources on our server or API, we have to include the trusted origins on our server or we can add a wildcard(*). Wildcard means anyone can access our resources regardless of their origin. For example, if we want to allow specific domains to access our server resources, we have to enable the CORS in server configuration. This can be done like:
+When we want a website different than our own to access the resources on our server configration or API configration, we have to include the trusted origins on our server or we can add a wildcard(*). Wildcard means anyone can access our resources regardless of their origin. For example, if we want to allow specific domains to access our server resources, we have to enable the CORS in server configuration. This can be done like:
 
 ```
 💡 “Allowed origins: “https://example.com:8080”
@@ -45,7 +45,7 @@ Or we if we want to give access to all website we add
 💡  Allowed origins: *
 ```
 
-The Server Response Must Look like this, Which should include the following headers: 
+The Server Response Must include the following headers in order to instruct web browser to allow/disallow the specific origin from accessing cross origin resources:
 
 ```
 💡 Access-Control-Allow-Origin
@@ -60,7 +60,7 @@ __💡 Access-Control-Allow-Origin__
 
 __💡 Access-control-allow-credentials__:
 
-By default, CORS does not include cookies in cross-origin requests. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
+By default, CORS does not include cookies in requests which are not originated from the same origin. So there is another header that we have to add and that is `Access-control-Allow-Credentials` This lets the browser to allow the requested whitelisted domain to read the credentials like cookies, authorization headers, tokens or TLS client certificates. The client code *must* set the `withCredentials` property on the `XMLHttpRequest` to `true` in order to give permission.
 
 The server *must* respond with the `Access-Control-Allow-Credentials` header. Responding with this header to `true` means that the server allows cookies (or other user credentials) to be included in cross-origin requests.
 
@@ -83,9 +83,9 @@ The request with the origin header would go as:
 
 Response from the destination would be either of the following:
 
-1. **Access- Control-Allow-Origin: http://example.com (which conveys that this domain is allowed)**
-2. **Access-Control-Allow-Origin: * (which conveys that all domains are allowed)**
-3. **An error if the cross-origin requests are not allowed (which conveys that access is not allowed)**
+1. `Access- Control-Allow-Origin: http://example.com` (which conveys that this domain is allowed)
+2. `Access-Control-Allow-Origin: *` (which conveys that all domains are allowed)**
+3. `Error`: An error if the cross-origin requests are not allowed (which conveys that access is not allowed)**
 
 **Preflight requests:** Any request with the special HTTML Methods eg (**PUT/PATCH/DELETE**) is deemed as unsafe methods because they affect the integrity of server data. Therefore, before these requests are made to the server, an extra pre-flight **OPTIONS** request is sent by the browser, this request is called preflight check request. Because its always sent before browser makes the actual request. 
 
@@ -112,7 +112,7 @@ Access-Control-Allow-Headers: Content-type, Authorization-Bearer
 
 ```
 
-In this case the actual request is originated from `example.com` and so the browser decided the make the follwoing pre-flight request which contains information that the origin example.com wants to send a HTTP Delete Request to the server. In return the server Responsds with `Access-Control-Allow-Origin: example.com` which indicates that origin `example.com` is allowed to make the following HTTP Request types mentioned in the `Access-Control-Allow-Methods` header which is  PUT,DELETE,PATCH,GET,POST,HEAD in this case.
+In this case the actual request is originated from `example.com` and so the browser decided the make the above mentioned pre-flight request which contains information that the origin example.com wants to send a HTTP Delete Request to the server. In return the server Responsds with `Access-Control-Allow-Origin: example.com` which indicates that origin `example.com` is allowed to make the following HTTP Request types mentioned in the `Access-Control-Allow-Methods` header which is  PUT,DELETE,PATCH,GET,POST,HEAD.
 
 If any of the information in the response headers does not match the actual parameters of the request, the browser will not send the actual request, thus preventing unwanted side-effects from the server receiving the cross-origin request.
 
