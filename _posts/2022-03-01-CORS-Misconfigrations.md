@@ -139,7 +139,7 @@ Host: vulnerablewebsite.com
 Origin: attacker.com
 ```
 
-After sending the above request if server responds with
+After sending the above request if server responds with the following response, Its vulnerable to CORS Misconfigration issue.
 
 ```
 💡 Access-Control-Allow-Origin: *
@@ -149,7 +149,7 @@ Access-Control-Allow-Credentials: true
 
 #### Basic Reflected CORS Misconfig
 
-This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set to is reflected back in the `Access-Control-Allow-Origin` header in the response. 
+This CORS Misconfigration is simple yet one of the most found CORS miconfigration in todays modern web applications. In this case whatever the value of Origin Header is set in the request is reflected back in the `Access-Control-Allow-Origin` header in the response. 
 
 ```
 💡 Get /api/userinfo
@@ -158,7 +158,7 @@ Host: vulnerablewebsite.com
 Origin: attacker.com
 ```
 
-After sending the above request if server responds with
+After sending the above request if server responds with the following response, Its also a vulnerable to CORS Misconfigration issue.
 
 ```
 💡 Access-Control-Allow-Origin: attacker.com
@@ -173,7 +173,7 @@ This is a worst case scenario of a misconfigured server which can be easily expl
  
 One of the most common ways to check if the Origin is trusted is to test it against a Regular Expression. Almost all Programming languages provides easy and very powerful Regular Expression modules/functions to check if a Origin in the request matches trusted Origin. Sometimes, functions or regular expression itself  either misused or not very well creafted by developers and when you see this it can be possible to bypass weak input validation functions. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
 
-Example: Lets say i want to whitelist all the subdomains of the example.com , So i created an weak regex which is `example\.com` which will match strings which contain example.com in them. But the fact that `example.com.attacker.com` is also matched to the expression but this subdomain is not the subdomain of example.co and Hence would allow attacker to perform attack from attacker.com.
+Example: Lets say i want to whitelist all the subdomains of the example.com , So i created an weak regex which is `example\.com` which will match all the strings which contain example.com in them. But the fact that `example.com.attacker.com` is also matched to the expression but this subdomain is not the subdomain of example.co and Hence would allow attacker to perform attack from attacker.com.
 
 
 
@@ -186,7 +186,8 @@ Host: vulnerablewebsite.com
 Origin: example.com.attacker.com
 ```
 
-After sending the above request if server responds with
+After sending the above request if server responds with the response with Access-Control-Allow-Origin header set to your domain sent in request, Its vulnerable to CORS misconfigration.
+
 
 ```
 💡 Access-Control-Allow-Origin: example.com.attacker.com
@@ -209,25 +210,42 @@ Host: vulnerablewebsite.com
 Origin: attacker.attacker.com
 ```
 
-After sending the above request if server responds with
+If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
+
 
 ```
 💡 Access-Control-Allow-Origin: attacker.attacker.com
 Access-Control-Allow-Credentials: true
 ```
 
-If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
+The following type of CORS misconfigration is only exploitable when attacker manages to find XSS or subdomain takeover vulnerability in any of victims subdomains
+
 
 **Exploiting CORS via XSS:**
 
-The following type of CORS misconfigration is only exploitable when attacker manages to find XSS or subdomain takeover vulnerability in any of victims subdomains
 
 Suppose we have a website, secure.com and it has some whitelisted subdomains in CORS policy. Since these subdomains trust each other completely, if the subdomain is vulnerable to XSS, attacker can exploit the XSS in vulnerable subdomain and inject some JavaScript that uses CORS to retrieve sensitive information from the securesite.com that trusts the vulnerable application.
 
 #### NULL origin:
 
-During our experiance in Testing CORS on hundrends of websites, We found Some websites returns `Access-Control-Allow-Origin:NULL` and `Access-Control-Allow-Credentials:true` when ogigin is set to NULL (`origin:Null`) , The following type of CORS misconfigration is exploitable using the [sandboxed iframe technique](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack).
+During our experiance in Testing CORS on hundrends of websites, We found Some websites returns `Access-Control-Allow-Origin:NULL` and `Access-Control-Allow-Credentials:true` when ogigin is set to NULL (`origin:Null`).
 
+```
+💡 Get /api/userinfo
+
+Host: vulnerablewebsite.com
+Origin: Null
+```
+
+If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
+
+
+```
+💡 Access-Control-Allow-Origin: Null
+Access-Control-Allow-Credentials: true
+```
+
+The following type of CORS misconfigration is exploitable using the [sandboxed iframe technique](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack).
 
 
 ## Conclusion
