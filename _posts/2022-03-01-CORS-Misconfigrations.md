@@ -207,14 +207,14 @@ The attacker can use the following methods of origin on vulnerable website :
 💡 Get /api/userinfo
 
 Host: vulnerablewebsite.com
-Origin: attacker.attacker.com
+Origin: attacker.vulnerablewebsite.com
 ```
 
 If a server responds with any of the above domain in response with credentials set to true, then the server is exploitable.
 
 
 ```
-💡 Access-Control-Allow-Origin: attacker.attacker.com
+💡 Access-Control-Allow-Origin: attacker.vulnerablewebsite.com
 Access-Control-Allow-Credentials: true
 ```
 
