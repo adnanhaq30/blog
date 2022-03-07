@@ -2,7 +2,7 @@
 layout: post
 title:  "How data breaches effects your business and brand value"
 author: imran
-categories: [databreach,blog,general ]
+categories: [general ]
 image: assets/images/4/0.png
 ---
 
