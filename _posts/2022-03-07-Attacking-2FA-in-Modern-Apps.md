@@ -1,6 +1,20 @@
+---
+layout: post
+title:  "Options for creating a new site with Jekyll"
+author: john
+categories: [ general,blog-post,imran ]
+image: assets/images/9/1.png
+---
+
+
+
+
 
 You might be familiar with the _annoying_ otps or other autthentication tokens delivered right after you log into your favourite site. This article will help you to understand the purpose of **2FA** and its _exploitation_ . I have also drafted some of the 2FA bypasses you can use these techniques to exploit the authentication of an  application.
 ## What is two factor authentication or 2FA?
+
+![1](/blog/assets/images/9/2.png)
+
 
 Two-factor authentication (2FA), sometimes referred to as two-step verification_ or _dual-factor authentication , is a security process in which users provide two different authentication factors to verify themselves. 2FA is implemented to better protect both a user’s credentials and the resources the user can access.
 
@@ -11,6 +25,8 @@ Two-factor authentication provides a higher level of security than authenticatio
 Two-factor authentication has long been used to control access to sensitive systems and data. Online service providers are increasingly using 2FA to protect their users’ credentials from being used by hackers who stole a password database or used phishing campaigns to obtain user passwords.
 
 ## Exploiting weak or improper 2FA in web applications
+
+![1](/blog/assets/images/9/3.png)
 
 Many modern web applications implement an external layer of security i,e 2FA which is no brainer to most of the us it was devised to protect but exploting this issue hackers can sometimes compromise the accounts of users without much toil. In this section we will take a look on how this _extra layer of security can be exploited and what its exploitation will land an attacker on_.
 
@@ -23,6 +39,9 @@ In addition, 2FA data can also be recorded in session cookies. Once a victim add
 Furthermore attacker can also perform a critical actions even bypassing a 2FA. So now the attacker can delete accounts, update emails and do much more critical actions and totally compromise victims accounts. Many Corporative giants, various banks using the two-factor authentication technique to ensure security to its users. Although, these companies don’t make this kind operations by themselves, they hire third part companies to do so, integrating the API products for onwards delivery. Because of this implementation technique they are also vulnerable to serious breaches that can be exploited.The third party companies stays between the client and the website being in a privileged place to attack any unsuspecting victim.
 
 # 2FA/OTP Bypasses
+
+![1](/blog/assets/images/9/4.png)
+
 
 This extra layer of security implementation is gaining fame in modern day web applications and is implemented on huge scale. But as discussed above _improper implementation_ poses risk to both organizations as well as users residing on their 2FA. As a _pen-tester, bug humter_whenvever you come across these 2FA's mechanisms* inside an app make sure you test and try every bypass to identify _vulnerability_. Because at the end of the day you are securing the internet not just breaching it. Below are few of my techniques i use to _bypass 2FA_ in the application.
 
@@ -38,3 +57,11 @@ This extra layer of security implementation is gaining fame in modern day web ap
 1: Two-factor authentication provides an extra  level layer of security on modern web applications.
 2:- improper implementation of 2FA can cause damage to compromise the users accounts.
 3:- I have already mentioned above some cool bypasses you can use those bypasses to check the authentication of an application.
+
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
