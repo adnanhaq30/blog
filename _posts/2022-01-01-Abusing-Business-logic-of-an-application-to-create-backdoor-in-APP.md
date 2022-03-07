@@ -2,7 +2,7 @@
 layout: post
 title:  "Abusing Business Logic of an Application to create backdoor in a form APP"
 author: imran
-categories: [ Access-Control,Blog,Business-Logic ]
+categories: [ broken-access-control,article]
 image: assets/images/BD/0.png
 ---
 
