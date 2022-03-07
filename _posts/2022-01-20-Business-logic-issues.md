@@ -2,7 +2,7 @@
 layout: post
 title:  "Attacking Business Logic issues in Modern Web Apps"
 author: ab
-categories: [ blog, business-logic,broken-access-control ]
+categories: [ writeup,broken-access-control ]
 image: assets/images/6/1.png
 ---
 
