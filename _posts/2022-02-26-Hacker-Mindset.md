@@ -2,7 +2,7 @@
 layout: post
 title:  "A Hacker Mindset"
 author: mubashir
-categories: [ article,mubashir ]
+categories: [ article,mindset ]
 image: assets/images/7/1.png
 ---
 
