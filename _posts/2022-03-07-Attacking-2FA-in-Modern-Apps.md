@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Options for creating a new site with Jekyll"
-author: john
-categories: [ general,blog-post,imran ]
+title:  "Attacking 2FA in Modern Web Applications"
+author: danish
+categories: [ 2FA,geneal,danish ]
 image: assets/images/9/1.png
 ---
 
