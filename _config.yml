@@ -45,6 +45,14 @@ authors:
     web: https://twitter.com/adnan_shah__
     twitter: https://twitter.com/adnan_shah__
     description: "Adnan Shah is an Appsec Engineer and a passionate adventurer."
+  danish:
+    name: "Danish Bhat"
+    display_name: "Danish Bhat"    
+    gravatar: 728f98f86c605a9c42434a342dc9489b
+    email: bhatdanish627@gmail.com
+    web: https://twitter.com/DanishB23511699
+    twitter: https://twitter.com/DanishB23511699
+    description: "Danish Bhat is an Appsec Engineer at snapsec, He is likes to talk about websec, Api security and Linux."
 
 # Plugins
 plugins:
