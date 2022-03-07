@@ -53,6 +53,9 @@ This extra layer of security implementation is gaining fame in modern day web ap
 6.  **Lack of Rate limit**: There is any limit in the amount of codes that you can try, so you can just brute force it. Be careful with a possible “silent” rate-limit, always try several codes and then the real one to confirm the vulnerability.
 7.  **Re-send code reset the limit**: In this case there is a flow rate limit (you have to brute force it very slowly: 1 thread and some sleep before 2 tries) but no rate limit. So with enough time you can be able to find the valid code.
 8.  **CSRF/Clickjacking: Check if there is a CSRF or a Clickjacking vulnerability to disable the 2FA.**
+
+
+
 ## Conclusion:- 
 1: Two-factor authentication provides an extra  level layer of security on modern web applications.
 2:- improper implementation of 2FA can cause damage to compromise the users accounts.
