@@ -2,7 +2,7 @@
 layout: post
 title:  "Attacking 2FA in Modern Web Applications"
 author: danish
-categories: [ 2FA,geneal,danish ]
+categories: [ 2FA,article,danish ]
 image: assets/images/9/1.png
 ---
 
