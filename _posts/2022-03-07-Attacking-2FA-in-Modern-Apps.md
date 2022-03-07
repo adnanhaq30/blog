@@ -65,7 +65,7 @@ Developers often use rate limits to control the number of requests per user. Bas
 The possibility that any of these bypasses will work completely depends on the internal infrastructre of target network, To be sure with our customers we do run a little brutefoce to confirm if the bruteforce protection is working completely fine on 2FA endpoint. To test this on your side All you have to do is to Use the mentioned list of Headers just under the Host Header in the Request responsible to send the 2FA code to the server:
 
 
-```http
+```
 1.  X-Originating-IP: 127.0.0.1
 2.  X-Forwarded-For: 127.0.0.1
 3.  X-Remote-IP: 127.0.0.1
@@ -92,12 +92,12 @@ Example:
 Changing Response Body:
 
 ```json
-{succes:"false"} -> {success:"true"}
+{"success":"false"} -> {"success":"true"}
 ```
 
 Changing Response Code:
 
-```json
+```
 change 403 -> 200
 ```
 
