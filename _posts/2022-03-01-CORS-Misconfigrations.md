@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "CORS Misconfigurations"
+title:  "Attacking CORS Misconfigurations in Modern Web Application"
 author: adnan
 categories: [ writeup,cors,adnan ]
 image: assets/images/8/0.png
