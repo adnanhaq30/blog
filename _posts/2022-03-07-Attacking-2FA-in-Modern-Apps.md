@@ -57,9 +57,9 @@ This extra layer of security implementation is gaining fame in modern day web ap
 
 
 ## Conclusion:- 
-1: Two-factor authentication provides an extra  level layer of security on modern web applications.
-2:- improper implementation of 2FA can cause damage to compromise the users accounts.
-3:- I have already mentioned above some cool bypasses you can use those bypasses to check the authentication of an application.
+- Two-factor authentication provides an extra  level layer of security on modern web applications.
+- improper implementation of 2FA can cause damage to compromise the users accounts.
+- I have already mentioned above some cool bypasses you can use those bypasses to check the authentication of an application.
 
 
 
