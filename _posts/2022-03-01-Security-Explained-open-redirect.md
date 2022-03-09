@@ -18,17 +18,12 @@ Please note that open redirection can be caused by the code sitting at the serve
 
 
 ```php
-
 <?php
-
 if(isset($_GET['url'])){
 	$url=$_GET['url'];
 	header('Location:'.$url);
 }
-
-
 ?>
-
 ```
 
 	
@@ -56,8 +51,7 @@ In other words it redirects the user to whatever the value he has passed in the 
 
 The Exploitation is pretty simple, If the website is not validating the url paramters , We can simply add any web address in the url parameter and it will redirect us to the page.
 
-1-vid.mp4
-
+<video src="https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/SecuritySimplified/or-2/vid1.mp4?raw=true"></video>
 
 
 	
