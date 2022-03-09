@@ -83,7 +83,8 @@ Developers often use rate limits to control the number of requests per user. Bas
 - **Re-send code reset the limit**: In this case there is a flow rate limit (you have to brute force it very slowly: 1 thread and some sleep before 2 tries) but no rate limit. So with enough time you can be able to find the valid code.
 
 
-- **CSRF/Clickjacking: Check if there is a CSRF or a Clickjacking vulnerability to disable the 2FA.**
+- **CSRF/Clickjacking:** Check if there is a CSRF on enabling and Disabling 2FA or a Clickjacking vulnerability to disable the 2FA. This defenetly does require some user interaction to exploit the vulnerability, But its still impactful enough to make the developer teams fix it.
+- 
 
 - __Response Manipulation__: Every request generated from your browser will have a response which is receaved by the code at front end and later the data in the response is used to take several decision on which functionalaties/links/UI features should be visible to the user. Some time developers assume that if the web-server response 200OK response to the request contains 2FA code the logic at the fron-end assumes that the code is correct hence logs in user to their accounts, But this flawed logic can be used to bypass 2FA completely by intercepting the Incorrect Response code and then changing to the 200OK and hence bypass the 2FA authentication on any target account.
 
@@ -98,7 +99,7 @@ Changing Response Body:
 Changing Response Code:
 
 ```
-change 403 -> 200
+change Stautus code [403 -> 200] or [401 -> 200]
 ```
 
 
