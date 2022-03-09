@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Attacking 2FA in Modern Web Applications"
+title:  "Attacking 2FA in Modern Web Apps"
 author: danish
 categories: [ 2FA,article ]
 image: assets/images/9/1.png
