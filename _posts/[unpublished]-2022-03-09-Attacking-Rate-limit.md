@@ -99,7 +99,7 @@ The fact that developers often strip Spaces before process user data, This may a
 
 - **Changing Cookies**: Try changing Session cookie after being blocked by the server. This can be achieved by figuring out which request is responsible to set session cookies to the user and then use that request to update session cookie everytime you are blocked. If the rate limit mechanism is purely based on cookies, an attacker can continues to brteforce by generating new cookies every X attempts
 
-__Ip based Rate limits__: Ip based rate limits can be easily bypassed by changing the Ip address of your machine. The alternative would be using IP Rotate Burp Extension. Other than that [Shubs](https://twitter.com/infosec_au) has posted an amazing video on __Rate Limts and How to bypass IP based rate limit__ on his youtube channel.
+- __Ip based Rate limits__: Ip based rate limits can be easily bypassed by changing the Ip address of your machine. The alternative would be using IP Rotate Burp Extension. Other than that [Shubs](https://twitter.com/infosec_au) has posted an amazing video on __Rate Limts and How to bypass IP based rate limit__ on his youtube channel.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/it_V3ig1_4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
