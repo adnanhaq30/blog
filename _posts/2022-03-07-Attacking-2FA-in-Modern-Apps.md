@@ -111,7 +111,7 @@ change Stautus code [403 -> 200] or [401 -> 200]
 
 
 
-## Conclusion:- 
+## Conclusion
 - Two-factor authentication provides an extra  level layer of security on modern web applications.
 - improper implementation of 2FA can cause damage to compromise the users accounts.
 - I have already mentioned above some cool bypasses you can use those bypasses to check the authentication of an application.
