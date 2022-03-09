@@ -2,7 +2,7 @@
 layout: post
 title:  "[Security Simplified] - Open Redirect (Server Side)"
 author: imran
-categories: [ Jekyll, tutorial,imran ]
+categories: [ tutorial,imran ]
 image: assets/images/SecuritySimplified/or-2/0.png
 ---
 
