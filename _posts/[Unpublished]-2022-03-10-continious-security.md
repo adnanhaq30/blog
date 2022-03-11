@@ -26,4 +26,21 @@ With the help of cloud computing and advance fast scanners and Automation Attack
 
 In an traditional pentest its hard for the pentesters to dive deep and do the indepth analysis the application logic, But in continues security model the researchers who perform the pentest are re-testing your application twice or thrice a week hence it allows them to take some time and get a good understanding of target application and target [the Business Logic of the application](https://snapsec.co/blog/Business-logic-issues/).
 
-- __
+- __Continues Attack Surface Management__:
+
+Each weekly report will contain newly found servers, Subdomains, Legacy servers, Credentials Leaks, Open Services and Other assets exposed to the internet, which can help you identify risks that your security teams didn't know about, and gives you an attacker's perspective into your perimeter.
+
+- __Balanced Vulnerability Reporting__: 
+
+A tranditional pentest which is excuted ofter a long span of time creates massive pool of potential security vulnerabilities reported in a single report, it’s easy to become overwhelmed with the huge number of incoming volume of security vulnerabilites reported in a sigle day. In continues Security testing model, the small number of vulnerabilites are reported to customers in each weekly/monthly report. Which allows them to remain focused on a small number of vulnerabilites at a time.
+
+
+- __Cost Efficeincy__: 
+
+An Average pentesting Costs you around $4,000 - $10,000 for a single in-point assesment, And if you re thinking of running a bug bounty program instead have a look at [Github's Bug Bounty](https://hackerone.com/github?type=team) program which paid more than $176,000 to Bugbounty hunters in last 90 days, But our security model changer you less than $1000/Month for 2 Pentest/reports a month, Which means it far less costly than any security testing approache in the market right now.
+
+
+## Get in touch 
+Snapsec is a team of security experts specialized in providing pentesting and Continues Security Testing security services to ensure you online assets are safe against online threats. Snapsec uses a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+If you are interested in __Continuies Security Testing__ Services and would like to get in touch for any other information, Contact us at [https://snapsec.co/#contact](https://snapsec.co/#contact) or write to us at [support@snapsec.co](support@snapsec.co)
