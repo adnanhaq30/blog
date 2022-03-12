@@ -17,7 +17,7 @@ You might be familiar with the annoying OTPS or other authentication tokens deli
 ![1](/blog/assets/images/9/2.png)
 
 
-Two-factor authentication (2FA), sometimes referred to as two-step verification_ or _dual-factor authentication , is a security process in which users provide two different authentication factors to verify themselves. 2FA is implemented to better protect both a user’s credentials and the resources the user can access.
+Two-factor authentication (2FA), sometimes referred to as two-step verification or dual-factor authentication , is a security process in which users provide two different authentication factors to verify themselves. 2FA is implemented to better protect both a user’s credentials and the resources the user can access.
 
 ## Why is it implemented
 
