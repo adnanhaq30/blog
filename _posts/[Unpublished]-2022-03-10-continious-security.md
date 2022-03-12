@@ -9,11 +9,11 @@ We believe Traditional Penetration testing is not enough to make sure that your 
 
 Let's make this as simple as we can, Imagine you own or you are responsible for managing an security of `catstore.com`.
 
-### Traditional Pentesting__:
+### Traditional Pentesting:
 
 One of the Easiest and simplest way to Ensure you product is vulnerability free is to perform an Penetration test on your application, In which are group of specialised individuals Will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companies or your user information. Not this seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production  server you are back to the point where you will be completely doubtful if your application is full security or not.
 
-### Continiou Security testing__
+### Continiou Security testing
 
 Now imagine and second scenario where your product is tested every week exactly in the same manner it's used to be tested once a year and you are made aware about the new potential vulnerabilities that have arised by updating or changing code to the production servers throug the weekly Highly summarized report of your product and which would include the different type of attacks and test-case that your application had to go through. This brings your following good things to the table:
 
@@ -30,12 +30,12 @@ In an traditional pentest its hard for the pentesters to dive deep and do the in
 
 Each weekly report will contain newly found servers, Subdomains, Legacy servers, Credentials Leaks, Open Services and Other assets exposed to the internet, which can help you identify risks that your security teams didn't know about, and gives you an attacker's perspective into your perimeter.
 
-- __Balanced Vulnerability Reporting__: 
+- __Balanced Vulnerability Reporting__:
 
 A tranditional pentest which is excuted ofter a long span of time creates massive pool of potential security vulnerabilities reported in a single report, it’s easy to become overwhelmed with the huge number of incoming volume of security vulnerabilites reported in a sigle day. In continues Security testing model, the small number of vulnerabilites are reported to customers in each weekly/monthly report. Which allows them to remain focused on a small number of vulnerabilites at a time.
 
 
-- __Cost Efficeincy__: 
+- __Cost Efficeincy__:
 
 An Average pentesting Costs you around $4,000 - $10,000 for a single in-point assesment, And if you re thinking of running a bug bounty program instead have a look at [Github's Bug Bounty](https://hackerone.com/github?type=team) program which paid more than $176,000 to Bugbounty hunters in last 90 days, But our security model changer you less than $1000/Month for 2 Pentest/reports a month, Which means it far less costly than any security testing approache in the market right now.
 
