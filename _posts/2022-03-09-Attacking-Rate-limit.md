@@ -107,7 +107,7 @@ The fact that developers often strip Spaces before process user data, This may a
 
 - __Ip based Rate limits__: Ip based rate limits can be easily bypassed by changing the Ip address of your machine. The alternative would be using IP Rotate Burp Extension. Other than that [Shubs](https://twitter.com/infosec_au) has posted an amazing video on __Rate Limts and How to bypass IP based rate limit__ on his youtube channel.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/it_V3ig1_4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/it_V3ig1_4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
