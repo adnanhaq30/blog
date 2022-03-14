@@ -3,23 +3,29 @@ layout: post
 title:  "Attacking Rate Limit Protection in Modern Web Apps"
 author: john
 categories: [ Attacking-Modern-Web-Apps,article ]
-image: assets/images/13.jpg
+image: assets/images/10/1.png
 ---
 
 
 
 
-### What is rate limiting
 
-Rate limiting is a process to limiting requests receaved by the networking device. It is used to control network traffic.
+
+What is rate limiting? Well, Rate limiting is a process to limiting requests receaved by the networking device. It is used to control network traffic.
 Suppose a web server allows upto 20 requests per minute. If you try to send more than 20 requests, an error will be triggered. A rate limiting algorithm is used to check if the user session (or IP address) is following the limits set within the server/network configration. In case if the client made too many requests within a given time frame, HTTP servers can respond with status code 429: Too Many Requests and block the user IP/Session for some fixed time frame.
 
 ## Why is it implemented?
+
+![1](/blog/assets/images/10/2.png)
+
 
 This is necessary to prevent the attackers from sending excessive requests to the server. Rate limiting helps prevent a user from exhausting the system’s resources and is used to help control the load that’s put on the system. An API that utillizes rate limiting may throttle clients that attempt to make too many calls or temporarily block them altogether. Users who have been throttled may either have their requests denied or slowed down for a set time. This will allow legitimate requests to still be fulfilled without slowing down the entire application. Without rate limiting, it’s easier for a malicious party to overwhelm the system. This is done when the system is flooded with requests for information, thereby consuming memory, storage, and network capacity. It reduces the excessive load on web servers. it helps to stop certain kinds of malicious bot activity like login to an account using multiple guess passwords and user ids. It also prevents the modern web applications from bruteforce attacks.
 
 
 ### Impact
+
+![1](/blog/assets/images/10/3.png)
+
 
 No rate limit is a flaw that doesn’t limit the no. of attempts one makes on a website server to extract data. It is a vulnerability which can prove to be critical when misused by attackers. The zoom app has become popular in the lockdown , it has become an essential alternative to meetings and offline classes. Attackers were able to successfully exploit the No Rate Limit issue in zoom application which allowed them to brute force the private zoom meetings and crack the password within minutes. Later, this vulnerability was patched by ZOOM.
 
