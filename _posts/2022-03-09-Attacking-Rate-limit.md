@@ -39,10 +39,10 @@ Since we are writing these blogs from an attacker's perspective, here is how to 
 
 
 
-- **Null chars in code/params**: Try adding some Null bytes like `%00, %0d%0a, %0d, %0a, %09, %0C, %20` to the request header and/or params. For example `/api/auth?code=1234%0a` or if you are requesting a code for an email and you only have 5 tries, use the 5 tries for `example@email.com`, then for `example@email.com%0a`, then for `example@email.com%0a%0a`, and continue. 
+- **Using Null chars**: Try adding some Null bytes like `%00, %0d%0a, %0d, %0a, %09, %0C, %20` to the request header and/or params. For example `/api/auth?code=1234%0a` or if you are requesting a code for an email and you only have 5 tries, use the 5 tries for `example@email.com`, then for `example@email.com%0a`, then for `example@email.com%0a%0a`, and continue. 
 
 
-- **Changing IP origin using headers**: The Following mentioned headers can be used to bypass several rate limit protections by forging the origin or requests in many cases. The whole purpose of adding these headers to your requests is to make the webserver believe that the request is originated from his localhost hence no rate limit should be applied to it, To test this on your side All you have to do is to Use the mentioned list of Headers just under the Host Header in the Request responsible to send the 2FA code to the server:
+- **Forging Request origin using headers**: The Following mentioned headers can be used to bypass several rate limit protections by forging the origin or requests in many cases. The whole purpose of adding these headers to your requests is to make the webserver believe that the request is originated from his localhost hence no rate limit should be applied to it, To test this on your side All you have to do is to Use the mentioned list of Headers just under the Host Header in the Request responsible to send the 2FA code to the server:
 
 ```
 1.  X-Originating-IP: 127.0.0.1
@@ -61,10 +61,10 @@ Since we are writing these blogs from an attacker's perspective, here is how to 
 - **Change other headers:** Try changing the user-agent, the cookies... anything that could be able to identify you. If the webserver is using these headers to identify you as soon as you change the value of any of these headers , You are a new person.
 
 
-- **Login in your account before each attempt:** While trying rate limit protection of Authentication mechanism like Login, OTP portals each unsuccessful attempt increases your chance of getting blocked by the server, Now If you login into your account before each attempt of brute force other account (or each set of X tries), the rate limit is restarted. If you are attacking a login functionality, you can do this in burp using a Pitchfork attack in setting your credentials every X tries (and marking follow redirects). 
+- **Confusing Server with Suceessful Attempts:** While trying rate limit protection of Authentication mechanism like Login, OTP portals each unsuccessful attempt increases your chance of getting blocked by the server, Now If you login into your account before each attempt of brute force other account (or each set of X tries), the rate limit is restarted. If you are attacking a login functionality, you can do this in burp using a Pitchfork attack in setting your credentials every X tries (and marking follow redirects). 
 
 
-- **Adding extra params to the path**: if the limitation is set based on the number of requests that can be sent per path per time frame, This can be easily bypassed by adding new params to the URL, For example `/user/1` and `/user/1?p=1` and `/user/1/q=2` and `/user/1?r=3` are 3 different URL's but the request would be sent to a same path `/user/1` So this can be used to confuse the webserver by making server think that requests are sent to different API PATH's.
+- **Adding extra params/value to URL paths**: if the limitation is set based on the number of requests that can be sent per path per time frame, This can be easily bypassed by adding new params to the URL, For example `/user/1` and `/user/1?p=1` and `/user/1/q=2` and `/user/1?r=3` are 3 different URL's but the request would be sent to a same path `/user/1` So this can be used to confuse the webserver by making server think that requests are sent to different API PATH's.
 
 
 - **Adding Spaces** A webserver may strip off extra spaces added to email/username at the backend, Which may allow you to brute force the same email by appending an extra space every time you are blocked.
@@ -100,7 +100,7 @@ Host: app.com
 The fact that developers often strip Spaces before processing user data, may allow you to brute force the same email by appending an extra space every time you are blocked.
 
 
-- **Using similar endpoints:** If you are attacking a particular endpoint for example `/api/v3/sign-up`,  try finding different endpoints with a similar purpose in the application Example `/Sing-up`, `/SignUp`, `/singup`. Sometimes very specific endpoints are protected against rate limit attacks hence if the dev team forgot to implement rate limit protection on similar endpoints you may be able to exploit the same functionality via a different endpoint.
+- **Attacking Different Endpoints with same purpose:** If you are attacking a particular endpoint for example `/api/v3/sign-up`,  try finding different endpoints with a similar purpose in the application Example `/Sing-up`, `/SignUp`, `/singup`. Sometimes very specific endpoints are protected against rate limit attacks hence if the dev team forgot to implement rate limit protection on similar endpoints you may be able to exploit the same functionality via a different endpoint.
 
 
 - **Changing Cookies**: Try changing the Session cookie after being blocked by the server. This can be achieved by figuring out which request is responsible to set session cookies to the user and then using that request to update the session cookie every time you are blocked. If the rate limit mechanism is purely based on sessions-id's/cookies, an attacker can continue to brute-force by generating new cookies every X attempts
