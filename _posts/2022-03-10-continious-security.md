@@ -3,7 +3,7 @@ layout: post
 title:  "Continues Security Testing - Snapsec"
 author: imran
 categories: [ general,blog-post,imran ]
-image: assets/images/11/1.jpg
+image: assets/images/11/1.png
 ---
 
 
