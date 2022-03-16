@@ -9,12 +9,6 @@ image: assets/images/11/1.png
 
 
 
-## About us
-
-Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
-
- If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
-
 
 
 According to Security Researchers every code upadate/push to your production server or application may bring new Vulnerabilities in action. Because everytime a code on the server change, It makes changes to Application logic, Tech Stack , Dependencies and may bring infrastructural changes to the network where application are hosted. And it has been know that a average company pushes code to their github/product (DOZEN of time) a day/week/month. Now if thats the case doent it mean you maybe introducing new vulnerabilities with every code push on your server? Maybe yes, maybe not, How to make sure ? Introducing Continiou security model which ensures the security of your products or network no matter how many times you push code to the server.
