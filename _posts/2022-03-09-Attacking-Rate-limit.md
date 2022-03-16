@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Attacking Rate Limit Protection in Modern Web Apps"
-author: john
+author: danish
 categories: [ Attacking-Modern-Web-Apps,article ]
 image: assets/images/10/1.png
 ---
