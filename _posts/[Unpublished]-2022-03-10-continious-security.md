@@ -1,3 +1,22 @@
+---
+layout: post
+title:  "Continues Security Testing - Snapsec"
+author: imran
+categories: [ general,blog-post,imran ]
+image: assets/images/11/1.jpg
+---
+
+
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+
+
+
 According to Security Researchers every code upadate/push to your production server or application may bring new Vulnerabilities in action. Because everytime a code on the server change, It makes changes to Application logic, Tech Stack , Dependencies and may bring infrastructural changes to the network where application are hosted. And it has been know that a average company pushes code to their github/product (DOZEN of time) a day/week/month. Now if thats the case doent it mean you maybe introducing new vulnerabilities with every code push on your server? Maybe yes, maybe not, How to make sure ? Introducing Continiou security model which ensures the security of your products or network no matter how many times you push code to the server.
 
 ## What is Continuios Security Model
@@ -14,6 +33,10 @@ Let's make this as simple as we can, Imagine you own or you are responsible for 
 One of the Easiest and simplest way to Ensure you product is vulnerability free is to perform an Penetration test on your application, In which are group of specialised individuals Will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companies or your user information. Not this seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production  server you are back to the point where you will be completely doubtful if your application is full security or not.
 
 ### Continiou Security testing
+
+![1](/blog/assets/images/11/2.png)
+
+
 
 Now imagine and second scenario where your product is tested every week exactly in the same manner it's used to be tested once a year and you are made aware about the new potential vulnerabilities that have arised by updating or changing code to the production servers throug the weekly Highly summarized report of your product and which would include the different type of attacks and test-case that your application had to go through. This brings your following good things to the table:
 
