@@ -39,7 +39,7 @@ Since we are writing these blogs from an attacker's perspective, here is how to 
 
 
 
-- **Using Null chars**: Try adding some Null bytes like `%00, %0d%0a, %0d, %0a, %09, %0C, %20` to the request header and/or params. For example `/api/auth?code=1234%0a` or if you are requesting a code for an email and you only have 5 tries, use the 5 tries for `example@email.com`, then for `example@email.com%0a`, then for `example@email.com%0a%0a`, and continue. 
+- **Using Null chars**: Try adding some Null bytes like `%00, %0d%0a, %0d, %0a, %09, %0C, %20` to the request header and/or params. For example `/api/auth?code=1234%0a` or if you are bruteforcing a code for an email and you only have 5 tries, use the 5 tries for `example@email.com`, then for `example@email.com%0a`, then for `example@email.com%0a%0a`, and continue. 
 
 
 - **Forging Request origin using headers**: The Following mentioned headers can be used to bypass several rate limit protections by forging the origin or requests in many cases. The whole purpose of adding these headers to your requests is to make the webserver believe that the request is originated from his localhost hence no rate limit should be applied to it, To test this on your side All you have to do is to Use the mentioned list of Headers just under the Host Header in the Request responsible to send the 2FA code to the server:
