@@ -22,6 +22,8 @@ We believe Traditional Penetration testing is not enough to make sure that your 
 
 Let's make this as simple as we can, Imagine you own a product X OR you are responsible for managing the security of the product X. There are two different ways to make sure your product is free from any online threats:
 
+
+
 ### Traditional Pentesting:
 
 One of the easiest and simplest ways to ensure your product is vulnerability free is to perform a Penetration test on your application, In which  a group of specialized individuals will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companie's information or any of its users. This seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production server you are back to the point where you will be completely doubtful if your application is fully secre or not.
