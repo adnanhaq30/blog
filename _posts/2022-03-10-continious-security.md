@@ -20,7 +20,7 @@ We believe Traditional Penetration testing is not enough to make sure that your 
 
 ## How does it work 
 
-Let's make this as simple as we can, Imagine you own or you are responsible for managing security of `catstore.com`.
+Let's make this as simple as we can, Imagine you own a product X OR you are responsible for managing the security of the product X. There are two different ways to make sure your product is free from any online threats:
 
 ### Traditional Pentesting:
 
