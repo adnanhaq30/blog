@@ -11,20 +11,20 @@ image: assets/images/11/1.png
 
 
 
-According to Security Researchers, every code update/push to your production server or application may bring new Vulnerabilities into action. Because every time a code on the server changes, It makes changes to the Application logic, Tech Stack, Dependencies and may bring infrastructural changes to the network where applications are hosted. And it has been known that an average company pushes code to their Github/product (DOZEN of time) a day/week/month. Now if that's the case doesn't it mean you may be introducing new vulnerabilities with every code push on your server? and does it mean that you need to perform security testing on your products a dozen times a month. Well, if you ask me I would say yes because there is no other way to make sure your newly updated code uploaded to production is completely safe except by performing security testing on it. Introducing continuous security testing model, Where pentests happen as often as 2-3 times a month.
+According to Security Researchers, every code update/push to your production server or application may bring new vulnerabilities into action. Because every time a code on the server changes, It affects  the Application logic, Tech Stack, Dependencies and may bring infrastructural changes to the network where applications are hosted. This is known, that an average company pushes code to their Github/product (DOZEN of time) a day/week/month. Now in that's the case doesn't it mean you may be introducing new vulnerabilities with every code push on your server? And does it mean that you need to perform security testing on your products a dozen times a month. Well, if you ask Me I would say 'yes', because there is no other way to make sure your newly updated code uploaded to production is completely safe except by performing security testing on it. Introducing continuous security testing model where pentests happen as often as 2-3 times a month.
 
 ## What is Continuios Security Model
 
-We believe Traditional Penetration testing is not enough to make sure that your system is safe against online threats, Large application estates, or applications that are changing often, provide challenges for traditional pen-testing. It’s just not reasonable to perform a few pentests years and believe to be safe against online attacks. While introducing new vulnerabilities in your application every single day by either pushing new code to the production or making any changes to the previous one. So, A new approach is needed that delivers continuous security testing solutions with the ability to scale. That's why we believe in Continue Security Testing. Our Continuous Security Testing (CST) service gives you visibility of potential vulnerabilities, across your infrastructure, 365 days a year. 
+We believe Traditional Penetration testing is not enough to make sure that your system is safe against online threats, large application estates, or applications that are changing often, provide challenges for traditional pen-testing. It’s just not reasonable to perform a few pentests years and believe to be safe against online attacks. While introducing new vulnerabilities in your application every single day by either pushing new code to the production or making any changes to the previous one. So, a new approach is needed that delivers continuous security testing solutions with the ability to scale. That's why we believe in Continue Security Testing. Our Continuous Security Testing (CST) service gives you visibility of potential vulnerabilities, across your infrastructure, 365 days aall around the year. 
 
 
 ## How does it work 
 
-Let's make this as simple as we can, Imagine you own or you are responsible for managing an security of `catstore.com`.
+Let's make this as simple as we can, Imagine you own or you are responsible for managing security of `catstore.com`.
 
 ### Traditional Pentesting:
 
-One of the easiest and simplest ways to ensure your product is vulnerability free is to perform a Penetration test on your application, In which are a group of specialized individuals Will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companies or your user information. Not this seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production server you are back to the point where you will be completely doubtful if your application is full security or not.
+One of the easiest and simplest ways to ensure your product is vulnerability free is to perform a Penetration test on your application, In which  a group of specialized individuals will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companie's information or any of its users. This seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production server you are back to the point where you will be completely doubtful if your application is fully secre or not.
 
 ### Continiou Security testing
 
@@ -32,7 +32,7 @@ One of the easiest and simplest ways to ensure your product is vulnerability fre
 
 
 
-Now imagine the second scenario where your product is tested every week exactly, in the same manner, it's used to be tested once a year, and you are made aware of the new potential vulnerabilities that have arisen by updating or changing code to the production servers through the weekly Highly summarized report of your product and which would include the different type of attacks and test-case that your application had to go through. This brings the following good things to the table:
+Now imagine the second scenario where your product is tested every week exactly, in the same manner, it used to be tested once a year, and you are made aware of the new potential vulnerabilities that  arise by updating or changing code to the production servers. This is done via the weekly  summarized reports of your product which  include  different types of attacks and test-cases that your application had gone through. This brings the following good things to the table:
 
 - __Continues surveillance__:
 
@@ -41,7 +41,7 @@ With the help of cloud computing and advanced fast scanners and Automation Attac
 
 - __Indepth Security Assesments__: 
 
-In a traditional pentest it's hard for the pentesters to dive deep and do the in-depth analysis of the application logic, But in a continuous security model, the researchers who perform the pentest are re-testing your application twice or thrice a week hence it allows them to take some time and get a good understanding of target application and target [the Business Logic of the application](https://snapsec.co/blog/Business-logic-issues/).
+In a traditional pentest it's hard for the pentesters to dive deep and do the in-depth analysis of the application logic, But in a continuous security model, the researchers who perform the pentest are re-testing your application twice or thrice a week hence it allows them to take some time and get a good understanding of target application and target. [the Business Logic of the application](https://snapsec.co/blog/Business-logic-issues/).
 
 - __Continues Attack Surface Management__:
 
