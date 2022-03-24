@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Continues Security Testing - Snapsec"
+title:  "Continuous Security Testing - Snapsec"
 author: imran
-categories: [ general,blog-post,continues-security ]
+categories: [ general,blog-post,Continuous-security ]
 image: assets/images/11/1.png
 ---
 
@@ -11,11 +11,11 @@ image: assets/images/11/1.png
 
 
 
-According to Security Researchers, every code update/push to your production server or application may bring new vulnerabilities into action. Because every time a code on the server changes, It affects  the Application logic, Tech Stack, Dependencies and may bring infrastructural changes to the network where applications are hosted. This is known, that an average company pushes code to their Github/product (DOZEN of time) a day/week/month. Now in that the case doe it mean you may be introducing new vulnerabilities with every code push on your server? And does it mean that you need to perform security testing on your products a dozen times a month. Well, if you ask Me I would say 'yes', because there is no other way to make sure your newly updated code pushed to production is completely safe except by performing security testing on it. Introducing `continuous security testing model` where pentests happen as often as 2-3 times a month.
+According to Security Researchers, every code update/push to your production server or application may bring new vulnerabilities into action. Because every time a code on the server changes, It affects  the Application logic, Tech Stack, Dependencies and may bring infrastructural changes to the network where applications are hosted. This is known, that an average company pushes code to their Github/product (DOZEN of time) a day/week/month. Now in that the case doe it mean you may be introducing new vulnerabilities with every code push on your server? And does it mean that you need to perform security testing on your products a dozen times a month. Well, if you ask Me I would say 'yes', because there is no other way to make sure your newly updated code pushed to production is completely safe except by performing security testing on it. Introducing `Continuous security testing model` where pentests happen as often as 2-3 times a month.
 
-## What is Continuios Security Model
+## What is Continuous Security Model
 
-We believe Traditional Penetration testing is not enough to make sure that your system is safe against online threats, large application estates, or applications that are changing often, provide challenges for traditional pen-testing. It’s just not reasonable to perform a few pentests years and believe to be safe against online attacks. While introducing new vulnerabilities in your application every single day by either pushing new code to the production or making any changes to the previous one. So, a new approach is needed that delivers continuous security testing solutions with the ability to scale. That's why we believe in Continue Security Testing. Our Continuous Security Testing (CST) service gives you visibility of potential vulnerabilities, across your infrastructure, 365 days aall around the year. 
+We believe Traditional Penetration testing is not enough to make sure that your system is safe against online threats, large application estates, or applications that are changing often, provide challenges for traditional pen-testing. It’s just not reasonable to perform a few pentests years and believe to be safe against online attacks. While introducing new vulnerabilities in your application every single day by either pushing new code to the production or making any changes to the previous one. So, a new approach is needed that delivers Continuous security testing solutions with the ability to scale. That's why we believe in Continuous Security Testing. Our Continuous Security Testing (CST) service gives you visibility of potential vulnerabilities, across your infrastructure, 365 days aall around the year. 
 
 
 ## How does it work 
@@ -28,7 +28,7 @@ Let's make this as simple as we can, Imagine you own a product X OR you are resp
 
 One of the easiest and simplest ways to ensure your product is vulnerability free is to perform a Penetration test on your application, In which  a group of specialized individuals will try to attack your application to find any possible vulnerabilities which would allow them to compromise the companie's information or any of its users. This seems to be a very simplified version of making sure your product is safe but as soon as you update or change or push code on your production server you are back to the point where you will be completely doubtful if your application is fully secre or not.
 
-### Continiou Security testing
+### Continuous Security testing
 
 ![1](/blog/assets/images/11/2.png)
 
@@ -43,15 +43,15 @@ With the help of cloud computing and advanced fast scanners and Automation Attac
 
 - __Indepth Security Assesments__: 
 
-In a traditional pentest it's hard for the pentesters to dive deep and do the in-depth analysis of the application logic, But in a continuous security model, the researchers who perform the pentest are re-testing your application twice or thrice a week hence it allows them to take some time and get a good understanding of target application and target. [the Business Logic of the application](https://snapsec.co/blog/Business-logic-issues/).
+In a traditional pentest it's hard for the pentesters to dive deep and do the in-depth analysis of the application logic, But in a Continuous security model, the researchers who perform the pentest are re-testing your application twice or thrice a week hence it allows them to take some time and get a good understanding of target application and target. [the Business Logic of the application](https://snapsec.co/blog/Business-logic-issues/).
 
-- __Continues Attack Surface Management__:
+- __Continuous Attack Surface Management__:
 
-Each weekly report will contain newly found servers, Subdomains, Legacy servers, Credentials Leaks, Open Services, and Other assets exposed to the internet, which can help you identify risks that your security teams didn't know about, and gives you an attacker's perspective into your perimeter.
+Each weekly report will Continuous newly found servers, Subdomains, Legacy servers, Credentials Leaks, Open Services, and Other assets exposed to the internet, which can help you identify risks that your security teams didn't know about, and gives you an attacker's perspective into your perimeter.
 
 - __Balanced Vulnerability Reporting__:
 
-A traditional pentest which is executed after a long period creates a massive pool of potential security vulnerabilities reported in a single report, it’s easy to become overwhelmed with the huge number of incoming volume of security vulnerabilities reported in a single day. In the continuous Security testing model, a small number of vulnerabilities are reported to customers in each weekly/monthly report. Which allows them to remain focused on a small number of vulnerabilities at a time.
+A traditional pentest which is executed after a long period creates a massive pool of potential security vulnerabilities reported in a single report, it’s easy to become overwhelmed with the huge number of incoming volume of security vulnerabilities reported in a single day. In the Continuous Security testing model, a small number of vulnerabilities are reported to customers in each weekly/monthly report. Which allows them to remain focused on a small number of vulnerabilities at a time.
 
 
 - __Cost Efficeincy__:
@@ -60,6 +60,6 @@ An Average pentesting Costs you around $4,000 - $10,000 for a single in-point as
 
 
 ## Get in touch 
-Snapsec is a team of security experts specialized in providing pentesting and Continues Security Testing security services to ensure your online assets are safe against online threats. Snapsec uses a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
+Snapsec is a team of security experts specialized in providing pentesting and Continuous Security Testing security services to ensure your online assets are safe against online threats. Snapsec uses a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
 
-If you are interested in __Continuies Security Testing__ Services and would like to get in touch for any other information, Contact us at [https://snapsec.co/#contact](https://snapsec.co/#contact) or write to us at [support@snapsec.co](support@snapsec.co)
+If you are interested in __Continuous Security Testing__ Services and would like to get in touch for any other information, Contact us at [https://snapsec.co/#contact](https://snapsec.co/#contact) or write to us at [support@snapsec.co](support@snapsec.co)
