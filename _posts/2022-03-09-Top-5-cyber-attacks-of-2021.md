@@ -3,7 +3,7 @@ layout: post
 title:  "Top 5 Cyber Attacks on 2021"
 author: waseem
 categories: [ general,blog-post,data-breaches ]
-image: assets/images/13/1.jpg
+image: assets/images/13/1.png
 ---
 
 
