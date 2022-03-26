@@ -21,7 +21,7 @@ There are lots of security breaches happened in the last year, and they have mad
 
 # The 5 most impactful cyber attacks of 2021
 
-## 1. Data breach due to Microsoft software
+### 1. Data breach due to Microsoft software
 
 ![1](/blog/assets/images/12/2.png)
 
@@ -41,7 +41,7 @@ On 12 March 2021, Microsoft announced the discovery of "a new family of ransomwa
 
 
 
-## 2. Facebook  Data breach  
+### 2. Facebook  Data breach  
 
 ![1](/blog/assets/images/12/3.png)
 
@@ -60,7 +60,7 @@ In the future, it could potentially be used for social engineering attacks of a 
 
 
 
-# 3. LinkedIn Data breach
+### 3. LinkedIn Data breach
 
 ![1](/blog/assets/images/12/4.png)
 
@@ -75,7 +75,7 @@ There are two impacts for scraping, the first and obvious one is the business im
 
 
 
-# 4. Android Data breach
+### 4. Android Data breach
 
 ![1](/blog/assets/images/12/5.png)
 
@@ -89,7 +89,7 @@ Researchers at Check Point discovered anyone could access sensitive and personal
 In most cases, their real-time databases were unprotected, letting confidential user information fall into the wrong hands. Deficiencies in database configurations should not surprise anyone; however, many applications fail to follow basic security practices. Users' personal data is also at risk due to misconfigurations.
 
 
-# 5. Colonial Pipeline
+### 5. Colonial Pipeline
 
 ![1](/blog/assets/images/12/6.png)
 
@@ -109,7 +109,7 @@ The most concerning part of this attack are how easily hackers were able to gain
 
 The FBI and various media sources identified the criminal hacking group DarkSide as the responsible party, Read more about them [here](https://en.wikipedia.org/wiki/Colonial_Pipeline_ransomware_attack).
 
-# Conclusion
+### Conclusion
 
 All types of companies and individuals that share or store data online may be affected by data breaches. Data breach prevention plans, continuous security testing, and being actively security conscious is not an option; rather they are the must-have in companies. Unique service providers like ID Assist are perfect for being part of such a plan. It is a good idea to regularly conduct security assessments, IT audits, patch fixes, and to have a standardized incident response plan so that lost data can be minimized and your clients' trust can be maintained.
 
