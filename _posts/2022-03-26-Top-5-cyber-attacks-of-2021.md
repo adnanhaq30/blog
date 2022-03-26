@@ -3,7 +3,7 @@ layout: post
 title:  "Top 5 Cyber Attacks on 2021"
 author: waseem
 categories: [ general,blog-post,data-breaches ]
-image: assets/images/13/1.png
+image: assets/images/12/1.png
 ---
 
 
@@ -23,7 +23,7 @@ There are lots of security breaches happened in the last year, and they have mad
 
 ## 1. Data breach due to Microsoft software
 
-![1](/blog/assets/images/13/2.png)
+![1](/blog/assets/images/12/2.png)
 
 
 Microsoft was attacked in March 2021 by the [Chinese hacker group Hafnium](https://en.wikipedia.org/wiki/Hafnium_(group)). The attack took place across the United States, affecting local governments, government agencies, and businesses.
@@ -43,7 +43,7 @@ On 12 March 2021, Microsoft announced the discovery of "a new family of ransomwa
 
 ## 2. Facebook  Data breach  
 
-![1](/blog/assets/images/13/3.png)
+![1](/blog/assets/images/12/3.png)
 
 
 
@@ -62,7 +62,7 @@ In the future, it could potentially be used for social engineering attacks of a 
 
 # 3. LinkedIn Data breach
 
-![1](/blog/assets/images/13/4.png)
+![1](/blog/assets/images/12/4.png)
 
 More than 700 million LinkedIn users, or 92%, have had their personal data sold on the dark web since May 2021. Several reports indicate that the attackers scraped the data from the websites, including email addresses, full names, phone numbers, physical addresses, geolocation records, personal and professional histories, other social media accounts, gender, LinkedIn usernames, and profile URLs.
 
@@ -77,7 +77,7 @@ There are two impacts for scraping, the first and obvious one is the business im
 
 # 4. Android Data breach
 
-![1](/blog/assets/images/13/5.png)
+![1](/blog/assets/images/12/5.png)
 
 
 There have been numerous configuration errors in third-party cloud services that exposed the personal data of more than 100 million Android users in May. A total of 23 applications downloaded 10 million to 10,000 copies of the unsecured real-time databases containing the personal information. Anyone can access sensitive information such as names, email addresses, chat messages, date of birth, gender, photos, location, passwords, phone numbers, payment details, and push notifications. Misconfigured cloud services are responsible for this breach - something that even a company as big as Google can suffer from.
@@ -91,7 +91,7 @@ In most cases, their real-time databases were unprotected, letting confidential 
 
 # 5. Colonial Pipeline
 
-![1](/blog/assets/images/13/6.png)
+![1](/blog/assets/images/12/6.png)
 
 
 On May 7, 2021, Colonial Pipeline, an American oil pipeline system that originates in Houston, Texas, and carries gasoline and jet fuel mainly to the Southeastern United States, suffered a ransomware cyberattack that impacted computerized equipment managing the pipeline
