@@ -20,7 +20,7 @@ authors:
     email: parrayimran5@gmail.com
     web: https://imran-parray.github.io/blog
     twitter: https://twitter.com/imranparray101
-    description: "Imran parray is an independent cyber security reasercher 💻️, Bug bounty hunter😈 on Hackerone and Bugcrowd."
+    description: "CEO | Founder @snapsec "
   ab:
     name: "Abdul Basit"
     display_name: "Abdul Basit"    
@@ -53,7 +53,16 @@ authors:
     web: https://twitter.com/DanishB23511699
     twitter: https://twitter.com/DanishB23511699
     description: "Danish Bhat is an Appsec Engineer at snapsec, He is likes to talk about websec, Api security and Linux."
-
+  waseem:
+    name: "Waseem Lone"
+    display_name: "Waseem Lone"    
+    gravatar: 728f98f86c605a9c42434a342dc9489b
+    email: loneamir283@gmail.com
+    web: https://twitter.com/WaseemR86269739
+    twitter: https://twitter.com/WaseemR86269739
+    description: "Building and Breaking."
+    
+    
 # Plugins
 plugins:
   - jekyll-paginate
