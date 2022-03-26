@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Top 5 Cyber Attacks on 2021"
+title:  "Top 5 Cyber Attacks which resulted huge data-breaches in 2021"
 author: waseem
 categories: [ general,blog-post,data-breaches ]
 image: assets/images/12/1.png
@@ -19,7 +19,7 @@ There are lots of security breaches happened in the last year, and they have mad
 
 
 
-# THE 5 Biggest Data Breaches of 2021
+# The 5 most impactful cyber attacks of 2021
 
 ## 1. Data breach due to Microsoft software
 
