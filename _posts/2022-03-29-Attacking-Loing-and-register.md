@@ -3,16 +3,18 @@ layout: post
 title:  "Attacking Authentication in Modern Web Applications"
 author: mubashir
 categories: [ attacking-modern-webapps,authentication ]
-image: assets/images/13.jpg
+image: assets/images/13/1/.png
 ---
 
-![1](/blog/assets/images/8/2.png)
 
 
 
 Authentication issues are easy to understand however they can sometimes prove the most critical ones because of the fact that authentication is the core of security in any application. In the forthcoming sections, we will discuss briefly _authentication_ and how various authentication mechanisms can be exploited.
 
 ## What is authentication?
+
+![1](/blog/assets/images/13/2.png)
+
 
 Familiar with those login pages where you put your _emails and passwords_ and after successful entry you get logged into your account, that mechanism in simple terms is called _authentication_. Authentication is an answer to the question, “who are you?”. Modern web applications use robust authentication mechanisms for preventing errors and effective security.
 
@@ -28,6 +30,10 @@ Some of the most common ways of authentication in REST APIS are as below:
 We won’t be explaining the authentication mechanisms here but we will just take a look at various _vulnerabilities that arise_ in the authentication mechanisms due to logical flaws or improper validations.
 
 ### Vulnerabilities in the authentication mechanisms
+
+![1](/blog/assets/images/13/3.png)
+
+
 
 Various vulnerabilities are associated with the authentication mechanisms across different contexts. It is unfeasible here, to explain each vulnerability associated with authentication mechanisms. Howsoever, You will be looking at common vulnerabilities you can test on _login and sign up pages_.
 
@@ -50,6 +56,9 @@ __List of various bugs associated with the authentication mechanisms:__
 
 
 ## Testing some of the mentioned vulnerabilities
+
+
+![1](/blog/assets/images/13/4.png)
 
 
 #### Login Over HTTP
