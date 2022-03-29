@@ -3,7 +3,7 @@ layout: post
 title:  "Attacking Authentication in Modern Web Applications"
 author: mubashir
 categories: [ attacking-modern-webapps,authentication ]
-image: assets/images/13/1/.png
+image: assets/images/13/1.png
 ---
 
 
