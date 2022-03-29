@@ -29,15 +29,15 @@ There are lots of security breaches happened in the last year, and they have mad
 Microsoft was attacked in March 2021 by the [Chinese hacker group Hafnium](https://en.wikipedia.org/wiki/Hafnium_(group)). The attack took place across the United States, affecting local governments, government agencies, and businesses.
 Microsoft's notification to customers noted that the hack was not specifically targeting the company, but that the group primarily targets entities in the United States with the objective of stealing information from an assortment of industry sectors.
 
-__More Details:__
 
 Cyber-criminals gained access to servers running Microsoft Exchange software by using stolen passwords along with previously unknown vulnerabilities. By exploiting this vulnerability, any user who had access to the system at the time of login could transfer full administrative rights to the computer. As a result, the attackers were able to log in and install malware that created command-and-control proxies for them.
 
-On 12 March 2021, Microsoft announced the discovery of "a new family of ransomware" being deployed to servers initially infected, encrypting all files, making the server inoperable and demanding payment to reverse the damage. On 22 March 2021, Microsoft announced that in 92% of Exchange servers the exploit has been either patched or mitigated
-
 On 2 March 2021, Microsoft released updates for Microsoft Exchange Server 2010, 2013, 2016 and 2019 to patch the exploit; this does not retroactively undo damage or remove any backdoors installed by attackers. Small and medium businesses, local institutions, and local governments are known to be the primary victims of the attack, as they often have smaller budgets to secure against cyber threats and typically outsource IT services to local providers that do not have the expertise to deal with cyber attacks.
 
-On 12 March 2021, Microsoft announced the discovery of "a new family of ransomware" being deployed to servers initially infected, encrypting all files, making the server inoperable and demanding payment to reverse the damage. On 22 March 2021, Microsoft announced that in 92% of Exchange servers the exploit has been either patched or mitigated.
+On 12 March 2021, Microsoft announced the discovery of "a new family of ransomware" being deployed to servers initially infected, encrypting all files, making the server inoperable and demanding payment to reverse the damage.
+
+On 22 March 2021, Microsoft announced that in 92% of Exchange servers the exploit has been either patched or mitigated
+
 
 
 
@@ -49,7 +49,6 @@ On 12 March 2021, Microsoft announced the discovery of "a new family of ransomwa
 
 Hackers obtained the personal information of over 533 million Facebook users due to a data breach. Posts on the user's wall were also included, along with the user's name, date of birth, and current city. A white hat security group discovered the vulnerability in 2021.
 
-__More details:__
 
 According to what has been reported by Facebook itself, Attackers scraped Facebook data by exploiting a vulnerability in Facebook’s Contact Importer feature in 2019. From what has been reported, the individuals probably used Android emulators, which is software that simulates an Android device on a computer. They loaded, say, 10k phone numbers into the address book of the emulated device, installed Facebook’s mobile app, and used the app’s “import contacts” feature to get the rest of the profile data for those 10k phone numbers. Then they wiped the device and did the same thing with another batch of 10k phone numbers, etc.
 
