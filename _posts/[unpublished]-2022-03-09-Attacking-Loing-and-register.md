@@ -1,3 +1,13 @@
+---
+layout: post
+title:  "Attacking Authentication in Modern Web Applications"
+author: mubashir
+categories: [ attacking-modern-webapps,authentication ]
+image: assets/images/13.jpg
+---
+
+![1](/blog/assets/images/8/2.png)
+
 
 
 Authentication issues are easy to understand however they can sometimes prove the most critical ones because of the fact that authentication is the core of security in any application. In the forthcoming sections, we will discuss briefly _authentication_ and how various authentication mechanisms can be exploited.
@@ -41,13 +51,15 @@ __List of various bugs associated with the authentication mechanisms:__
 
 ## Testing some of the mentioned vulnerabilities
 
-#### DOS at Name/Password field in Signup Page
 
-By sending a very long string (100000 characters) it’s possible to cause a denial of service attack on the server. Usually, this problem is caused by a vulnerable string hashing implementation. When a long string is sent, the string hashing process will result in CPU and can lead to memory exhaustion.
+#### Login Over HTTP
 
-One can simply intercept the request in burp and then can fiddle with different form fields in the burp by sending long string passwords(100000 characters) and checking if the response is **500 internal server error**.
+Without HTTPS, any data passed is insecure. This is especially important for sites where sensitive data is passed across the connection, such as eCommerce sites that accept online card payments, or login areas that require users to enter their credentials
 
-{{500internal pic}}
+An attacker who is able to intercept your - or your users' - network traffic can read and modify any messages that are exchanged with your server. That means that an attacker can see passwords in clear text, modify the appearance of your website, redirect the user to other web pages or steal session information.
+
+Therefore no message you send to the server remains confidential.
+
 
 #### Duplicate registration / Overwrite existing user
 
@@ -79,6 +91,19 @@ This is considered a vulnerability because of several reasons like, credentials 
 An attacker observes the changes in the behaviour of an application to check if a particular username is valid or not. Username enumeration mostly occurs at _log in pages_ while an attacker brute forces a list of usernames against a wrong password and then analyses the behaviour in form of _status codes, error messages, request time_ etc an attacker can enumerate various valid usernames.
 
 An attacker can brute force say a list of usernames and check the responses and the error codes and messages. In this case, I will mention a scenario where an attacker while checking the _responses_ saw **404 not found** and error message like **invalid user** in the body but in one request he could see response code is **403 forbidden** and an error message is **an incorrect password**, which implies that attacker was successful in enumerating the username.
+
+
+
+
+#### DOS at Name/Password field in Signup Page
+
+By sending a very long string (100000 characters) it’s possible to cause a denial of service attack on the server. Usually, this problem is caused by a vulnerable string hashing implementation. When a long string is sent, the string hashing process will result in CPU and can lead to memory exhaustion.
+
+One can simply intercept the request in burp and then can fiddle with different form fields in the burp by sending long string passwords(100000 characters) and checking if the response is **500 internal server error**.
+
+{{500internal pic}}
+
+
 
 
 #### Weak Password Policy or No password policy
@@ -121,16 +146,6 @@ If the HttpOnly flag is set on a the session/critical cookies used in the webapp
 
 After Achiving XSS attacker's script code might attempt to read the contents of a cookie and exfiltrate information obtained. When the cookie flag is set, browsers that support the flag will not reveal the contents of the cookie to a third party via client-side script executed via XSS.
 
-- Login Over HTTP
-
-Without HTTPS, any data passed is insecure. This is especially important for sites where sensitive data is passed across the connection, such as eCommerce sites that accept online card payments, or login areas that require users to enter their credentials
-
-An attacker who is able to intercept your - or your users' - network traffic can read and modify any messages that are exchanged with your server. That means that an attacker can see passwords in clear text, modify the appearance of your website, redirect the user to other web pages or steal session information.
-
-Therefore no message you send to the server remains confidential.
-
-
-
 
 
 Though I can’t cover up all of the vulnerabilities listed I assure you they are amazing and fun to understand and test.
@@ -148,4 +163,14 @@ One of the effective methods is to implement strict, IP-based user rate limiting
 ##### Multi-factor authentication
 
 Multi-factor authentication when implemented is much more secure than password-based login alone however it is difficult to implement in every web app. This also adds hassle to make your multi-factor checks sound and robust so that they can’t be easily bypassed.
+
+
+
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
 
