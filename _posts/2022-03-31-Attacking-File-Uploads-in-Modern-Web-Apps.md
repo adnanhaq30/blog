@@ -110,10 +110,20 @@ AddType application/x-httpd-php .txt
 
 All the txt files in the directory when browsed through the browser will be treated and executed as PHP code.
 
+- __SVG Files:__
 
+If the file upload functionality isn't handling SVG file properly , an attacker could upload a crafted SVG file and perform a stored XSS with Dom access. SVG can use JavaScript in them and still be treated as images by the website, special care is needed to be taken with SVG files to prevent stored xss.
 
+- __SQLi via File upload__:
 
+Web developers often try to save file name to sql Databases, and these name should be fileted our before passing to the sql queries, If there is no filteration or validation done of the file names, It can lead to SQLi attacks in the web application.
 
+Example, Uploading file names with these payloads can cause an sleep of 10 seconds in the upload response.
+
+```
+'sleep(10).jpg
+sleep(10)-- -.jpg
+```
 
 ## CheatSheet
 
@@ -121,25 +131,23 @@ Use the following cheatsheet to examine any file upload functionality
 
 
 ```
-upload.php			---	try to upload a simple php file
+upload.random123		---	To test if random file extensions can be uploaded.
+upload.php			---	try to upload a simple php file.
 upload.php.jpeg 		--- 	To bypass the blacklist.
 upload.jpg.php 			---	To bypass the blacklist. 
 upload.php 			---	and Then Change the content type of the file to image or jpeg.
-upload.php*			---	version - 1 2 3 4 5 6 7 
-upload.PHP			---	To bypass The BlackList
-upload.PhP			---	To bypass The BlackList
-upload.pHp			---	To bypass The BlackList
+upload.php*			---	version - 1 2 3 4 5 6 7.
+upload.PHP			---	To bypass The BlackList.
+upload.PhP			---	To bypass The BlackList.
+upload.pHp			---	To bypass The BlackList.
 upload .htaccess 		--- 	By uploading this [jpg,png] files can be executed as php with milicious code within it.
 pixelFlood.jpg			---	To test againt the DOS.
 frameflood.gif			---	upload gif file with 10^10 Frames
 Malicious zTXT  		--- 	upload UBER.jpg 
-upload.php [getimagesize()	---	Add backdoor in comments using Exiftool and rename the jpg file
-					with php so that it will be execute. This Time The Verification
-					of server is only limited to contents of the uploaded file
-					not on the extension
-	
-phppng.png			---	backdoor in php chunks
-xsspng.png			---	backdoor in php chunks
+Upload zip file			---	test againts Zip slip (only when file upload supports zip file)
+Check Overwrite Issue		--- 	Upload file.txt and file.txt with different content and check if 2nd file.txt overwrites 1st file
+SVG to XSS			---	Check if you can upload SVG files and can turn them to cause XSS on the target app
+SQLi Via File upload		---	Try uploading `sleep(10)-- -.jpg` as file
 ```
 
 
