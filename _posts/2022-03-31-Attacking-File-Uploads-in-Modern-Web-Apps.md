@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Attacking File Uploads in Modern Web Applications"
+author: john
+categories: [ general,blog-post,imran ]
+image: assets/images/14/1.png
+---
+
+
+
+
+
+
 
 File sharing or simple file upload functionality is a widely used feature in web apps now a days. Any misconfiguration in this one feature can put the entire application or even organization at a great risk. In this article I will talk about this vulnerability, how to attack it and how to mitigate such vulnerabilities.
 
@@ -37,6 +50,10 @@ In the following example the code is attempting to upload image, The developer h
 
 
 ## Common File upload misconfiguration
+
+
+![1](/blog/assets/images/8/2.png)
+
 
 1. **No input sanitization:**
 
@@ -135,3 +152,11 @@ xsspng.png			---	backdoor in php chunks
 2. Block all files containing path like `../` or even just `/`
 3. Rename the uploaded files so that already existing file may not be overridden.
 4. Enforce size of uploaded file.
+
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
