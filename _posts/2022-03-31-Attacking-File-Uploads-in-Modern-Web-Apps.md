@@ -55,7 +55,7 @@ In the following example the code is attempting to upload image, The developer h
 ![1](/blog/assets/images/14/2.png)
 
 
-1. **No input sanitization:**
+- **No input sanitization:**
 
 This is the worst case scenario. If a web app does not filter the upload content at all, the attacker can upload any type of file like PHP, JavaScript, Python etc and configure them to execute commands on internal servers of the company. If attacker is able to execute web shell, he/she can then execute arbitrary code on the server and can takeover the whole network.
     
@@ -65,42 +65,42 @@ This is the worst case scenario. If a web app does not filter the upload content
 <?php echo file_get_contents('/etc/passwd'); ?>
 ```
     
-2. **Weak Blacklist on file types:**
+- **Weak Blacklist on file types:**
 
 In this filter developers try to block files that are in blocklist, all the files types other than blacklist will not be blocked. and, this filter can be bypassed by figuring our which milicious filetype is allowed to be uploaded on the server and then used to to pefrom any milicious attacks like RCE, XSS , CORS bypass.
 
 
     
-3. **Filtration on Content type:**
+- **Filtration on Content type:**
     
 Some websites use content type to check type of files and block them if they do not match the MIME format. If this filter is misconfigured, an attacker could easily bypass this filter using burp repeater.
     
 For example we have a website where we upload our avatar, when we upload our file, it sends a POST request with the content type header set to image/png. Now if we try to upload a .php file it would block it. We take this Blocked request, send it to repeater and change it’s content type to image/png . If filter is misconfigured, it will upload the file successfully thus bypassing the content type filter.
     
-4. **Pixel flooding:**
+- **Pixel flooding:**
     
 If website doesn’t check for the size of image we can upload a file with large number pixels referred to as pixel flooding, this can lead to DOS. For example we have a website the converts the file type, we upload a simple image file with 200 x 200 pixels, then we change the value to 0xfafa x 0xfafa which is (64250x64250 pixels). Now when website tries to convert it, it will have to use lot more of resources which may lead to application level DOS
 
 
-5.  **ZIP SLIP:**
+- **ZIP SLIP:**
     
 Let’s say we have a website that accepts archive file and then later unzips it to perform further operations. If website just validates the file type of zip folder only, the attacker could place a malicious script file inside this archive file. When website will unarchive the file, since it doesn’t perform any validation on files inside the folder, the attacker could execute arbitrary code in the server. Thus, leading to many attacks including RCE. If a website is vulnerable to LFI, an attacker could name the files as paths to server file like `../../../../../../etc/passwd.png` . This might retrieve the server files too.
 
 
-6. **Using Versions:**
+- **Using Versions:**
     
 Sometimes a website uses blocklist that may contain blocked extensions, however it doesn’t specify the versions so an attacker could just use the file name as `upload.php5` and server might accept and execute it.
     
-7. **Override existing file:**
+- **Override existing file:**
     
 We can name our files same as the system files, the website may interpret it as a system file and override the existing system file. For example we can name our file `system.config` . The website may override the existing file which may lead to system crash. 
     
-8. **Weak Regex blocklist:** If web app checks for file extension in blocklist by exact match cases we can bypass this filter by using
+- **Weak Regex blocklist:** If web app checks for file extension in blocklist by exact match cases we can bypass this filter by using
         1. `script.Php`
         2. `script.PHP`
         3. `script.pHp`
 
-9. __Uploading .htaccess file__: if the web application allows us to upload `.htaccess` file somehow, he .htaccess file is a powerful website file that controls high-level configuration of your website. On servers that run Apache (a web server software), the .htaccess file allows you to make changes to your website’s configuration without having to edit server configuration files. The .htaccess file can configured in such a way that server can be constructed to execute jpg file as php code file which may again resuts in Remote code execution on the server.
+- __Uploading .htaccess file__: if the web application allows us to upload `.htaccess` file somehow, he .htaccess file is a powerful website file that controls high-level configuration of your website. On servers that run Apache (a web server software), the .htaccess file allows you to make changes to your website’s configuration without having to edit server configuration files. The .htaccess file can configured in such a way that server can be constructed to execute jpg file as php code file which may again resuts in Remote code execution on the server.
 
 For example if we managed to upload `.htaccess` with the following content, 
 
