@@ -52,7 +52,7 @@ In the following example the code is attempting to upload image, The developer h
 ## Common File upload misconfiguration
 
 
-![1](/blog/assets/images/8/2.png)
+![1](/blog/assets/images/14/2.png)
 
 
 1. **No input sanitization:**
