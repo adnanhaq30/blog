@@ -35,7 +35,7 @@ The Severity is __CRITICAL__, Click the following [Link to CVSS-v3](https://www.
 
 ## Proof the Concept:
 
-This exploit code was published by [@esheavyind](https://twitter.com/esheavyind), 
+This exploit code was published by [@Rezn0k](https://twitter.com/Rezn0k), 
 
 ```python3
 # Author: @Rezn0k
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
 ### Running the Exploit
 
-The amazing group of members are Lunasec developed a Java Web Application that is vulnerable to the Spring4Shell vulnerability (CVE-2022-22965), The Application is dockerized so that it can be easily implemented, The Application was built based on the tutorials provided on the official Documentation of Spring for [Form Handling](https://spring.io/guides/gs/handling-form-submission/).
+The amazing group of members at Lunasec developed a Java Web Application that is vulnerable to the Spring4Shell vulnerability (CVE-2022-22965), The Application is dockerized so that it can be easily implemented, The Application was built based on the tutorials provided on the official Documentation of Spring for [Form Handling](https://spring.io/guides/gs/handling-form-submission/).
 
 Github Link: https://github.com/lunasec-io/Spring4Shell-POC
 
