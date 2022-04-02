@@ -2,7 +2,7 @@
 layout: post
 title:  "Spring4Shell: Everything you need to know."
 author: imran
-categories: [ general,blog-post,imran ]
+categories: [ general,spring4shell ]
 image: assets/images/15/0.png
 ---
 
