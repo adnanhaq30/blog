@@ -171,7 +171,7 @@ __How to Setup the Lab:__
 
 This quick grep search can help you identify if your application is built upon the spring framework, This is not the proper way to make sure you are completely safe against the vulnerability but will help you to have a starting point to get started in investigating this issue.
 
-- Unzip the war package: 
+- [Unzip the war package](https://snapsec.co/blog/Spring4Shell-Everything-you-need-to-know/) using the zip coammnd in linux.
 
 - Now go to the decompressed Directory and execute the following command to find any file which matches the `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
 
