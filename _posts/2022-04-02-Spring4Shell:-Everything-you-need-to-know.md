@@ -184,7 +184,7 @@ This quick grep search can help you identify if your application is built upon t
 
 Recently one of the security researchers has built a Nuclei Template to Detect Spring4Shell, This template can be easily run to scan for Spring4Shell on your Networking, routing, or security devices inside your network.
 
-Template Links: https://github.com/projectdiscovery/nuclei-templates/blob/master/cves/2022/CVE-2022-22965.yaml
+Template Link: [https://github.com/projectdiscovery/nuclei-templates/blob/master/cves/2022/CVE-2022-22965.yaml](https://github.com/projectdiscovery/nuclei-templates/blob/master/cves/2022/CVE-2022-22965.yaml)
 
 __How to run a Scan:__
 
@@ -203,6 +203,6 @@ Snapsec is a team of security experts specialized in providing pentesting and ot
 
 ## Refrences:
 
-- https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement
-- https://tanzu.vmware.com/security/cve-2022-22965
-- https://github.com/lunasec-io/Spring4Shell-POC
+- [https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement](https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement)
+- [https://tanzu.vmware.com/security/cve-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965)
+- [https://github.com/lunasec-io/Spring4Shell-POC](https://github.com/lunasec-io/Spring4Shell-POC)
