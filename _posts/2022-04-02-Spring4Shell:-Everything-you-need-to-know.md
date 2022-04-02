@@ -33,18 +33,6 @@ If you’re using Tomcat and a vulnerable version of Spring, you pretty much hav
 The Severity is __CRITICAL__, Click the following [Link to CVSS-v3](https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)  to have a indepth look at how this vulnerability effects the CIA of the target system.
 
 
-## Is your Application Build Upon Spring Framework?
-
-This quick grep search can help you identify if your application is built upon the spring framework, This is not the proper way to make sure you are completely safe against the vulnerability but will help you to have a starting point to get started in investigating this issue.
-
-- Unzip the war package: 
-
-- Now go to the decompressed Directory and execute the following command to find any file which matches the `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
-
-![1](/blog/assets/images/15/4.png)
-
-
-
 ## Proof the Concept:
 
 This exploit code was published by [@esheavyind](https://twitter.com/esheavyind), 
@@ -179,6 +167,19 @@ __How to Setup the Lab:__
 
 
 
+## Is your Application Build Upon Spring Framework?
+
+This quick grep search can help you identify if your application is built upon the spring framework, This is not the proper way to make sure you are completely safe against the vulnerability but will help you to have a starting point to get started in investigating this issue.
+
+- Unzip the war package: 
+
+- Now go to the decompressed Directory and execute the following command to find any file which matches the `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
+
+![1](/blog/assets/images/15/4.png)
+
+
+
+
 ## Scanning Your Networks
 
 Recently one of the security researchers has built a Nuclei Template to Detect Spring4Shell, This template can be easily run to scan for Spring4Shell on your Networking, routing, or security devices inside your network.
@@ -202,6 +203,6 @@ Snapsec is a team of security experts specialized in providing pentesting and ot
 
 ## Refrences:
 
-https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement
-https://tanzu.vmware.com/security/cve-2022-22965
-https://github.com/lunasec-io/Spring4Shell-POC
+- https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement
+- https://tanzu.vmware.com/security/cve-2022-22965
+- https://github.com/lunasec-io/Spring4Shell-POC
