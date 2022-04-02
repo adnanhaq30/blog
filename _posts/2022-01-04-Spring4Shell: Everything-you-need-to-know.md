@@ -12,20 +12,20 @@ A Spring MVC or Spring WebFlux application running on JDK 9+ may be vulnerable t
 
 Spring WebFlux is a fully non-blocking, annotation-based web framework built on Project Reactor that makes it possible to build reactive applications on the HTTP layer. WebFlux uses a new router functions feature to apply functional programming to the web layer and bypass declarative controllers and RequestMappings.
 
-To understand how to Build Web Api's or Web Applications in Spring WebFlux [Read this article](https://howtodoinjava.com/spring-webflux/spring-webflux-tutorial/#:~:text=What%20is%20Spring%20WebFlux%20%3F,easily%20work%20on%20webflux%20also.)
+To understand how to Build Web Api's or Web Applications in Spring [Read this article](https://howtodoinjava.com/spring-webflux/spring-webflux-tutorial/#:~:text=What%20is%20Spring%20WebFlux%20%3F,easily%20work%20on%20webflux%20also.)
 
 
 
 ## Prerequisites for the exploit:
 
-If you’re using Tomcat and a vulnerable version of Spring, you pretty much have a problem, and should be patching now, Here are the pre-requirements for current exploit to work on the target system:
+If you’re using Tomcat and a vulnerable version of Spring, you pretty much have a problem, and should be patching now, Here are the pre-requirements for the current exploit to work on the target system:
 
 - JDK 9 or higher
 - Apache Tomcat as the Servlet container.
 - Packaged as a traditional WAR (in contrast to a Spring Boot executable jar).
 - spring-webmvc or spring-webflux dependency.
 - Spring Framework versions 5.3.0 to 5.3.17, 5.2.0 to 5.2.19, and older versions.
-> However, the nature of the vulnerability is more general, and there may be other ways to exploit it that have not been reported yet.
+> However, its said that the nature of the vulnerability is more general, and there may be other ways to exploit it that have not been reported yet.
 
 
 ## Severity
@@ -35,11 +35,11 @@ The Severity is __CRITICAL__, Click the following [Link to CVSS-v3](https://www.
 
 ## Is your Application Build Upon Spring Framework?
 
-This quick grep search can help you identify if your application is build upon the spring framework, This is definetly not the proper way to make sure you are completely safe against the vulnerability but will defenetly help you to have a starting point to investigate things.
+This quick grep search can help you identify if your application is built upon the spring framework, This is not the proper way to make sure you are completely safe against the vulnerability but will help you to have a starting point to get started in investigating this issue.
 
 - Unzip the war package: 
 
-- Now goto the decompressed Directory and excute the following command to find any file which matches `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
+- Now go to the decompressed Directory and execute the following command to find any file which matches the `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
 
 ![1](/blog/assets/images/15/4.png)
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
 
 ### Running the Exploit
 
-The amazing group of members are Lunasec developed an Java Web Aplication that is vulnerable to the Spring4Shell vulnerability (CVE-2022-22965), The Application is dockerized so that it can be easily implemented, The Application was build based on the tutorials provided on official Documentation of Spring for [Form Handling](https://spring.io/guides/gs/handling-form-submission/).
+The amazing group of members are Lunasec developed a Java Web Application that is vulnerable to the Spring4Shell vulnerability (CVE-2022-22965), The Application is dockerized so that it can be easily implemented, The Application was built based on the tutorials provided on the official Documentation of Spring for [Form Handling](https://spring.io/guides/gs/handling-form-submission/).
 
 Github Link: https://github.com/lunasec-io/Spring4Shell-POC
 
@@ -181,7 +181,7 @@ __How to Setup the Lab:__
 
 ## Scanning Your Networks
 
-Recently one of the security researchers have build a Nuclie Teamplate to Detect Spring4Shell, This template can be easily run to scan for Spring4Shell on your Networking, routing or security devices inside your network.
+Recently one of the security researchers has built a Nuclei Template to Detect Spring4Shell, This template can be easily run to scan for Spring4Shell on your Networking, routing, or security devices inside your network.
 
 Template Links: https://github.com/projectdiscovery/nuclei-templates/blob/master/cves/2022/CVE-2022-22965.yaml
 
@@ -194,9 +194,9 @@ __How to run a Scan:__
 
 ## About us
 
-Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
 
- If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+ If you are looking for a team that values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
 
 
 
