@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "Spring4Shell: Everything you need to know."
+author: imran
+categories: [ general,blog-post,imran ]
+image: assets/images/15/0.png
+---
+
+
 
 A Spring MVC or Spring WebFlux application running on JDK 9+ may be vulnerable to remote code execution (RCE) via data binding. The specific exploit requires the application to run on Tomcat as a WAR deployment. If the application is deployed as a Spring Boot executable jar, i.e. the default, it is not vulnerable to the exploit. However, the nature of the vulnerability is more general, and there may be other ways to exploit it.
 
@@ -32,7 +41,8 @@ This quick grep search can help you identify if your application is build upon t
 
 - Now goto the decompressed Directory and excute the following command to find any file which matches `spring-beans-*.jar` pattern. If the grep returns any results it indicates that the business system is developed using the Spring framework.
 
-4
+![1](/blog/assets/images/15/4.png)
+
 
 
 ## Proof the Concept:
@@ -153,16 +163,20 @@ __How to Setup the Lab:__
 - cd to the cloned reporsitory and Build and run the container: `docker build . -t spring4shell && docker run -p 8080:8080 spring4shell`
 - The Vulnerable Application will now be available at http://localhost:8080/helloworld/greeting
 
-1
+![1](/blog/assets/images/15/1.png)
+
 
 - Now the Copy the exploit code mentioned above and save it as `exploit.py`
 - Now go to your terminal and execute the Exploit on Vulnerable url `python3 exploit.py --url http://localhost:8080/helloworld/greeting`
-2
+
+![1](/blog/assets/images/15/2.png)
+
 
 - On visiting the shell URL which is (http://localhost:8080/shell.jsp?cmd=id
 ) in my case, and passing any command in `cmd=` argument, You can see you have successfully Achived RCE on the App-Docker-Container.
 
-3
+![1](/blog/assets/images/15/3.png)
+
 
 
 ## Scanning Your Networks
@@ -176,6 +190,14 @@ __How to run a Scan:__
 - Download the template in the current dir
 - Save all your target IP's or Web Addresses in `urls.txt`
 - run `nuclei -list urls.txt -t CVE-2022-22965.yaml`
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+
 
 
 ## Refrences:
