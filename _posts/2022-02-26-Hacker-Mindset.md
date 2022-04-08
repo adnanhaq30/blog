@@ -39,7 +39,7 @@ Good hackers are very well at thinking outside the box with creativity.
 
 Finding a potential vulnerability in a system can have endless opportunities but at the end it comes down to hacker's capability to imagine the ideas that will break the defenses.
 
-### SYSTEMIZING : Drive to uderstand systmes: 
+### SYSTEMIZING : Drive to uderstand systems: 
 
 ![x](/blog/assets/images/7/4.png)
 
