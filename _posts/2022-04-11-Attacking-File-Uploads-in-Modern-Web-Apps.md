@@ -208,6 +208,9 @@ Example, Uploading file names with these payloads can cause an sleep of 10 secon
 
 ```
 'sleep(10).jpg
+```
+
+```
 sleep(10)-- -.jpg
 ```
 
