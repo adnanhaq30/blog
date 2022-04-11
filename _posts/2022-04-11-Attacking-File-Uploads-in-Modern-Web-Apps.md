@@ -23,7 +23,7 @@ Let’s take an example of a website where you can find and apply for jobs, now 
 
 ## How does file uploads work.
 
-Well different programming languages handle file upload differently, Here is an example of how an php developer would design an PHP handler do handler file send from the user.
+Well different programming languages handle file upload differently, Here is an example of how an php developer would design an PHP file handler do handler file uploaded by the user.
 
 ```php
 <?php
@@ -46,7 +46,7 @@ Well different programming languages handle file upload differently, Here is an 
 ?>
 ```
 
-In the following example the code is attempting to upload image, The developer has restricted users for uploading files under 2 mb. And all the file uploaded will be saved under `file` drectory, Now this looks like a normal peice of code that should just work fine when it comes to uploading file, But as notice there is no validation and filtration in terms of what kinds of files can be uploaded to the server. This can expose website to large vector of attacks and can lead to remote code execution on the remote server. Here are few vulnerabilities that can be tested on file uploads:
+In the The developer has restricted users for uploading files under 2 mb. And all the file uploaded will be saved under `file/` drectory, Now this looks like a normal peice of code that should just work fine when it comes to uploading files, But as noticed there is no validation and filtration in terms of what kinds of files can be uploaded to the server. This can expose website to large vector of attacks and can lead to remote code execution on the remote server. Here are few vulnerabilities that should be tested on file upload functionality:
 
 
 ## Common File upload misconfiguration
@@ -59,15 +59,34 @@ In the following example the code is attempting to upload image, The developer h
 
 This is the worst case scenario. If a web app does not filter the upload content at all, the attacker can upload any type of file like PHP, JavaScript, Python etc and configure them to execute commands on internal servers of the company. If attacker is able to execute web shell, he/she can then execute arbitrary code on the server and can takeover the whole network.
     
-| For example if an attacker is able to execute this command below, he/she can read arbitrary files from server:
+| For example if an attacker is able to upload an file with the following PHP code in it, he/she can execute arbitrary commands on the server:
 
 ```php
-<?php echo file_get_contents('/etc/passwd'); ?>
+<?=`$_GET[0]`?>
 ```
     
 - **Weak Blacklist on file types:**
 
-In this filter developers try to block files that are in blocklist, all the files types other than blacklist will not be blocked. and, this filter can be bypassed by figuring our which milicious filetype is allowed to be uploaded on the server and then used to to pefrom any milicious attacks like RCE, XSS , CORS bypass.
+In this filter developers try to block files that are in blocklist, all the files types other than blacklist will not be blocked. Here is an example of such file handler 
+
+Example:
+
+```php
+
+$blacklist_extensions=['php','txt','zip']
+$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+if in_array($file_ext,$blacklist_extensions){
+//Block file upload
+}else
+{
+\\Upload the file
+}
+```
+
+and, the fact that there are tons of milicious file extensions that can be used to perform RCE, XSS ,CORS bypass if uploaded to web server this filter can be bypassed by figuring our which milicious filetype is allowed to be uploaded on the server and then use to to pefrom any milicious attacks accordingly.  
+
+
+
 
 
     
@@ -76,6 +95,32 @@ In this filter developers try to block files that are in blocklist, all the file
 Some websites use content type to check type of files and block them if they do not match the MIME format. If this filter is misconfigured, an attacker could easily bypass this filter using burp repeater.
     
 For example we have a website where we upload our avatar, when we upload our file, it sends a POST request with the content type header set to image/png. Now if we try to upload a .php file it would block it. We take this Blocked request, send it to repeater and change it’s content type to image/png . If filter is misconfigured, it will upload the file successfully thus bypassing the content type filter.
+
+Example:
+
+> The following Request will be made once user attempts to upload the PHP file
+```http
+POST /upload.php HTTP/1.1
+Host: targetapp.com
+Content-Type: application/x-httpd-php
+
+<?=`$_GET[0]`?>
+
+```
+
+> On changing the `Content-Type` to `image/jpeg` the content-type filter may be bypassed
+
+```http
+POST /upload.php HTTP/1.1
+Host: targetapp.com
+Content-Type: image/jpeg	
+
+<?=`$_GET[0]`?>
+
+```
+
+
+    
     
 - **Pixel flooding:**
     
@@ -84,16 +129,49 @@ If website doesn’t check for the size of image we can upload a file with large
 
 - **ZIP SLIP:**
     
-Let’s say we have a website that accepts archive file and then later unzips it to perform further operations. If website just validates the file type of zip folder only, the attacker could place a malicious script file inside this archive file. When website will unarchive the file, since it doesn’t perform any validation on files inside the folder, the attacker could execute arbitrary code in the server. Thus, leading to many attacks including RCE. If a website is vulnerable to LFI, an attacker could name the files as paths to server file like `../../../../../../etc/passwd.png` . This might retrieve the server files too.
+Let’s say we have a website that accepts archive file and then later unzips it to perform further operations. If website just validates the file type of zip folder only, the attacker could place a malicious script file inside this archive file. When website will unarchive the file, since it doesn’t perform any validation on files inside the folder, the attacker could execute arbitrary code in the server. Thus, leading to many attacks including RCE. If a website is vulnerable to LFI, an attacker could name the files as paths to server file like `../../../../../../etc/passwd.png` . This might retrieve the server files too. Read more about [ZipSlip](https://github.com/snyk/zip-slip-vulnerability)
 
 
 - **Using Versions:**
     
-Sometimes a website uses blocklist that may contain blocked extensions, however it doesn’t specify the versions so an attacker could just use the file name as `upload.php5` and server might accept and execute it.
+Sometimes a website uses blocklist that may contain blocked extensions, however it doesn’t specify the versions so an attacker could just use the file name as `upload.php5` and server might accept and execute it. For example the following code blocks all the files with `php` extension, but doesn't prevent user from uploading `.php4`,`.php5` files.
+
+```php
+
+$blacklist_extensions=['php','txt','zip']
+$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+if in_array($file_ext,$blacklist_extensions){
+//Block file upload
+}else
+{
+\\Upload the file
+}
+```
+
+
+
     
 - **Override existing file:**
     
 We can name our files same as the system files, the website may interpret it as a system file and override the existing system file. For example we can name our file `system.config` . The website may override the existing file which may lead to system crash. 
+
+```php
+<?php
+   if(isset($_FILES['image'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      if($file_size > 2097152){
+         move_uploaded_file($file_tmp,"file/".$file_name);
+         echo "Success";
+      }else{
+         print_r($errors);
+      }
+   }
+?>
+
+
+> For example the following piece of code simply saves the uploaded file into `file/` directory with whatever the name it was previously uploaded with, So an attacker can simply upload a file with an existance name of the server with different content in it hence will allow him to overwrite any file on the server.
+
     
 - **Weak Regex blocklist:** 
 
@@ -101,6 +179,8 @@ If web app checks for file extension in blocklist by exact match cases we can by
         1. `script.Php`
         2. `script.PHP`
         3. `script.pHp`
+
+
 
 - __Uploading .htaccess file__: 
 
