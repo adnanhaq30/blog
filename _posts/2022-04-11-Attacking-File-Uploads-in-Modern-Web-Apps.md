@@ -170,7 +170,7 @@ We can name our files same as the system files, the website may interpret it as 
       }
    }
 ?>
-
+```
 
 > For example the following piece of code simply saves the uploaded file into `file/` directory with whatever the name it was previously uploaded with, So an attacker can simply upload a file with an existance name of the server with different content in it hence will allow him to overwrite any file on the server.
 
