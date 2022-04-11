@@ -79,7 +79,7 @@ if in_array($file_ext,$blacklist_extensions){
 //Block file upload
 }else
 {
-\\Upload the file
+//Upload the file
 }
 ```
 
