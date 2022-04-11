@@ -95,12 +95,16 @@ Sometimes a website uses blocklist that may contain blocked extensions, however 
     
 We can name our files same as the system files, the website may interpret it as a system file and override the existing system file. For example we can name our file `system.config` . The website may override the existing file which may lead to system crash. 
     
-- **Weak Regex blocklist:** If web app checks for file extension in blocklist by exact match cases we can bypass this filter by using
+- **Weak Regex blocklist:** 
+
+If web app checks for file extension in blocklist by exact match cases we can bypass this filter by using
         1. `script.Php`
         2. `script.PHP`
         3. `script.pHp`
 
-- __Uploading .htaccess file__: if the web application allows us to upload `.htaccess` file somehow, he .htaccess file is a powerful website file that controls high-level configuration of your website. On servers that run Apache (a web server software), the .htaccess file allows you to make changes to your website’s configuration without having to edit server configuration files. The .htaccess file can configured in such a way that server can be constructed to execute jpg file as php code file which may again resuts in Remote code execution on the server.
+- __Uploading .htaccess file__: 
+
+if the web application allows us to upload `.htaccess` file somehow, he .htaccess file is a powerful website file that controls high-level configuration of your website. On servers that run Apache (a web server software), the .htaccess file allows you to make changes to your website’s configuration without having to edit server configuration files. The .htaccess file can configured in such a way that server can be constructed to execute jpg file as php code file which may again resuts in Remote code execution on the server.
 
 For example if we managed to upload `.htaccess` with the following content, 
 
