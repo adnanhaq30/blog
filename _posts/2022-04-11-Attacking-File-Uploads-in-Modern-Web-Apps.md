@@ -99,6 +99,7 @@ For example we have a website where we upload our avatar, when we upload our fil
 Example:
 
 > The following Request will be made once user attempts to upload the PHP file
+
 ```http
 POST /upload.php HTTP/1.1
 Host: targetapp.com
