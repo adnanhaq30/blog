@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Attacking File Uploads in Modern Web Applications"
-author: john
+author: adnan
 categories: [ general,blog-post,imran ]
 image: assets/images/14/1.png
 ---
