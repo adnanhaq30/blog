@@ -21,3 +21,36 @@ During my 7 years of technical Experiance in Bugbounty and Infosec Industry i al
 
 Here are the List of Aricle that will be published under this series:
 
+
+<div class="card">
+        <div class="header">
+            <p>The Header</p>
+        </div>
+            <div class="container">
+            <p>Some random texts</p>
+            <p>Yet another texts</p>
+            <p>Even more texts</p>
+            <p>I should probably make programming puns</p>
+        </div>
+    </div>
+    
+    
+    <style>
+    .card {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border: 1px red solid;
+}
+
+.header {
+    height: 30%;
+    background: red;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 2px 16px;
+}
+<sytle>
