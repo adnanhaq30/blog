@@ -98,7 +98,7 @@ __Conclusion:__
 SELECT * FROM products where category='1';
 ```
 
-1.png
+![x](assets/images/SecuritySimplified/sqli-3/1.png)
 
 
 - Similarly on browsing the sqli.php?id=1 , the following query is executed:
@@ -106,7 +106,7 @@ SELECT * FROM products where category='1';
 SELECT * FROM products where category='2';
 ```
 
-2.png
+![2.png](assets/images/SecuritySimplified/sqli-3/2.png)
 
 
 
@@ -122,7 +122,8 @@ SELECT * FROM products where category='2';
 Now on visiting the following URL, In place of simple id we are adding `' UNION SELECT id,email,password,null FROM customers-- -` as an id, which is not validated and henc simply added the the dynamically generated sql query and hence provide the final query as
 
 
-3
+![3.png](assets/images/SecuritySimplified/sqli-3/3.png)
+
 
 ```sql
 SELECT * FROM products where category='2' UNION SELECT id,email,password,null FROM customers-- -;
@@ -182,13 +183,16 @@ SELECT * FROM products where category='2\' UNION SELECT id,email,password FROM c
 You can see the `\` escaping slash added before `'` in the user input prevents attacker from escaping the context of the id parmeter hence whole set of payload which is `2' UNION SELECT id,email,password FROM customers-- -` is treated as a value of id `category` in the mysql query.
 
 
-4
+![4.png](assets/images/SecuritySimplified/sqli-3/4.png)
+
 
 
 
 - Just to make sure none other MYSQLi exploitation techniques are working i ran a quick sqlmap scan on the script and it seems we are perfectly fine.
 
-5
+
+![5.png](assets/images/SecuritySimplified/sqli-3/5.png)
+
 
 
 
