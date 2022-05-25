@@ -51,7 +51,7 @@ In other words it redirects the user to whatever the value he has passed in the 
 
 The Exploitation is pretty simple, If the website is not validating the url paramters , We can simply add any web address in the url parameter and it will redirect us to the page.
 
-<video controls autoplay>
+<video width="800" height="400" controls autoplay >
 <source src="https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/SecuritySimplified/or-2/vid1.mp4?raw=true" type="video/mp4">
 </video>
 
@@ -148,7 +148,7 @@ In the following php code we introduce an new function callled `Validate(url)`, 
 - On going back and trying to reproduce open redirection on both the fixes , Yon can see we were able to fix the vulnerabilities
 
 
-<video controls autoplay>
+<video width="800" height="400" controls autoplay>
 <source src="https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/SecuritySimplified/or-2/vid3-confirm.mp4?raw=true" type="video/mp4">
 </video>
 
