@@ -148,8 +148,9 @@ In the following php code we introduce an new function callled `Validate(url)`, 
 - On going back and trying to reproduce open redirection on both the fixes , Yon can see we were able to fix the vulnerabilities
 
 
-confirm.vid
-
+<video controls autoplay>
+<source src="https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/SecuritySimplified/or-2/vid3-confirm.mp4?raw=true" type="video/mp4">
+</video>
 
 Thanks and see you soon.
 
