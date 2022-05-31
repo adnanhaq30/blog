@@ -27,7 +27,7 @@ Here are the List of Aricle that will be published under this series:
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
   <div class="card-body">
-        <a href="#"> [Read Full Blogpost]</a>
+       <h4><a href="#"> [Read Full Blogpost]</a></h4>
 
   </div>
 </div>
@@ -36,7 +36,7 @@ Here are the List of Aricle that will be published under this series:
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/2.png" alt="Card image cap">
   <div class="card-body">
-    <a href="#"> [Read Full Blogpost]</a>
+    <h4><a href="#"> [Read Full Blogpost]</a></h4>
   </div>
 </div>
     
