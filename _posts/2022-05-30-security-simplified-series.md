@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Security Simplified - Understanding Vulnerabilites from Developers Perespective"
+title:  "Security Simplified - Learn How To Find, Exploit and Metigate Web Vulnerabilites.
+"
 author: imran
 categories: [ Security-Simplified, web-sec,dev ]
 image: assets/images/SecuritySimplified/SE-main.png
