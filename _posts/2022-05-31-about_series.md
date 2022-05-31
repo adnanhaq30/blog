@@ -33,15 +33,7 @@ Here are the List of Aricle that will be published under this series:
   </div>
 </div>
 
-    
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/2.png" alt="Card image cap">
-  <div class="card-body">
-       <p class="card-text"><a href=""><button type="button" class="btn btn-info">Read Blogpost</button>
-</a></p>
-  </div>
-</div>
-    
+
     
   </div>
   </div>
