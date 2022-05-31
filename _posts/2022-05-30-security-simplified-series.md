@@ -9,10 +9,8 @@ image: assets/images/SecuritySimplified/SE-main.png
 
 
 
-This is a demo post
 
 
-# About The Series
 
 During our  subtle technical experience of 7 years in Application security Industry we have often noticed that majority of the people who are into this space know how to exploit various security vulnerabilities. But what we often found lacking were the fundamental understanding of how these vulnerability existed in the first place. This series is a small attempt which will cover some of the most found vulnerabilities in today's modern web applications explaining things from the developers perspective ultimately leading to their exploitation. 
 
