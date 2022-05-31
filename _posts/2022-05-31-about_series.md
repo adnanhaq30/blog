@@ -13,9 +13,9 @@ This is a demo post
 
 # About The Series
 
-During my 7 years of technical Experiance in Bugbounty and Infosec Industry i always felt that majority of the people who are into infosec know how to exploit Different security vulnerabilities but often lack the fundamental understanding of how the vulnerability exists at the first place, this series is a small attempt which will cover some of the most found vulnerabilities in todays modern web applications explaining things from the developers perspective. Each article we discuss will contain a venerable code snippet written in PHP which will remain the main focus throughout the whole article, the first portion of the article will explain why and how the vulnerability arises and in the second portion of the article we will explain the mitigation of those issues. In that way and even following up the series will have both(developer/attacker) prospective offer vulnerabilities.
+During our  subtle technical experience of 7 years in Application security Industry we have often noticed that majority of the people who are into this space know how to exploit various security vulnerabilities. But what we often found lacking were the fundamental understanding of how these vulnerability existed in the first place. This series is a small attempt which will cover some of the most found vulnerabilities in today's modern web applications explaining things from the developers perspective ultimately leading to their exploitation. 
 
-
+Each article is devised in such a way that  a venerable code snippet written in PHP (later explained) which will remain the main focus throughout the whole article. The first portion of the article will explain WHY and HOW  the vulnerability arises and in the second portion of the article s reader  will get to know  the explaination and mitigation of underlying issues. In that way, and even following up the series reader will have both(developer/attacker) perspective of most commonly found  vulnerabilities in web applications.
 
 ## List of Article
 
