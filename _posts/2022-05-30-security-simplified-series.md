@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Security Simplified] - Understanding Vulnerabilites from Developers Perespective"
+title:  "Security Simplified - Understanding Vulnerabilites from Developers Perespective"
 author: imran
 categories: [ Security-Simplified, web-sec,dev ]
 image: assets/images/SecuritySimplified/SE-main.png
