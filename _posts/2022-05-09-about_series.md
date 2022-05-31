@@ -2,7 +2,7 @@
 layout: post
 title:  "[Security Simplified] - Understanding Vulnerabilites from Developers Perespective"
 author: john
-categories: [ Jekyll, tutorial,imran ]
+categories: [ Security-Simplified, web-sec,dev ]
 image: assets/images/SecuritySimplified/SE-main.png
 ---
 
