@@ -23,55 +23,20 @@ Here are the List of Aricle that will be published under this series:
 
 <div class="container">
   <div class="row">
+    
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
   <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
   </div>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
-  <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
-  </div>
-</div>
-    
-    
-    
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
-  <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
-  </div>
-</div>
-    
-    
-    
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
-  <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
-  </div>
-</div>
-    
-    
-    
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
-  <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
-  </div>
-</div>
-    
-    
-    
     
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/2.png" alt="Card image cap">
   <div class="card-body">
-    <a href="#" class="btn btn-primary">Read Blogpost</a>
   </div>
 </div>
+    
+    
   </div>
   </div>
