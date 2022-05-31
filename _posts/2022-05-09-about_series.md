@@ -31,7 +31,47 @@ Here are the List of Aricle that will be published under this series:
   </div>
 </div>
 
-
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">XSS - Cross Site Scripting</h5>
+    <a href="#" class="btn btn-primary">Read Blogpost</a>
+  </div>
+</div>
+    
+    
+    
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">XSS - Cross Site Scripting</h5>
+    <a href="#" class="btn btn-primary">Read Blogpost</a>
+  </div>
+</div>
+    
+    
+    
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">XSS - Cross Site Scripting</h5>
+    <a href="#" class="btn btn-primary">Read Blogpost</a>
+  </div>
+</div>
+    
+    
+    
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/1.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">XSS - Cross Site Scripting</h5>
+    <a href="#" class="btn btn-primary">Read Blogpost</a>
+  </div>
+</div>
+    
+    
+    
+    
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/blog/assets/images/SecuritySimplified/SE-Cards/2.png" alt="Card image cap">
   <div class="card-body">
