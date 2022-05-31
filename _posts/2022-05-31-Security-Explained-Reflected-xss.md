@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Security Simplified] - Reflected XSS"
+title:  "Security Simplified - Reflected XSS"
 author: imran
 categories: [ XSS, security-simplified ]
 image: assets/images/SecuritySimplified/rxss-1/0.png
