@@ -32,7 +32,7 @@ So basically the code consists of two-line, The first line with the if statement
 - isset() is a function, Which checks whether a variable is empty or not. Also checks whether the variable is set/declared, If the variable is not empty it returns True otherwise false.
 
 
-- `$_GET` is a PHP superglobal variable that is used to access GET based Parameters from anywhere in the PHP script, As an example, if you visiting a URL `https://snapsec.co?book.php?id=1` , The GET based `id` parameter in the URL can be accessed by the book.php by using the following code `$_GET['id']`.
+- `$_GET` is a PHP superglobal variable that is used to access GET based Parameters from anywhere in the PHP script, As an example, if you are visiting a URL `https://snapsec.co?book.php?id=1` , The GET based `id` parameter in the URL can be accessed by the book.php by using the following code `$_GET['id']`.
 
 - The `echo ""` statement is used to echo/print/reflect any values passed within single quotes, This data is written in a response sent to the user.
 
@@ -74,7 +74,7 @@ Now the question is which part of the code snippet is vulnerable, and What makes
 The answer to that is quite simple, The piece of code which is responsible to reflect data to the user is not encoding special characters before sending it to the user, Hence allowing the attacker to achieve XSS, So to be more specific the `echo ""` is responsible for the vulnerability.
 
 
-## Metigating the Issue
+## mitigate the Issue
 
 In general, the solution is to use different encoding techniques to perform careful input validation and context-sensitive encoding on the user input. For example in this case the `htmlentitie(str)` function can be wrapped up to the User input which will Convert the majority of the special characters to HTML entities:
 
