@@ -74,7 +74,7 @@ Now the question is which part of the code snippet is vulnerable, and What makes
 The answer to that is quite simple, The piece of code which is responsible to reflect data to the user is not encoding special characters before sending it to the user, Hence allowing the attacker to achieve XSS, So to be more specific the `echo ""` is responsible for the vulnerability.
 
 
-## mitigate the Issue
+## Mitigating the Issue
 
 In general, the solution is to use different encoding techniques to perform careful input validation and context-sensitive encoding on the user input. For example in this case the `htmlentitie(str)` function can be wrapped up to the User input which will Convert the majority of the special characters to HTML entities:
 
