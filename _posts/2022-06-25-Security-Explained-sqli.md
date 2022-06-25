@@ -19,30 +19,12 @@ SQL injection is a web security vulnerability that allows an attacker to interfe
 		- customers [Table]
 
 
-__Products__
-|id | name | Description|
-|---|---|---|
-|1|Milk|This is the description of Milk|1|
-|2|Eggs|This is the description of Eggs|1|
-|3|Bread|This is the description of Bread|1|
-|4|apple| This is the description of Milk|2|
-|5|mango| This is the description of mango|2|
-|6|banana| This is the description of banana|2|
+![1](/blog/assets/images/SecuritySimplified/sqli-3/t1.png)
 
 
-__Customers__
-|id | email | password|
-|---|---|---|
-|1|user1@gmail.com|pass1|
-|2|user2@gmail.com|pass2|
-|3|user3@gmail.com|pass3|
-|4|user4@gmail.com|pass4|
-|5|user5@gmail.com|pass5|
-|6|user6@gmail.com|pass6|
-|7|user7@gmail.com|pass7|
-|8|user8@gmail.com|pass8|
-|9|user9@gmail.com|pass9|
-|10|user10@gmail.com|pass10|
+
+![1](/blog/assets/images/SecuritySimplified/sqli-3/t2.png)
+
 
 
 
