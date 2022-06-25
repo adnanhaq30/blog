@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Security Simplified] - SQL Injection"
+title:  "Security Simplified - SQL Injection"
 author: imran
 categories: [ tutorial,imran ]
 image: assets/images/SecuritySimplified/sqli-3/0.png
