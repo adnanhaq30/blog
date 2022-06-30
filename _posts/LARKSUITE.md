@@ -3,9 +3,10 @@
 
 # Introduction
 
-Almost a year back in March 2020 shuffling my private invites stock inorder to crash into a programme worthy of our time and excitement. In a while i stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target to hack on. Choosing a *programme/target only on above apparaent things* can't be an intelligent step one should take. So, i started exploring the *target* and i found enough reasons to deem it as our next target. 
+{{WE ARE OFTEN OUT OF PENTESTING WORK}} Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparaent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target. 
 
-Some principal reasons which we consider necesary and looked in for  the above case are as:
+{{As snapsec we like indepth assesments and its compulsory for applicate to be complex in terms of its app logic and needs huge to be in terms of the size , in this here are the few reasons we prefered to stay on lark for almost a month}}
+
 
 - __Higher application size__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
 
@@ -32,7 +33,7 @@ Prior to running tools and gathering data our recon comprises of **Reading produ
 
 - __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words it is visual docementation of the product. We went through almost all of the vedioes thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
 
-`https://www.youtube.com/c/Larksuite/videos`
+> [https://www.youtube.com/c/Larksuite/videos](https://www.youtube.com/c/Larksuite/videos)
 
 {{screenshot 2}}
 
@@ -44,7 +45,6 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 
 ## Vulnerabilities Discovered
-
 
 
 
@@ -60,7 +60,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 ## Accessing and Editing other users folders in the organization
 
-Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found  a bug which allows other users to view/modify directory structure of other users in the organisation, without having any access on those files.
+Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a Security issue which allows other users to view/modify directory structure of other users in the organisation, without having any access on those files.
 
 ![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/2s8ZBjFmYWEdKyABmKXpUNJL?response-content-disposition=attachment%3B%20filename%3D%221.png%22%3B%20filename%2A%3DUTF-8%27%271.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=f2e3088a339bb8c35fe6f1c4c11e0e0c357c760990b0e82a1b05a722837083ea)
 
@@ -82,6 +82,7 @@ The response of this request returned us all of the *files* inside that parent d
 ![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/bhb6k4ZygSuqwzVy3ENQgwwL?response-content-disposition=attachment%3B%20filename%3D%225.png%22%3B%20filename%2A%3DUTF-8%27%275.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=be3ca8a037eb9ffb4e3cebe722292ea870076ef28d8ef098a4f273041015cda1)
 
 Moving a step further, we tried if we can *create new files* inside that *folder* and enquiring a bit we found a *below http request* was used to create new folders in a *directory*
+
 ```http
 POST  /suite/admin/space_manage/user_folder  HTTP/1.1
 ```
