@@ -251,11 +251,15 @@ In this case *we shared our file* with a user and *restricted the download permi
 We were able to bypass this restriction simply by *sending this http request*:
 ```http
 GET  /space/api/box/stream/download/all/<<file id>>/  HTTP/1.1
+Host: internal-api-space.larksuite.com
+x-command: space.api.box.file.info
+Content-Type: application/json
+
 ``` 
 
 In the response of this request we got the *downlaod url of the file* and pasting this *url in the browser* , we were simply able to downlaod the *file irrespective of the permissions*.
 
-Downlao URL will look something like this:
+Download URL will look something like this:
 
 Url will look like `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/<<file id>>/`
 
@@ -269,14 +273,23 @@ The *Admin* invited a user in his personal *directory*  with only *view permissi
 
 Logically *viewers access from that folder* should be removed when it is *moved into admins trash bin*, but we noticed that *viewer was still able to get the files inside that folder*, via a `GET` request which materialized the  thought that *viewer still has access* on the *folder*. We tried to *perform other restricted* operations by sending *various http requests* but *no luck with that*. Then we *noticed that* there is a *delete permmanent* feature available *in the trash* we tried to twitch this. 
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/antpqdwvkeaixg9ms965c4y5tsmp?response-content-disposition=attachment%3B%20filename%3D%22Capture5.PNG%22%3B%20filename%2A%3DUTF-8%27%27Capture5.PNG&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ4M7I4TQ2%2F20220609%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220609T040821Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAMaCXVzLXdlc3QtMiJIMEYCIQD6Pp%2FzKY%2FAu8E%2B1insxw7pBpgl8yv30ckuTalg7dnQYAIhAOPELyreLJY0fwfABian9XXm2UP0qufkyxM%2B90j07DRfKtsECPz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQAhoMMDEzNjE5Mjc0ODQ5IgymF8Obfm5smFxQHlIqrwRcrRXT6CCqUh%2FjKvCaRV1YWpJOUwx0E9VaqpkJ5aAHnrilNV6%2FkRCP91FHgWuPul%2Bl%2BeXFbCt09nTeBmhqkz1bYTBO1poCs1JIQWSzXNwaSPr4WuQXzUew72DbwMVNFJt3Lp9F6a66%2F9TAa3aK9%2BD5Ff0WCAA6ZvYflexPVe3lsnDMTdj8a51d1wk%2FlaqqNZExGf0wZZWddzIb%2FHtuUvt6osmxwtWJ6WTst9pQifck4JGavTZpdNV2uTwf3AWjomc3Zy2H0R5b6tU4f30b1rvo5ADkPrISzKTWaOX2nJgxXkSs8Q7s30QsdY3HfOMqJ1tIercUnfvdUANFq3U%2BkcccxfTLF6p2gEitD0yd1Zu%2BoKBuYB5N29XCkjVZKHA9KcnMvbIbxEzR%2FpcSWinRoYG7lYVl%2BaqwUythReRm1m9dDA0DiuioTfa%2BHzUcKPDefKkoQ8YNqHNjzbSGWBMsIj2WA1DEDb2QgtOSoVQ8EtJPO7RNOlq5dDYp4JVxi7OdSWGUp0VHkH%2BIuu4Ve3ukKyQbO9vBqLazEZWCTVMKvl3cFx%2FnV0SS%2Brzd%2Fod1t3stmiKdkYofN5qo1%2BFg406MJ1imfZ%2BB83GqN8xr6KVCTQYJfUldA3R2wH9pSNJCCnqFtfgPsKLKlHnmTMDotyCMBbnBJogxgL8Cj4DuCMWv5CsyY7EWTvPqklOaXoEGMCoaW1X96Z0NNX6n96gVJvp%2F%2B0pxK5lYL6k%2BoDs4F0X45FKPMKm%2BhZUGOqgBggHaY2ax6Lc49fGLJxG%2FZsn6b0n%2FLHCq%2Fthq9c%2F7fVRR9jF48ZfY9L%2FvPz1jwqd2e8vmGARlen1oXdLgNhBWDAkQEJirNT8FORP7O7I9h9uCMh9Vbyl2W9E7vamPj6agK1iZd7zIRbHA%2Bt0xBD4CEag9uUULU9Jfhywp%2Bfk33RedoaLDhY9h%2Bwkdf9uXqP69EcJiMwd%2BEChAQ0jY2HZYGmq88r5IOqlw&X-Amz-SignedHeaders=host&X-Amz-Signature=d0fde57c815d335450a8e7b600c795334ede19452278e756b7948a8ad1fd8740)
+![1](/blog/assets/images/lark/5/1.png)
+
 
 HTTP request we *analyzed* that was responsibel for *deleting permanentaly* a *folder looked something* like this:
 
 ```http
-POST  /space/api/explorer/trash/delete/  HTTP/1.1
+POST /space/api/explorer/trash/delete/ HTTP/1.1
+Host: internal-api-space.larksuite.com
+Accept: application/json, text/plain, */*
+Context: request_id=jgjIhvCWfQu6-6905236920255643653;os=windows;app_version=1.0.3.3484;os_version=10;platform=web
+X-CSRFToken: d08f9dadd19d65cd1e913b0e7e62d2aa0b6a9775-1609669174
+F-Version: docs-12-30-1609316079670
+Origin: https://q5b6qhp5uw.larksuite.com
+Referer: https://q5b6qhp5uw.larksuite.com/
+Cookie: [Value]
 
-token=<< folder token>>
+token=123456
 ```
 
 We sent this request as a viewer  and using the *folder id*  of the *admisn folder* , we got **200 ok** and upon confirmation, the *folder was permanentaly deleted* from **Admins trash**.
@@ -314,7 +327,10 @@ With this *request the sub-department* group member can add the *member only in 
 
 Larksuite allowed users with *specific permissions* to be invited in the team and one of such permissions was **App management**. In this case we abused this permission to *auto approve our own app*.
 
-Admins can add a user with *App management permission* on a specific *app* and once the *users create* an app, they will have to *submit it to admin* who will approve the *application*. After approval from the admin, that application wil be successfula nd the *api token* will get validated. 
+Admins can add a user with *App management permission* on a specific *app* and once the *users create* an app, they will have to *submit it to admin* who will approve the *application*. After approval from the admin, that application wil be functional and the *api token* will get validated. 
+
+![1](/blog/assets/images/lark/rest/3.png)
+
 
 Since we know user couldn't approve an app by himslef so noticed a request *that was responsible for approving the application*, it looked something like this:
 
@@ -326,7 +342,10 @@ Connection: close Content-Length: 29
 {"audit_white_list_status":1}
 ```
 
-Sending this request from the *low privileged user* the response was **200ok** and the app got approved by the attacker. Once the *app was auto approved*  the user can now use this *fully functional app*, he can add new members in this, he can also  delete departments via this app.
+Sending this request from the *low privileged user* the response was **200 OK** and the app got approved by the attacker. Once the *app was auto approved*  the user can now use this *fully functional app*, he can add new members in this, he can also  delete departments via this app.
+
+For example let's say an attacker has permissions of App management only he will create app withupdate permission and afterwards will approve this app himself(Bypassing check from admin) he will then use the token in api call's to update any user's contact information Similarly there are numerous permissions that can be attached with the app afterwards he will accept the given app himself and gets a token that will be used in almost all api call's.Which will give him access to all the feature where only admin were allowed.
+
 
 ## Attacker can join any tenant on larksuite and view personal files/chats.
 
@@ -338,25 +357,34 @@ An invitation request in a *tenant* when analyzed was as follows:
 POST /sandbox/AddTestTenantMember HTTP/2 
 Host: open.larksuite.com 
 Cookie: Content-Length: 73 
-X-Csrf-Token: 
+X-Csrf-Token: XYZ
 
 {"TestTenantID":"TENANT_ID","Email":"EMAIL"}
 ```
 
 Attacker *simply changed* the _TestTenantID_ value (which was a random numeric id and forwarded the request and response was **200 ok**. The used email id was mailed that he has been invited in a tenant of someone else. 
 
-Inside that *tenant attacker can access* the files, conversations and other sensitive information.
+Inside that *tenant attacker can access* the files, conversations and other sensitive information. Plus i also noticed that Larksuite internally uses the same platform in order to host their files for example on **App.larksuite.com** we have various app's and their documentation is hosted on the larksuite itself if an attacker will join the team it means that the attacker would be able to get access to those official documentation, Chats and other teams belong to the Larksuite company.
+
 
 ## Low privileged user is abel to access the Admin log
 
 A permission in a larksuite permission set named as  **internal risk control** when assigned to any user he is able to view all the admin logs of the company.
 
+![1](/blog/assets/images/lark/rest/2.png)
+
+
 Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access teh company logs* via broken authentication on mentioned api endpoint.
+
 
 The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
 
 ```http
 GET /suite/admin/logs/?count=30&offset=0&min_time=1586025000&max_time=1649356199&_t=1649312050201
+Host: Subdomain.larksuite.com
+X-Csrf-Token: XYZ
+Cookie:[Value]
+
 ```
 
 ##  Viewing comments on files and documents.
