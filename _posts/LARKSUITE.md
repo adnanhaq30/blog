@@ -1,7 +1,12 @@
-## We Hacked  Larksuite for 2 months: This is all summarized
+---
+layout: post
+title:  "We Hacked Lark for 1 month and Here is what we found" 
+author: imran
+categories: [ article,broken-access-control ]
+image: assets/images/lark/main/LarkSuite.png
+---
 
 
-# Introduction
 
 {{WE ARE OFTEN OUT OF PENTESTING WORK}} Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparaent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target. 
 
@@ -61,13 +66,8 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 |9| xxxx | Attacker can join any tenant on larksuite and view personal files/chats. | xxxx |
 |10| xxxx | Low privileged user is abel to access the Admin log | xxxx |
 |11| xxxx | Viewing comments on files and documents. | xxxx|
-
-
-
-## Pending
-
-| Oct-11-jan   | IDOR allows viewer to delete bin's files of Admin       | Medium      |
-| Oct-11-jan    | Bypassing Required Validation on Survey Questions     | Low      |
+|12| Oct-11-jan   | IDOR allows viewer to delete bin's files of Admin       | Medium      |
+|13| Oct-11-jan    | Bypassing Required Validation on Survey Questions     | Low      |
 
 
 
@@ -76,7 +76,8 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a Security issue which allows other users to view/modify directory structure of other users in the organisation, without having any access on those files.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/2s8ZBjFmYWEdKyABmKXpUNJL?response-content-disposition=attachment%3B%20filename%3D%221.png%22%3B%20filename%2A%3DUTF-8%27%271.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=f2e3088a339bb8c35fe6f1c4c11e0e0c357c760990b0e82a1b05a722837083ea)
+![1](/blog/assets/images/lark/1/1.png)
+
 
 Once *Super Admin* added another user he was only able to *access the company information* but he lacked access on the *files and directories* of other members. On digging a bit we found a *GET Request* which takes user id in a parameter and *returns the directories and tokens of that user* in the response.
 
@@ -84,7 +85,7 @@ Once *Super Admin* added another user he was only able to *access the company in
 GET  /suite/admin/space_manage/user_folder?userID=6782777787976515850  HTTP/1.1
 ```
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/ModNpiErLpTWn14uEEXg1Wy4?response-content-disposition=attachment%3B%20filename%3D%224.png%22%3B%20filename%2A%3DUTF-8%27%274.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=5da50ed074660f6f59af7dd95952b2a89c4945f5cd07cef920e5073cc6281911)
+![1](/blog/assets/images/lark/1/2.png)
 
 On the above request we appended another token in the *parameter query* and added a *parentToken* and we gave its *value* as the _user's folder token_ we got in the response of the above request. Request looks something like this:
 
@@ -93,7 +94,7 @@ GET  /suite/admin/space_manage/user_folder?userID=6782777787976515850&parentToke
 ```
 The response of this request returned us all of the *files* inside that parent directoryand we were able to *view the files inside that folder*.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/bhb6k4ZygSuqwzVy3ENQgwwL?response-content-disposition=attachment%3B%20filename%3D%225.png%22%3B%20filename%2A%3DUTF-8%27%275.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=be3ca8a037eb9ffb4e3cebe722292ea870076ef28d8ef098a4f273041015cda1)
+![1](/blog/assets/images/lark/1/3.png)
 
 Moving a step further, we tried if we can *create new files* inside that *folder* and enquiring a bit we found a *below http request* was used to create new folders in a *directory*
 
@@ -102,7 +103,8 @@ POST  /suite/admin/space_manage/user_folder  HTTP/1.1
 ```
 We used the *leaking directory tokens* in this request and response was **200 ok** and upon confirmation we found *new sub directory* was created in that folder.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/PPFEka7XSt2tXD7FPkKW5P81?response-content-disposition=attachment%3B%20filename%3D%227.png%22%3B%20filename%2A%3DUTF-8%27%277.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQ47PMAVVH%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T054216Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIAm%2BRYTpd7QHtHUeg%2B5XIGJH4wCJ9x5P26fgOzlpisaSAiAHNrEyzdtRsd7z8j6cmBv%2FlPrMlg0tlq3xQMIBhdI5EyrbBAjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIM9lzlLph4bSZKshGuKq8EYlE4G6hnXf6xkIN2wYqjwgNlnoVU0dmSOI63dLWxB%2F6Tj04m%2Bm%2BGvhsd3Qbowt%2FKdqGZSMP8UmCKljd%2FNpdtgORv2YytCMkgdEZ3Qko37nzCM7f9BH57Ea%2BNHv4UdVKAWZpr3gtgqBXRAxylovjZeULLOIUDXZOrLkBZGmJVDfsrDNN9DNjUhO2nDS8T%2BFKj04%2FLYccSSfRkErKNAtqHejcXfKO1XMuoCA2pgw5lRLMUISjTc1uc1qHi90BGRctLU6H2TCAlcjOoS1LJFIxfCit0PGU7QhwaI9R3IjwlDyGwGKTPm8NYkMyAtIjN%2Bzq6MVXpaaph8pEB%2BjgyzOlFFZkQOtgnG13KGEsYyxgbYlFWvCGznopyxHNUPHTwMHOh3R%2FmChnv9hSuhwFy%2BR%2FlipmRr8QT2c%2FL1hARN5eYp9zVTc0Y0iWz7NktLcl%2FBAL3WWPbKfkHxoMpYrvhWvORmySQuuJD88ku61w9CJc4Z64oWkDcZXvLVlDlQp%2FoFVB348C4YgAgLYtDPcQ5n7A%2B8Rzlw9nZVESsU9LnHF77qthosyVwRNMjQsNGCHmcK51YBiDM1iWMAEcg5uIlzJ30jG8N92ZdZVWQCbRDhF3Zy4wq48Q4Sh40V2zmoMs6dbymEzTvfDHZ%2BQcNbdGDReH29zTd1mqs6Y%2BlEsItL5EfP1NzXxpfUy5%2BXuAr3%2Bb8mB6rEUI37kdNGLmaijgcNQLA%2Fv%2FA6DjU0Dhi%2F2ilD6mRqjC2nICVBjqqAdx6xbmnBEFVuSCwoA%2FY9UGd8qlG0gFMDVEMAy8Zry%2FypKV%2FeWcGPfVEbrxdYdiznskAHd5ulU9LqaagqQfGGLeCgnVzKptZHlDR7D19L5y0JjGjAVlE%2F5LhPcWVl4VWNGuU8azgxb7GL5aRFETmKv633KTy5EVuXWQldcmISo5WQsf5C0EhFqXG400vMWhlEqaabhpT0eSmhnDzhLD2AGhzjfJpP7KB6DlO&X-Amz-SignedHeaders=host&X-Amz-Signature=016ae34686b75c3fe8fc60a427d83198ad4e0ade804b4d56ede067ed9c170bf0)
+![1](/blog/assets/images/lark/1/4.png)
+
 
 
 ## Privilege escalation from only view company info to adding and removing staff members.
@@ -111,7 +113,7 @@ Lark-suite allowed admins to invite other admin's with the specific permissions.
 
 In this case *we added a user with only* view company information as shown in this image.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/tB6VFpv5urP29NjrPwWZmDTQ?response-content-disposition=attachment%3B%20filename%3D%222.png%22%3B%20filename%2A%3DUTF-8%27%272.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQSF4YW5QU%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T062407Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIFo66sctWLAYeaqQDx5qy%2Bbu7WbYndyuOV9orpcvowi8AiEAp6CXp9f7vD4hfdt7p8bM1Y%2Bx6yppGl25V3kkhTD%2FaQ4q2wQI5v%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgwwMTM2MTkyNzQ4NDkiDLN3qg1lVxTybumT3SqvBNbQMYXlMqJHeUBjPBWEdSENYdYZdU1EGh%2BcNde2JwXvsFrAzGGrQcgB1oJ1JSS%2BnoXQEgcXSf9JpTf47B3au9XGLmc7przBQc6vZ0QaacL5POavh5PkxYQjITQ97fASH%2BBaQPFGVhrsPsM7NuEVFsob%2Fo%2FPRvAUD%2FiRsHy%2FQ8YfL6PQGsx%2FjufNsEgwhxV60joh8Bf04TNbfuG6h8m7z0kWnsZLQk6kJKxFUN%2BZ0EB%2B7v6EiAmZbBlCS%2BG8O%2Bf85Mq4ZZdscsSlOp62%2BfkKy1uauTX14cnnyKXALUZ5VBkiMcH%2BLelGvpXhxvKkj26HikH1aLObQjhRzyK888BtUpAJInnBOjYqJBvtHW2yvZt8LObEe9mpi0k0psyucuN4YqeAG%2Fw%2Fgk00kDGs3I1ffQPGNkH4FslLVhHf6z13q7ng0PDNFwPwA2LYEXmbc4RdDeMAHWakdNYRWMh7usoep2Gx201IVsK0vwNXKo21%2Fmc8U5EShxlKWUAKB%2FxMzkksOcIqTjLrzF%2BwblTQj5TLA9hBXmCgWUDEte%2BNvB1xpyaNK6dsTz%2BfVqmdYI0jr0mWEzOyb2y51tMfRTbxETeOOyXayvBaUJYLlTotm482YZY1PYZm8pahsiZIrsecX418GbQCWwWWMvCx50VeF%2FTPMT5SAz3OCBG%2FtUOQgZ%2B3jszc2DFQARuGIHRZoYi%2BYpfSMUO5RgZL%2B%2BdsrCo0GjvTbMjBNLeg45VQ95v9sdJWZKAwkNqAlQY6qQFGq1xBKYDCX0%2F%2B%2BPRSMP2Xwjkb7T17k3S4iq25Qdgo90zT1hUDCEjrV8WbKqPDWN9Lw0%2F2zoeIxGNshtw0CdQyAehQj7Fnvi34x6N9N6GFg4gWf%2BqfcLOnt5CN0Ge0ZEgWdz9666v8BtCRScSaTRvAqzecFQoSr9aAZVxZG36CKUlNy8X%2BeVjMRgf0rhspsm%2FaUxXk3TNLqBude%2Bb4PE6ZS90CPc6rIhpC&X-Amz-SignedHeaders=host&X-Amz-Signature=115f48a2e5ee5d4ff587f74f129b99b02f34ce9aca8c2a7b63da8eb54d075dbb)
+![1](/blog/assets/images/lark/2/1.png)
 
 We gave the new user this permission and restricted him from other permissions available, means he should not be able to access other information of the company. An only admin functionality was there and it read as *All staff Group*. This basically *grouped all staff* as per their roles in the *company*, there were various groups and *Admin can create new groups as well*.
 
@@ -126,7 +128,7 @@ Spending a time with this *unusual behaviour* we found a few more *issues* on th
 - Editing settings of various staff groups of Admin
 - Deleting staff group
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/Ytv35XvU2BzGRDy85V9C84jU?response-content-disposition=attachment%3B%20filename%3D%224.png%22%3B%20filename%2A%3DUTF-8%27%274.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQSF4YW5QU%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T062407Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIFo66sctWLAYeaqQDx5qy%2Bbu7WbYndyuOV9orpcvowi8AiEAp6CXp9f7vD4hfdt7p8bM1Y%2Bx6yppGl25V3kkhTD%2FaQ4q2wQI5v%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgwwMTM2MTkyNzQ4NDkiDLN3qg1lVxTybumT3SqvBNbQMYXlMqJHeUBjPBWEdSENYdYZdU1EGh%2BcNde2JwXvsFrAzGGrQcgB1oJ1JSS%2BnoXQEgcXSf9JpTf47B3au9XGLmc7przBQc6vZ0QaacL5POavh5PkxYQjITQ97fASH%2BBaQPFGVhrsPsM7NuEVFsob%2Fo%2FPRvAUD%2FiRsHy%2FQ8YfL6PQGsx%2FjufNsEgwhxV60joh8Bf04TNbfuG6h8m7z0kWnsZLQk6kJKxFUN%2BZ0EB%2B7v6EiAmZbBlCS%2BG8O%2Bf85Mq4ZZdscsSlOp62%2BfkKy1uauTX14cnnyKXALUZ5VBkiMcH%2BLelGvpXhxvKkj26HikH1aLObQjhRzyK888BtUpAJInnBOjYqJBvtHW2yvZt8LObEe9mpi0k0psyucuN4YqeAG%2Fw%2Fgk00kDGs3I1ffQPGNkH4FslLVhHf6z13q7ng0PDNFwPwA2LYEXmbc4RdDeMAHWakdNYRWMh7usoep2Gx201IVsK0vwNXKo21%2Fmc8U5EShxlKWUAKB%2FxMzkksOcIqTjLrzF%2BwblTQj5TLA9hBXmCgWUDEte%2BNvB1xpyaNK6dsTz%2BfVqmdYI0jr0mWEzOyb2y51tMfRTbxETeOOyXayvBaUJYLlTotm482YZY1PYZm8pahsiZIrsecX418GbQCWwWWMvCx50VeF%2FTPMT5SAz3OCBG%2FtUOQgZ%2B3jszc2DFQARuGIHRZoYi%2BYpfSMUO5RgZL%2B%2BdsrCo0GjvTbMjBNLeg45VQ95v9sdJWZKAwkNqAlQY6qQFGq1xBKYDCX0%2F%2B%2BPRSMP2Xwjkb7T17k3S4iq25Qdgo90zT1hUDCEjrV8WbKqPDWN9Lw0%2F2zoeIxGNshtw0CdQyAehQj7Fnvi34x6N9N6GFg4gWf%2BqfcLOnt5CN0Ge0ZEgWdz9666v8BtCRScSaTRvAqzecFQoSr9aAZVxZG36CKUlNy8X%2BeVjMRgf0rhspsm%2FaUxXk3TNLqBude%2Bb4PE6ZS90CPc6rIhpC&X-Amz-SignedHeaders=host&X-Amz-Signature=96938d1ecaf78b7e2a077afebd3e75456b7bbc5010fb3e797e37572c20f136b7)
+![1](/blog/assets/images/lark/2/2.png)
 
 In general an unprivileged user was able to manage a staff department without having access on it. << add some tip here>>
 
@@ -136,7 +138,7 @@ As mentioned earlier *larksuite allows* users to share *files with others* .A fi
 
 While *browsing* a file as a user and at the same tiem analyzingteh requests via burp we *saw an* `http` request  which leaked the *current version id* of the *file* including the *previous versions id's of file*.
 
-{{7-2}}
+![1](/blog/assets/images/lark/3/2.png)
 
 
 We also found another `http` POST request and in its body we *posted* the leaked *previous version id* and in the *response* it gave us variosu details of teh *previous version* alongwith the *download url of that file*.
@@ -154,7 +156,7 @@ Content-Type: application/json
 ```
 
 
-{{7-1}}
+![1](/blog/assets/images/lark/3/1.png)
 
 
 Browsing this *url in browser* we were able to download all of the *previosu versions* of the file.
@@ -165,7 +167,7 @@ In previous issue we mentioned that larksuite allowed users to *share files* and
 
 In this case *we shared our file* with a user and *restricted the download permissions* , iplying that the user with whom file is being shared will be unable to download (as seen download button is disabled) the *file* but can *only view it*.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/6RtiRyvpS4SzhVjM13sTZhGL?response-content-disposition=attachment%3B%20filename%3D%221.png%22%3B%20filename%2A%3DUTF-8%27%271.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQXIN3WWCY%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T071502Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCaIPjwND%2BJ7a4EOfI4vCJyg7zJlvE1TswWYAYOaWvwAQIgYF%2FdCnwMvoUhW%2F%2FjU%2F6aj0ljEtvKudJdLsavaopYmWwq2wQI5v%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgwwMTM2MTkyNzQ4NDkiDJmtWv32RVa0pkmpLSqvBAWCxtxZVJnRbg8G5O%2FvnHvcP676hZp41dd2Bmuxvc1PB4u0K%2BiS6azTRsj5SiYYDnMu4nFT6eL5uLPpsEBexHQ6U1p%2BRU010bC2GTycJMaE6aFt6liUfmiePOrjvMBtDJMEu4SiwWtoRBsM%2BDLzs4Nn8rHI6YjYpp5T71uTJXrJ%2FMq1DrkLK6mmRiJ1wd%2FOd5QTIFmCXyQO7EkyKoYhstctaH%2FRwtBP94Fr9QteN3sg3TvlKGDLJIEd3Yotu9IFm%2BfpaHdkvpAFZndNA1rU5qtSo0dWYrCIoT4TE%2FmX%2F51KV%2BlYpia%2BzqwZlzKD%2F8AjuoKPmSVqGJXhkYHDUbl0K8WQLRxfkwnw58rQoLuYYVa%2BrGO9%2FdLBy7pbp1GLQyXbnOynFhCcPsIZkmVSU69m0dJKgnD45KDY0h4FDX9GVLbRqPhGvHaX3nO%2FyosjLS5VYB3revle0h5Mqli3Dra6qwqPjYGjgH0I2%2FNMAdqiqh4niLWbU%2FTEzGSkNKtJ%2BYfvvrXSyIF42J%2F%2FeKcZVhtVIOMVh7c8apLycih66AuIgf4ZzaDeO%2B2yFXhKwheM5zlRkgUX9sm4OKScwRtfSKUiICBsYA7lJTvMnivYZUCo%2FoX39ZEUTWyqefm5B3caUm3lKiFHvxD2c%2FExl6a22DNYs58JZOOvwLHKPe5j502nThMibBfGBGrmBfciP781Gz18tNvEs6hm605lpjVuP02D6TH9AqzGz1bimC8NSSnMWEowjMiAlQY6qQGGCYqsk6HsYeQpFALzntbCKTNFNgh%2FnTQipkkWW0DKaGsYVELnT0QvJ54VQAV0%2FnWzkelFaVHvLrN9KrYfJh5VpOvKbnl8N4fqxosNnwMFFWOtIsWnyyQKRjIp8STcyNKoj0A1ANkxlqYS3RSZEsSvScLQ4YIfEmB1A6fK06TmsGlZt2NM2W2DFSfP5YsJENbehSRdsxDZd3WoumVlfqhQIsWvsF0nR5A%2B&X-Amz-SignedHeaders=host&X-Amz-Signature=d5499334158caf622790e232bc75421a7043f4b53ad93ea5d6d0e713fadebe42)
+![1](/blog/assets/images/lark/4/1.png)
 
 We were able to bypass this restriction simply by *sending this http request*:
 ```http
