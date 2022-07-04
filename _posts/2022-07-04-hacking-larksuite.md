@@ -54,19 +54,19 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 
 |id| Report Date      | Title | Severity     |
-|---|---|---|---|
-|1| Nov 04-2020      | Accessing/Editing Folders of Other Users in the Orginisation       | High  |
-|2| Oct 10   | Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
-|3| Oct ran-10   | Viewer is able to leak the previous versions of the file      | Medium      |
-|4| Oct-11-jan   | User without permission can download file's even if it's restricted.       | Medium      |
-|5| Oct-11-jan   | IDOR allows viewer to delete bin's files of Admin       | Medium      |
-|6| Oct-12-2021 | Access to private file's of other users in helpdesk conversation | High |
-|7| xxxx | Sub-Dept User Can Add User's To Main Department |xxxx|
-|8| xxxx | Auto approving own apps from a lower level role leading to mass privilege escalations | xxx|
-|9| xxxx | Attacker can join any tenant on larksuite and view personal files/chats. | xxxx |
-|10| xxxx | Low privileged user is abel to access the Admin log | xxxx |
-|11| xxxx | Viewing comments on files and documents. | xxxx|
-|12| Oct-11-jan    | Bypassing Required Validation on Survey Questions     | Low      |
+|---|---|---|
+|1| Accessing/Editing Folders of Other Users in the Orginisation       | High  |
+|2| Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
+|3| Viewer is able to leak the previous versions of the file      | Medium      |
+|4| User without permission can download file's even if it's restricted.       | Medium      |
+|5| IDOR allows viewer to delete bin's files of Admin       | Medium      |
+|6| Access to private file's of other users in helpdesk conversation | High |
+|7| Sub-Dept User Can Add User's To Main Department |xxxx|
+|8| Auto approving own apps from a lower level role leading to mass privilege escalations | xxx|
+|9| Attacker can join any tenant on larksuite and view personal files/chats. | xxxx |
+|10| Low privileged user is abel to access the Admin log | xxxx |
+|11| Viewing comments on files and documents. | xxxx|
+|12| Bypassing Required Validation on Survey Questions     | Low      |
 
 
 
