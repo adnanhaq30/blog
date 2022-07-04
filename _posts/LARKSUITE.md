@@ -49,7 +49,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 
 |id| Report Date      | Title | Severity     |
-| :---        |    :----:   |          ---: |
+|---|---|---|---|
 |1| Nov 04-2020      | Accessing/Editing Folders of Other Users in the Orginisation       | High  |
 |2| Oct 10   | Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
 |3| Oct ran-10   | Viewer is able to leak the previous versions of the file      | Medium      |
