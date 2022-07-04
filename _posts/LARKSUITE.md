@@ -136,7 +136,8 @@ As mentioned earlier *larksuite allows* users to share *files with others* .A fi
 
 While *browsing* a file as a user and at the same tiem analyzingteh requests via burp we *saw an* `http` request  which leaked the *current version id* of the *file* including the *previous versions id's of file*.
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/5njqsmjymleq3wx42asyjswbhktq?response-content-disposition=attachment%3B%20filename%3D%226asli.PNG%22%3B%20filename%2A%3DUTF-8%27%276asli.PNG&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQQHZQFFNY%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T065332Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIFUJ9yV7fBoeZqCGz4cDAu7r7JtlyhveEZerTvCzC7HSAiBJ7%2FOug1dIY9r37LIcG9%2BXTQFFk8KDW%2BQVkHod9izdPCrbBAjl%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIMIxIvD8ySMt%2BK405jKq8ELMMVVGSrwTS72WaU1NQeg5CNVJn4fXrEWp8TPG7mK8v0xVWdKuilKQQIzlDU%2BA%2Bf2exrJg3XGQGv7FcfmlfgvNn2H59cAqQWqYV75vD%2BTFf93V4sNA5ZUXt%2FEVzV62N9u0DqAx5QeAaUDv8Clbl8LzXV7plKIGYDu4SgU2GX7gPMENinS8dU%2B2Mua9yCXLgrQ0sSalcdR2LKRFa7ArJI8n4KFSDUilmYqDfXeFoLdZs6U7h4SshnHJERrv8AznjmXjhz4xYr%2FUIVSRctcEMfzOWNbgxDBbKd6fRY3dVH4hgcX2Di3hsryl4wM4kInwVC8qljm%2Bj9q5p72R44Q2r0Z4hsGnpOHauou%2FhpeSwEXxjxzStYEyUZlRWeZhtTQrB5cUj5%2FpufABYRlossRNE8H9RebjQWXJhSXw9edUuCW8ty4Wd1kQ1sVDMZwM%2Bx7aw89Vr7WK1U1ZjnAyE8KPboziNyNAPGoN9fUEy6Hap4%2FrZYYo9fRWCALDYJauNUA8k%2BD%2Fqtgjt7cbNnQcfAegOrSjBw1841dWW%2FQKPySBsmXi8KjxnY8UkAnW%2BdaBAkhVIdgm%2B1l%2BBSD90nxnypKVv0GgbLLbyUeoqcwq392i8sSaRfn4GDfhSPFRI7W8ZJdpcF51JxV20yvj3mtMW5yUghYIytXxjvC6esvxOIGQ%2BgOm3XfS8%2FlaET10oY96rerrAzKJChazEyikVs9nF72fFsBmqI6p7w%2FFqfgT63j5Vy9TDNuYCVBjqqAf8iRSrcEHEwgnTj9bObkm8Lzxqk3rj7hJnn0IxQvIHy8kdVw2z8CWDgehzFnZhiMPJBi61IbADB%2F9H4JYPlBcgpBOrnmVh5HzQzbX08M5zbJx7J8PQ55xnbUFFqFuYfb09FCcg0%2Fw1q0nA%2BNi32Z%2BcpWu37gt0WCNIO98YHUNIMs%2FZNUwu1QO%2B5OMAkUpOYg4MJUfthvViXPjfQoKrmlL%2FvmV%2FmLWopKppG&X-Amz-SignedHeaders=host&X-Amz-Signature=6fbc325b998ec7d9fda98bc4188fafa2cc2854a6d4a6228b487a76b7b6c4e1d0)
+{{7-2}}
+
 
 We also found another `http` POST request and in its body we *posted* the leaked *previous version id* and in the *response* it gave us variosu details of teh *previous version* alongwith the *download url of that file*.
 
@@ -144,11 +145,17 @@ Request is as below:
 
 ```http
 POST  /space/api/box/file/info/  HTTP/1.1
+Host: internal-api-space.larksuite.com
+x-command: space.api.box.file.info
+Content-Type: application/json
+
 
 {"version":"leaked_versionid","caller":"explorer","file_token":"ofcurrentfile","option_params":["preview_meta"]}
 ```
 
-![](https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/azb8pm8tiqplm8lomdei1ozgaw25?response-content-disposition=attachment%3B%20filename%3D%227asli.PNG%22%3B%20filename%2A%3DUTF-8%27%277asli.PNG&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQQHZQFFNY%2F20220608%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220608T065332Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIFUJ9yV7fBoeZqCGz4cDAu7r7JtlyhveEZerTvCzC7HSAiBJ7%2FOug1dIY9r37LIcG9%2BXTQFFk8KDW%2BQVkHod9izdPCrbBAjl%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDAxMzYxOTI3NDg0OSIMIxIvD8ySMt%2BK405jKq8ELMMVVGSrwTS72WaU1NQeg5CNVJn4fXrEWp8TPG7mK8v0xVWdKuilKQQIzlDU%2BA%2Bf2exrJg3XGQGv7FcfmlfgvNn2H59cAqQWqYV75vD%2BTFf93V4sNA5ZUXt%2FEVzV62N9u0DqAx5QeAaUDv8Clbl8LzXV7plKIGYDu4SgU2GX7gPMENinS8dU%2B2Mua9yCXLgrQ0sSalcdR2LKRFa7ArJI8n4KFSDUilmYqDfXeFoLdZs6U7h4SshnHJERrv8AznjmXjhz4xYr%2FUIVSRctcEMfzOWNbgxDBbKd6fRY3dVH4hgcX2Di3hsryl4wM4kInwVC8qljm%2Bj9q5p72R44Q2r0Z4hsGnpOHauou%2FhpeSwEXxjxzStYEyUZlRWeZhtTQrB5cUj5%2FpufABYRlossRNE8H9RebjQWXJhSXw9edUuCW8ty4Wd1kQ1sVDMZwM%2Bx7aw89Vr7WK1U1ZjnAyE8KPboziNyNAPGoN9fUEy6Hap4%2FrZYYo9fRWCALDYJauNUA8k%2BD%2Fqtgjt7cbNnQcfAegOrSjBw1841dWW%2FQKPySBsmXi8KjxnY8UkAnW%2BdaBAkhVIdgm%2B1l%2BBSD90nxnypKVv0GgbLLbyUeoqcwq392i8sSaRfn4GDfhSPFRI7W8ZJdpcF51JxV20yvj3mtMW5yUghYIytXxjvC6esvxOIGQ%2BgOm3XfS8%2FlaET10oY96rerrAzKJChazEyikVs9nF72fFsBmqI6p7w%2FFqfgT63j5Vy9TDNuYCVBjqqAf8iRSrcEHEwgnTj9bObkm8Lzxqk3rj7hJnn0IxQvIHy8kdVw2z8CWDgehzFnZhiMPJBi61IbADB%2F9H4JYPlBcgpBOrnmVh5HzQzbX08M5zbJx7J8PQ55xnbUFFqFuYfb09FCcg0%2Fw1q0nA%2BNi32Z%2BcpWu37gt0WCNIO98YHUNIMs%2FZNUwu1QO%2B5OMAkUpOYg4MJUfthvViXPjfQoKrmlL%2FvmV%2FmLWopKppG&X-Amz-SignedHeaders=host&X-Amz-Signature=61adb0006b34ce32626a9f52646454ed03f5ddf0e0080e2149ecc1682c7aba74)
+
+{{7-1}}
+
 
 Browsing this *url in browser* we were able to download all of the *previosu versions* of the file.
 
