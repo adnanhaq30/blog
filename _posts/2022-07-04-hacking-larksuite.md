@@ -50,6 +50,8 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 ## Vulnerabilities Discovered
 
+Although we cannot write about every vulnerability we found, here are some of the most interesting ones.
+
 
 
 |id   | Title | Severity     |
@@ -60,12 +62,17 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 |4| User without permission can download file's even if it's restricted.       | Medium      |
 |5| IDOR allows viewer to delete bin's files of Admin       | Medium      |
 |6| Access to private file's of other users in helpdesk conversation | High |
-|7| Sub-Dept User Can Add User's To Main Department |xxxx|
-|8| Auto approving own apps from a lower level role leading to mass privilege escalations | xxx|
-|9| Attacker can join any tenant on larksuite and view personal files/chats. | xxxx |
-|10| Low privileged user is abel to access the Admin log | xxxx |
-|11| Viewing comments on files and documents. | xxxx|
+|7| Sub-Dept User Can Add User's To Main Department |Medium|
+|8| Auto approving own apps from a lower level role leading to mass privilege escalations | High|
+|9| Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
+|10| Low privileged user is abel to access the Admin log | Medium |
+|11| Viewing comments on files and documents. | Medium|
 |12| Bypassing Required Validation on Survey Questions     | Low      |
+|13- | [CSRF] No Csrf protection against sending invitation to join the team. | High|
+|14- | Stealing app credentials by reflected xss on Lark Suite | Medium |
+|15 - | Access to private file's of helpdesk. | High |
+|16-| Access to anyone's ticket's of helpdesk | High|
+|17 - | DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
 
 
 <br><br>
@@ -422,6 +429,22 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 `/space/api/message/get_message.v3/`. We tried to sedn this request from an *unauthorized role* and we got **403**.
 
  In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the commenst to the attacker.
+
+
+#### DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter
+
+DOM-based open redirection arises when a script writes controllable data into the target of a redirection in an unsafe way. An attacker may be able to use the vulnerability to construct a URL that, if visited by another application user, will cause a redirection to an arbitrary external domain
+
+the interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
+
+
+![1](/blog/assets/images/lark/rest/xxx1.png)
+
+
+
+What we found in this issue is that "back_uri" parameter was vulnerable to DOM based Open Redirection, The logic behind this issue was very simple, When the user visited the following link `https://www.larksuite.com/create/?back_uri=javascript:alert(document.cookie)`, A `Go Back` Button was Displayed on his screen and the button was calling a JS function which was updating the `document.location.href` of the current page to the value set to the /?back_uri= parameter. 
+
+Hence passing `javascript:alert('snapsec')` would have allowed attacker to escalate this Open redirection into an DOM based XSS.
 
 
 
