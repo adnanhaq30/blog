@@ -54,10 +54,10 @@ Although we cannot write about every vulnerability we found, here are some of th
 
 
 
-|id   | Title | Severity     |
+| Title | Severity     |
 |---|---|---|
-|Accessing/Editing Folders of Other Users in the Orginisation       | High  |
-|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
+|- Accessing/Editing Folders of Other Users in the Orginisation       | High  |
+|- Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
 |Viewer is able to leak the previous versions of the file      | Medium      |
 |User without permission can download file's even if it's restricted.       | Medium      |
 |IDOR allows viewer to delete bin's files of Admin       | Medium      |
