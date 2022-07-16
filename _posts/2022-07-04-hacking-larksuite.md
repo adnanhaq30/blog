@@ -384,7 +384,7 @@ Url will look like `https://internal-api-space.larksuite.com/space/api/box/strea
 
 DOM-based open redirection arises when a script writes controllable data into the target of a redirection in an unsafe way. An attacker may be able to use the vulnerability to construct a URL that, if visited by another application user, will cause a redirection to an arbitrary external domain
 
-The interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
+The interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser. For example
 
 
 ![1](/blog/assets/images/lark/rest/xxx1.png)
@@ -587,9 +587,9 @@ Cookie:[Value]
 Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue tehy are external users on the *file/document* and not collaborators.
 
 Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as following:
-`/space/api/message/get_message.v3/`. We tried to sedn this request from an *unauthorized role* and we got **403**.
+`/space/api/message/get_message.v3/`. We tried to send this request from an *unauthorized role* and we got **403**.
 
- In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the commenst to the attacker.
+ In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the comments to the attacker.
 
 
 
@@ -602,6 +602,6 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 
 #### About us
 
-Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures in-depth testing of your business logic and other latest vulnerabilities. 
 
  If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
