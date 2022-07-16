@@ -447,6 +447,26 @@ What we found in this issue is that "back_uri" parameter was vulnerable to DOM b
 Hence passing `javascript:alert('snapsec')` would have allowed attacker to escalate this Open redirection into an DOM based XSS.
 
 
+---
+
+### [IDOR] - Access to anyone's ticket's of helpdesk 
+
+![1](/blog/assets/images/lark/rest/xxx2.png)
+
+
+In enterprise collaboration, employees often have questions and don't know who to ask. Even they make lots of efforts and find someone who can answer the questions, they may not receive replies in time. To avoid such phenomena, larksuite had a feature called designed called HelpDesk.
+
+Any department or individual in the enterprise can create and use Help Desk, and set auto Q&As regarding their business. When employees have a question, they can quickly find the corresponding Help Desk by searching the question type, and the intelligent customer service will answer immediately. If the intelligent customer service can not resolve the employee's questions, Help Desk will quickly call the corresponding agents to answer and We found that this paticular functionality was vulnerable to an IDOR attack.
+
+
+```http
+GET /saipan/v2/api/worksheet/get?worksheet_id=6 HTTP/1.1
+Host: subdomain.larksuite.com 
+Connection: close Content-Length: 29 
+
+```
+
+to execute the attack all we had to do is change the the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
 
 #### About us
 
