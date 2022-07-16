@@ -10,7 +10,7 @@ image: assets/images/lark/main/LarkSuite.png
 
 Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparaent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target. 
 
-{{As snapsec we like indepth assesments and its compulsory for applicate to be complex in terms of its app logic and needs huge to be in terms of the size , in this here are the few reasons we prefered to stay on lark for almost a month}}
+{{At snapsec we like indepth assesments and it's compulsory for the choosen application to be complex in terms of its app logic and  it should be vast in size as well. Here are a few reasons why we chose larsuite:}}
 
 
 - __Higher application size__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
@@ -433,7 +433,7 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 
 DOM-based open redirection arises when a script writes controllable data into the target of a redirection in an unsafe way. An attacker may be able to use the vulnerability to construct a URL that, if visited by another application user, will cause a redirection to an arbitrary external domain
 
-the interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
+The interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
 
 
 ![1](/blog/assets/images/lark/rest/xxx1.png)
@@ -452,9 +452,9 @@ Hence passing `javascript:alert('snapsec')` would have allowed attacker to escal
 ![1](/blog/assets/images/lark/rest/xxx2.png)
 
 
-In enterprise collaboration, employees often have questions and don't know who to ask. Even they make lots of efforts and find someone who can answer the questions, they may not receive replies in time. To avoid such phenomena, larksuite had a feature called designed called HelpDesk.
+In enterprise collaboration, employees often have questions and don't know who to ask. Even they make lot of efforts and find someone who can answer the questions, they may not receive replies in time. To avoid such process, larksuite had a feature called designed called HelpDesk.
 
-Any department or individual in the enterprise can create and use Help Desk, and set auto Q&As regarding their business. When employees have a question, they can quickly find the corresponding Help Desk by searching the question type, and the intelligent customer service will answer immediately. If the intelligent customer service can not resolve the employee's questions, Help Desk will quickly call the corresponding agents to answer and We found that this paticular functionality was vulnerable to an IDOR attack.
+Any department or individual in the enterprise can create and use Help Desk, and set auto Q&As regarding their business. When employees have a question, they can quickly find the corresponding Help Desk by searching the question type, and the intelligent customer service will answer immediately. If the intelligent customer service can not resolve the employee's questions, Help Desk will quickly call the corresponding agents to answer it. We found that this paticular functionality was vulnerable to an IDOR attack.
 
 
 ```http
@@ -472,18 +472,18 @@ to execute the attack all we had to do is change the the `worksheet_id` to the v
 #### Reflected XSS to Account Takeover
 
 A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
-have potentially used to obtain app credentials (must first know the app ID) of any larksuite user.
+potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
 
 Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
 
-As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target, We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that grabbed our attention was the `Application`.
+As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
 
-In larksuite while creating an app, An admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of an victim which could have been used for further privilege escalation. 
-
-
+In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
 
 
-To do that we wrote the quick Javascript function , Which extracts an information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+
+
+To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
 
 
 - app_access_token
@@ -553,7 +553,7 @@ fetch('https://www.larksuite.com/create/api/v2/invite', {method: 'POST', credent
 ```
 
 
-So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us to their orginisation on larksuite.
+So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us(attacker) to their orginisation on larksuite.
 
 
 
