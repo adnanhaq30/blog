@@ -45,14 +45,14 @@ Prior to running tools and gathering data our recon comprises of **Reading produ
 
 - __Product helpdesk and community support__: People have always listed their typical queries and concerns on these platforms and the companies have answered them. We read the queries as well so that we can grasp some typical issues faced by maximum users and look into them if they can be abused.
 
-During the process we came to know that larksuite has 5 different main products:
+During the process we came to know that larksuite has 4 different main products:
 
 - __Messenger:__ Is an integrated Messenger which allows team members to chat, Send file and more anywhere within the larksuite.
-- __Calenders:__ Connected Calenders are used to Schedule Meeting, Events and more, Imagine this of a google calender.
+- __Calenders:__ Connected Calenders are used to Schedule Meeting, Keep track of Events and more. (Imagine this of a google calender).
 - __Docs:__ Is a file sharing service, It allow team members to upload, Edit, Create, Delete, Version Tracking, and Share files with other members.
-- __Video Conferencing:__ Is a service which allow team members to perform video/audio group or indidivial calls. 
+- __Video Conferencing:__ Is a service which allow team members to perform video/audio groups calls with other team members.
 
-and all of these services had tons and tons of features within for us to get tested. 
+and all of these products had a tons and tons of features for us to test.
 
 Surely our recon doesn't end here but this forms the *fundamentals* of our recon to any *organization or target* we choose to hack. 
 
