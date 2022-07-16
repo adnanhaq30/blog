@@ -460,7 +460,7 @@ Any department or individual in the enterprise can create and use Help Desk, and
 
 
 ```http
-GET /saipan/v2/api/worksheet/get?worksheet_id=6 HTTP/1.1
+GET /saipan/v2/api/worksheet/get?worksheet_id=[target-id] HTTP/1.1
 Host: subdomain.larksuite.com 
 Connection: close Content-Length: 29 
 
