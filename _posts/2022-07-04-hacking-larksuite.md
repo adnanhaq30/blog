@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "We Hacked Larksuite for 1 month and Here is what we found" 
+title:  "We Hacked Larksuite For 1 month and Here is what we found" 
 author: imran
 categories: [ article,broken-access-control ]
 image: assets/images/lark/main/LarkSuite.png
