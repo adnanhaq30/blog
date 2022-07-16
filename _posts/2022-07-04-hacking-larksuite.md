@@ -13,13 +13,13 @@ Almost a year back in March 2020 shuffling our private invites stock inorder to 
 {{At snapsec we like indepth assesments and it's compulsory for the choosen application to be complex in terms of its app logic and  it should be vast in size as well. Here are a few reasons why we chose larsuite:}}
 
 
-- __Higher application size__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
+- __Bigger application size of Larksuite__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
 
-- __Access controls were implemented__ : This is something we can hardly resist from testing, being specialized in *testing access controls* this was one of our strongest cues. Larksuite iplemented various **RBAC (Role based access controls)**  in the application meaning there were exclusive *permission sets* for specific roles in the *organization*.
+- __Complicated Access controls were implemented__ : This is something we can hardly resist from testing, being specialized in *testing access controls* this was one of our strongest cues. Larksuite implemented various **RBAC (Role based access controls)**  in the application meaning there were exclusive *permission sets* for specific roles in the *organization*.
 
 - __File management and sharing systems__ :  One of the *fun and interesting* feature to exploit and fiddle with. Larksuite *implemented file sharing systems* in their product as well which allowed users to **upload and share various files and documents** and they could also *edit/create new versions of those files*.
 
-These were a some of the principal points on basis of which we choose a new target, though there are more but we can't add all of them here.
+These were a some of the principal points on basis of which we were very excited to dive deep into different products offered by larksuite.
 
 # Recon
 
@@ -36,14 +36,23 @@ Prior to running tools and gathering data our recon comprises of **Reading produ
 -  __Reading Product documentation__: These are one of the accurate and simplified resources you can get your hands on. They are built or documented for the users/customers of this application and the've simplified it to the level that anyone can understand it. The perks of reading this documentation that *you get to understand* the application from a *user's perspective* and all of the *features get revealed to you*, their use and dependence. Moreover the logic of the application gets clear to you. We spent a few days reading the documentation and using the application as *simple users* and meanwhile if any test case came to our mind we just noted it down. 
 
 
-- __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words it is visual docementation of the product. We went through almost all of the vedioes thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
+- __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words it is visual docementation of the product. We went through almost all of the Videos thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
 
-    > [https://www.youtube.com/c/Larksuite/videos](https://www.youtube.com/c/Larksuite/videos)
+    > Lark youtube Channel : [https://www.youtube.com/c/Larksuite/videos](https://www.youtube.com/c/Larksuite/videos)
 
 
 - __Reading about product from third party resources__ : One of the prime benefit of reading from *third party resources* the *product information and one's user knowledge* get diversified and sometimes you can *know the issues or errors* from those resources which can be *directly abused* and you can have easy bugs.
 
 - __Product helpdesk and community support__: People have always listed their typical queries and concerns on these platforms and the companies have answered them. We read the queries as well so that we can grasp some typical issues faced by maximum users and look into them if they can be abused.
+
+During the process we came to know that larksuite has 5 different main products:
+
+- __Messenger:__ Is an integrated Messenger which allows team members to chat, Send file and more anywhere within the larksuite.
+- __Calenders:__ Connected Calenders are used to Schedule Meeting, Events and more, Imagine this of a google calender.
+- __Docs:__ Is a file sharing service, It allow team members to upload, Edit, Create, Delete, Version Tracking, and Share files with other members.
+- __Video Conferencing:__ Is a service which allow team members to perform video/audio group or indidivial calls. 
+
+and all of these services had tons and tons of features within for us to get tested. 
 
 Surely our recon doesn't end here but this forms the *fundamentals* of our recon to any *organization or target* we choose to hack. 
 
