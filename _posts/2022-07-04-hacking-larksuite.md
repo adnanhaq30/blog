@@ -8,12 +8,11 @@ image: assets/images/lark/main/LarkSuite.png
 
 
 
-Almost a year back in March 2020 shuffling our private invites stock in order to crash into a programe worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
+Almost a year back in March 2020 shuffling our private invites stock to crash into a program worthy of our time and excitement. In a while, we stumbled upon a program by name of **Lark Technologies**. Larksuite is a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on the above apparent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
 
+- __Bigger application size of Larksuite__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to the above *program* it provided various services like _messenger, meetings, calendars, email services, docs, and cloud storage_ .
 
-- __Bigger application size of Larksuite__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
-
-- __Complicated Access controls were implemented__ : This is something we can hardly resist from testing, being specialized in *testing access controls* this was one of our strongest cues. Larksuite implemented various **RBAC (Role based access controls)**  in the application meaning there were exclusive *permission sets* for specific roles in the *organization*.
+- __Complicated Access controls were implemented__ : This is something we can hardly resist from testing, being specialized in *testing access controls* this was one of our strongest cues. Larksuite implemented various **RBAC (Role-based access controls)**  in the application meaning there were exclusive *permission sets* for specific roles in the *organization*.
 
 - __File management and sharing systems__ :  One of the *fun and interesting* feature to exploit and fiddle with. Larksuite *implemented file sharing systems* in their product as well which allowed users to **upload and share various files and documents** and they could also *edit/create new versions of those files*.
 
@@ -31,33 +30,35 @@ Reconnaissance is a set of processes and techniques used to covertly discover an
 
 Prior to running tools and gathering data our recon comprises of **Reading product documentation, checking their youtube channels, third-party product walkthroughs and tutorials. webinars etc**. We will be briefly describing the mentioned approaches in our *Recon process*.
 
--  __Reading Product documentation__: These are one of the accurate and simplified resources you can get your hands on. They are built or documented for the users/customers of this application and they've simplified it to the level that anyone can understand it. The perks of reading this documentation that *you get to understand* the application from a *user's perspective* and all of the *features get revealed to you*, their use and dependence. Moreover the logic of the application gets clear to you. We spent a few days reading the documentation and using the application as *simple users* and meanwhile if any test case came to our mind we just noted it down. 
+-  __Reading Product documentation__: These are one of the accurate and simplified resources you can get your hands on. They are built or documented for the users/customers of this application and they've simplified it to the level that anyone can understand it. The perks of reading this documentation are that *you get to understand* the application from a *user's perspective* and all of the *features get revealed to you*, their use and dependence. Moreover, the logic of the application gets clear to you. We spent a few days reading the documentation and using the application as *simple users* and meanwhile, if any test case came to our mind we just noted it down. 
+
+- __Browsing their youtube channels__ :  In this case, we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step-by-step tutorials explaining difficult features, in other words, it is a visual documentation of the product. We went through almost all of the Videos thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
 
 
-- __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words, it is a visual documentation of the product. We went through almost all of the Videos thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
 
     > Lark youtube Channel : [https://www.youtube.com/c/Larksuite/videos](https://www.youtube.com/c/Larksuite/videos)
 
 
-- __Reading about product from third party resources__ : One of the prime benefit of reading from *third party resources* the *product information and one's user knowledge* get diversified and sometimes you can *know the issues or errors* from those resources which can be *directly abused* and you can have easy bugs.
+
+- __Reading about the product from third party resources__ : One of the prime benefits of reading from *third party resources* the *product information and one's user knowledge* get diversified and sometimes you can *know the issues or errors* from those resources which can be *directly abused* and you can have easy bugs.
 
 - __Product helpdesk and community support__: People have always listed their typical queries and concerns on these platforms and the companies have answered them. We read the queries as well so that we can grasp some typical issues faced by maximum users and look into them if they can be abused.
 
 During the process we came to know that larksuite has 4 different main products:
 
-- __Messenger:__ Is an integrated Messenger which allows team members to chat, Send file and more anywhere within the larksuite.
-- __Calenders:__ Connected Calenders are used to Schedule Meeting, Keep track of Events and more. (Imagine this of a google calender).
-- __Docs:__ Is a file sharing service, It allow team members to upload, Edit, Create, Delete, Version Tracking, and Share files with other members.
-- __Video Conferencing:__ Is a service which allow team members to perform video/audio groups calls with other team members.
+- __Messenger:__ Is an integrated Messenger which allows team members to chat, Send files, and more anywhere within the larksuite.
+- __Calendars:__ Connected Calendars are used to Schedule Meetings, Keep track of Events, and more. (Imagine this of a google calendar).
+- __Docs:__ Is a file sharing service, It allows team members to upload, Edit, Create, Delete, Version Track, and Share files with other members.
+- __Video Conferencing:__ Is a service that allows team members to perform video/audio group calls with other team members.
 
-and all of these products had a tons and tons of features for us to test.
+and all of these products had tons and tons of features for us to test.
 
 Surely our recon doesn't end here but this forms the *fundamentals* of our recon to any *organization or target* we choose to hack. 
 
 
 ## Vulnerabilities Discovered
 
-Although we cannot write and publish about every vulnerability we found, because we have found alot of them and some of those them are still in traige or unresolved state, But here are some of the most interesting/Fixed ones.
+Although we cannot write and publish about every vulnerability we found, because we have found a lot of them and some of those are still in triage or unresolved state, here are some of the most interesting/Fixed ones.
 
 
 
@@ -86,7 +87,7 @@ Although we cannot write and publish about every vulnerability we found, because
 
 #### Accessing and Editing other users folders in the organization
 
-We Started with their access control model which included the tons of permission on each level and just after spending few hours we found that Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a Security issue which allows other users to view/modify directory structure of other users in the organisation, without having any access on those files.
+We Started with their access control model which included tons of permission on each level and just after spending a few hours we found that Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a security issue that allows other users to view/modify the directory structure of other users in the organization, without having any access on those files.
 
 ![1](/blog/assets/images/lark/1/1.png)
 
@@ -135,7 +136,7 @@ credentials: same-origin
 Cache-Control: no-cache
 Cookie:[Value]
 ```
-We used the *leaking directory tokens* in this request and response was **200 ok** and upon confirmation we found *new sub directory* was created in that folder.
+We used the *leaking directory tokens* in this request and the response was **200 ok** and upon confirmation, we found *new sub directory* was created in that folder.
 
 ![1](/blog/assets/images/lark/1/4.png)
 
@@ -145,19 +146,17 @@ We used the *leaking directory tokens* in this request and response was **200 ok
 
 #### Stealing App Credentials Using Reflected XSS On LarkSuite
 
-A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
-potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
+A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
 
 Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
 
-As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
+As far as our understanding of lark applications, `open.larksuite.com` was a pretty interesting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
 
-In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
-
-
+In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files, and much more and we decided to prove its impact by stealing the application credentials of a victim which could be used for further privilege escalation. 
 
 
-To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+
+To do that we wrote the quick Javascript function, Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
 
 
 - app_access_token
@@ -193,15 +192,16 @@ alert(xhr.response);
 ---
 #### Privilege escalation from only view company info to adding and removing staff members.
 
-In this case Lark-suite allowed admins to invite other admin's with the specific permissions. There was a *specific permission set* which comprised of various permissions and among them admin can specify the *permissions with which he wants users on board*.
+
+In this case, Lark-suite allowed admins to invite other admins with specific permissions. There was a *specific permission set* which comprised of various permissions and among them, the admin can specify the *permissions with which he wants users on board*.
 
 In this case *we added a user with only* view company information as shown in this image.
 
 ![1](/blog/assets/images/lark/2/1.png)
 
-We gave the new user these(company info) permission and restricted him from other permissions available, which means he should not be able to access other but we managed to figure out that an invited admin with limited priveleges can still Edit/Access/Delete All-staff group in the organisation.
+We gave the new user this(company info) permission and restricted him from other permissions available, which means he should not be able to access other but we managed to figure out that an invited admin with limited privileges can still Edit/Access/Delete All-staff group in the organization.
 
-We sent this `http` request and returned us the *data of the* all of the groups and *unauthorized user was abel to access All staff groups information*.
+We sent this `HTTP` request and returned us the *data of the* all of the groups and *an unauthorized user was able to access All staff groups' information*.
 
 ```http
 GET  /suite/admin/tenant/chatSetting  HTTP/1.1
@@ -213,7 +213,7 @@ credentials: same-origin
 Content-Type: application/json;charset=UTF-8
 Cookie: [Value]
 ```
-Spending a time with this *unusual behaviour* we found a few more *issues* on this feature. As an unprivileged user we were able to escalate our *privileges* and we identified various issues which are as *under*:
+Spending time with this *unusual behavior* we found a few more *issues* with this feature. As an unprivileged user we were able to escalate our *privileges* and we identified various issues which are as *under*:
 
 - Creating new staff groups in the organization using this HTTP request
 
@@ -275,7 +275,7 @@ Cookie: [Value]
 
 
 
-In general an unprivileged user was able to manage a staff department without having access on it. 
+In general, an unprivileged user was able to manage a staff department without having access to it. 
 
 
 
@@ -299,7 +299,7 @@ Connection: close Content-Length: 29
 
 ```
 
-to execute the attack all we had to do is change the the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
+to execute the attack all we had to do is change the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
 
 
 
@@ -307,9 +307,9 @@ to execute the attack all we had to do is change the the `worksheet_id` to the v
 
 #### Viewer is able to download previous versions of a file
 
-As mentioned earlier *larksuite allows* users to share *files with others* .A file can have *multiple versions* and from documentation we *remember that previous versions should not be accessible* to the *viewers* of the file. But in this case we abused that *functionality and were able to download the previous versions of the files* as viewers. 
+As mentioned earlier *larksuite allows* users to share *files with others* . A file can have *multiple versions* and from documentation, we *remember that previous versions should not be accessible* to the *viewers* of the file. But in this case, we abused that *functionality and were able to download the previous versions of the files* as viewers. 
 
-While *browsing* a file as a user and at the same time analyzing the requests via burp we *saw an* `http` request  which leaked the *current version id* of the *file* including the *previous versions id's of file*.
+While *browsing* a file as a user and at the same time analyzing the requests via burp we *saw an* `HTTP` request which leaked the *current version id* of the *file* including the *previous versions ids of file*.
 
 ![1](/blog/assets/images/lark/3/2.PNG)
 
@@ -356,9 +356,9 @@ Browsing this *url in browser* we were able to download all of the *previosu ver
 
 #### User without permission can download file's even if it's restricted.
 
-In previous issue we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by certain *permissions* which only *Admins of the file* can set.
+In the previous issue, we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by certain *permissions* which only *Admins of the file* can set.
 
-In this case *we shared our file* with a user and *restricted the download permissions* , implying that the user with whom file is being shared will be unable to download (as seen download button is disabled) the *file* but can *only view it*.
+In this case *we shared our file* with a user and *restricted the download permissions* , implying that the user with whom the file is being shared will be unable to download (as seen download button is disabled) the *file* but can *only view it*.
 
 ![1](/blog/assets/images/lark/4/1.png)
 
@@ -401,11 +401,11 @@ Hence passing `javascript:alert('snapsec')` would have allowed attacker to escal
 
 #### Viewer was able to permanentaly delete bin files of Admin
 
-This issue was also found in file systems of *larksuite*. In this case we were able to *permanently delete* files from the trashbin of *Admin*. Trash and permanent delete functions seemed to be *interesting* that too when access controls are adminstered.
+This issue was also found in file systems of *larksuite*. In this case, we were able to *permanently delete* files from the trashbin of *Admin*. Trash and permanent delete functions seemed to be *interesting* that too when access controls are administered.
 
-The *Admin* invited a user in his personal *directory*  with only *view permissions* and he *couldn't delete or edit the files* in that directory.  The shared *folder* contained many *files and sub-folders*  and the *viewer could not delete or edit them*. Admin deleted the *shared folder* and this *folder alongwith its files* is moved into the **trash bin of admin** and the viewer has no access on it.
+The *Admin* invited a user in his personal *directory*  with only *view permissions* and he *couldn't delete or edit the files* in that directory.  The shared *folder* contained many *files and sub-folders*  and the *viewer could not delete or edit them*. Admin deleted the *shared folder* and this *folder along with its files* is moved into the **trash bin of admin** and the viewer has no access on it.
 
-Logically *viewers access from that folder* should be removed when it is *moved into admins trash bin*, but we noticed that *viewer was still able to get the files inside that folder*, via a `GET` request which materialized the  thought that *viewer still has access* on the *folder*. We tried to *perform other restricted* operations by sending *various http requests* but *no luck with that*. Then we *noticed that* there is a *delete permmanent* feature available *in the trash* we tried to twitch this. 
+Logically *viewers access from that folder* should be removed when it is *moved into the admins trash bin*, but we noticed that *viewer was still able to get the files inside that folder*, via a `GET` request which materialized the thought that *viewer still has access* on the *folder*. We tried to *perform other restricted* operations by sending *various http requests* but *no luck with that*. Then we *noticed that* there is a *delete permanent* feature available *in the trash* we tried to twitch this. 
 
 ![1](/blog/assets/images/lark/5/1.PNG)
 
@@ -426,7 +426,7 @@ Cookie: [Value]
 token=123456
 ```
 
-We sent this request as a viewer  and using the *folder id*  of the *admisn folder* , we got **200 ok** and upon confirmation, the *folder was permanentaly deleted* from **Admins trash**.
+We sent this request as a viewer and using the *folder id*  of the *admin folder* , we got **200 ok** and upon confirmation, the *folder was permanently deleted* from **Admins trash**.
 
 
 ---
@@ -434,15 +434,15 @@ We sent this request as a viewer  and using the *folder id*  of the *admisn fold
 
 #### Access to private file's of other users in helpdesk conversation.
 
-Remember previously i mentioned helpdesk is a golden nugget of information in every stance and this time we were able to access the *private files* used in conversation with the *larksuite staff*.
+Remember previously we mentioned helpdesk is a golden nugget of information in every stance and this time we were able to access the *private files* used in conversation with the *larksuite staff*.
 
-The conversations are meant to be *private* not public and *hence every message and file* was confidential. Larkhelpdesk was simply a _support portal_ which i hope you have crossed anywhere.
+The conversations are meant to be *private* not public and *hence every message and file* was confidential. Larkhelpdesk was simply a _support portal_ which we hope you have crossed anywhere.
 
-The clicking factor here was that we identified that they were saving the *files* on same domain of which *one member created a ticket*, a *file url* looked something like this:
+The clicking factor here was that we identified that they were saving the *files* on the same domain of which *one member created a ticket*, a *file url* looked something like this:
 
 `https://name.larksuite.com/saipan/v2/api/ticket/image?ticket_id=26678` 
 
-Since *created ticket ids*  were viewable by the *other teammates* and they can just copy the *file url* and paste it in their *browser* and *putting in the random file id*, in link if that file exist they were able to view that file. Eventhough it was private and not accessible by other users.
+Since *created ticket ids*  were viewable by the *other teammates* and they can just copy the *file url* and paste it in their *browser* and *put in the random file id*, in a link if that file exists they were able to view that file. Even though it was private and not accessible by other users.
 
 
 ---
@@ -463,7 +463,7 @@ Content-Length: 149
 {"mobile":"","customFields":{"C-6826729584252157957":""},"name":"test","departments":["department_id"],"email":"ooo@gmail.com","joinTime":"","isInvite":true}
 ```
 
-With this *request the sub-department* group member can add the *member only in this sub deparment* but intercepting this *request* and *sending* **departments** key with empty value, we noticed that we got **200 ok** response and the new user was added in the main organization by a low privileged member.
+With this *request the sub-department* group member can add the *member only in this sub department* but intercepting this *request* and *sending* **departments** key with an empty value, we noticed that we got **200 ok** response and the new user was added in the main organization by a low privileged member.
 
 
 ---
@@ -488,9 +488,9 @@ Connection: close Content-Length: 29
 {"audit_white_list_status":1}
 ```
 
-Sending this request from the *low privileged user* the response was **200 OK** and the app got approved by the attacker. Once the *app was auto approved*  the user can now use this *fully functional app*, he can add new members in this, he can also  delete departments via this app.
+Sending this request from the *low privileged user* the response was **200 OK** and the app got approved by the attacker. Once the *app was auto-approved*  the user can now use this *fully functional app*, he can add new members in this, he can also delete departments via this app.
 
-For example let's say an attacker has permissions of App management only he will create app withupdate permission and afterwards will approve this app himself(Bypassing check from admin) he will then use the token in api call's to update any user's contact information Similarly there are numerous permissions that can be attached with the app afterwards he will accept the given app himself and gets a token that will be used in almost all api call's.Which will give him access to all the feature where only admin were allowed.
+For example, let's say an attacker has permissions of App management only he will create an app with update permission and afterward will approve this app himself(Bypassing check from admin), he will then use the token in api call's to update any user's contact information. Similarly numerous permissions can be attached with the app afterward as he will accept the given app himself and gets a token that will be used to make almost any API call's and Update any information. Which will give him access to all the features where the only admin was allowed hence leads to mass privilege escalation.
 
 
 ---
@@ -522,7 +522,7 @@ Inside that *tenant attacker can access* the files, conversations and other sens
 
 #### [CSRF] No Csrf protection against sending invitation to join the team.
 
-We found a possible way through which anyone can perform a CSRF Attack and forge a request from admin's browser to join the team, as the request doesn't consists any sort of CSRF protection. 
+We found a possible way through which anyone can perform a CSRF Attack and forge a request from the admin's browser to join the team, as the request doesn't consist any sort of CSRF protection. 
 
 The following request was used to Invite a new member to the Team and was vulnerable to a CSRF Attack
 
@@ -555,20 +555,20 @@ fetch('https://www.larksuite.com/create/api/v2/invite', {method: 'POST', credent
 ```
 
 
-So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us(attacker) to their orginisation on larksuite.
+So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us(attacker) to their organisation on larksuite.
 
 
 ---
 #### Low privileged user is able to access the Admin log
 
-In this issue we managed to figure our that when an permission named as **internal risk control** is assigned to any user he is able to view all the admin logs of the company, Which shouldn't be the case generally, So we decided to dig the further and leter on found it was an security issue.
+In this issue, we managed to figure our that when permission named as **internal risk control** is assigned to any user he is able to view all the admin logs of the company, Which shouldn't be the case generally, So we decided to dig the further and later on found it was a security issue.
 
 ![1](/blog/assets/images/lark/rest/2.png)
 
 
 Admin logs contain all the sensitive information like recent changes made, Permission changes,  View newly added or removed users, and View newly created files and deleted files. It keeps a record of all the recent activities in the organization. We found a user *without the above-mentioned permission* was able to *access the company logs* via broken authentication on mentioned API endpoint.
 
-The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
+The restriction was only *implemented on the UI but not on the API request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `HTTP` request was as follows:
 
 ```http
 GET /suite/admin/logs/?count=30&offset=0&min_time=1586025000&max_time=1649356199&_t=1649312050201 HTTP/1.0
