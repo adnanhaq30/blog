@@ -468,6 +468,58 @@ Connection: close Content-Length: 29
 
 to execute the attack all we had to do is change the the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
 
+
+---
+
+#### Reflected XSS to Account Takeover
+
+A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
+have potentially used to obtain app credentials (must first know the app ID) of any larksuite user.
+
+Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
+
+As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target, We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that grabbed our attention was the `Application`.
+
+In larksuite while creating an app, An admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of an victim which could have been used for further privilege escalation. 
+
+
+
+
+To do that we wrote the quick Javascript function , Which extracts an information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+
+
+- app_access_token
+- app_access_token
+- tenant_access_token
+- tenant_access_token
+- and more...
+
+
+```js
+function AppGrabber()
+{
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https:\/\/open.larksuite.com\/api\/v3\/app/\cli_9eb747e4557e9106", true);
+xhr.setRequestHeader("Accept", "application\/json");
+xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+xhr.setRequestHeader("content-type", "application\/json; charset=utf-8");
+xhr.withCredentials = true;
+xhr.send('{"Body":{},"Head":{}}');
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4) {
+alert(xhr.response);
+}
+}
+}
+
+```
+
+
+> The extracted information could later be used to extract more information about the target orginisation.
+
+
+
+
 #### About us
 
 Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures indepth testing of your business logic and other latest vulnerabilities. 
