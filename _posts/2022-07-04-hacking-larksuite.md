@@ -594,6 +594,11 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 
 
 
+---
+
+Thats all for now and If you have any questions, suggestions or requests, Pleas contact us on Twitter([@snap_sec](https://twitter.com/snap_sec))
+See you next time.
+
 
 
 
@@ -605,3 +610,5 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures in-depth testing of your business logic and other latest vulnerabilities. 
 
  If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+ 
+ 
