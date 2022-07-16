@@ -67,12 +67,10 @@ Although we cannot write about every vulnerability we found, here are some of th
 |9| Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
 |10| Low privileged user is abel to access the Admin log | Medium |
 |11| Viewing comments on files and documents. | Medium|
-|12| Bypassing Required Validation on Survey Questions     | Low      |
-|13- | [CSRF] No Csrf protection against sending invitation to join the team. | High|
-|14- | Stealing app credentials by reflected xss on Lark Suite | Medium |
-|15 - | Access to private file's of helpdesk. | High |
-|16-| Access to anyone's ticket's of helpdesk | High|
-|17 - | DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
+|12| No Csrf protection against sending invitation to join the team. | High|
+|13| Stealing app credentials by reflected xss on Lark Suite | Medium |
+|14| Access to private file's and Tickets of helpdesk. | High |
+|15| DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
 
 
 <br><br>
