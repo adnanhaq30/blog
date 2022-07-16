@@ -59,7 +59,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 ## Vulnerabilities Discovered
 
-Although we cannot write about every vulnerability we found, here are some of the most interesting ones.
+Although we cannot write and publish about every vulnerability we found, because some of those vulnerabilities are still in traige or unresolved state, But here are some of the most interesting/Fixed ones.
 
 
 
