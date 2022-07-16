@@ -66,20 +66,20 @@ Although we cannot write and publish about every vulnerability we found, because
 |ID | Title | Severity     |
 |---|---|---|
 |1|Accessing/Editing Folders of Other Users in the Orginisation       | High  |
-|2|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
-|3|Viewer is able to leak the previous versions of the file      | Medium      |
-|4|User without permission can download file's even if it's restricted.       | Medium      |
-|5|IDOR allows viewer to delete bin's files of Admin       | Medium      |
-|6|Access to private file's of other users in helpdesk conversation | High |
-|7|Sub-Dept User Can Add User's To Main Department |Medium|
-|8|Auto approving own apps from a lower level role leading to mass privilege escalations | High|
-|9|Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
-|10|Low privileged user is abel to access the Admin log | Medium |
-|11|Viewing comments on files and documents. | Medium|
-|12|No Csrf protection against sending invitation to join the team. | High|
-|13|Stealing app credentials by reflected xss on Lark Suite | Medium |
-|14|Access to private file's and Tickets of helpdesk. | High |
-|15|DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
+|2|Stealing app credentials by reflected xss on Lark Suite | Medium |
+|3|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
+|4|IDOR - Access to private file's and Tickets of helpdesk. | High |
+|5|Viewer is able to leak the previous versions of the file      | Medium      |
+|6|User without permission can download file's even if it's restricted.       | Medium      |
+|7|DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
+|8|IDOR allows viewer to delete bin's files of Admin       | Medium      |
+|9|Access to private file's of other users in helpdesk conversation | High |
+|10|Sub-Dept User Can Add User's To Main Department |Medium|
+|11|Auto approving own apps from a lower level role leading to mass privilege escalations | High|
+|12|Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
+|13|No Csrf protection against sending invitation to join the team. | High|
+|14|Low privileged user is abel to access the Admin log | Medium |
+|15|Viewing comments on files and documents. | Medium|
 
 
 <br><br>
@@ -144,6 +144,55 @@ We used the *leaking directory tokens* in this request and response was **200 ok
 
 ---
 
+
+#### Stealing App Credentials Using Reflected XSS On LarkSuite
+
+A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
+potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
+
+Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
+
+As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
+
+In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
+
+
+
+
+To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+
+
+- app_access_token
+- app_access_token
+- tenant_access_token
+- tenant_access_token
+- and more...
+
+
+```js
+function AppGrabber()
+{
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https:\/\/open.larksuite.com\/api\/v3\/app/\cli_9eb747e4557e9106", true);
+xhr.setRequestHeader("Accept", "application\/json");
+xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+xhr.setRequestHeader("content-type", "application\/json; charset=utf-8");
+xhr.withCredentials = true;
+xhr.send('{"Body":{},"Head":{}}');
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4) {
+alert(xhr.response);
+}
+}
+}
+
+```
+
+
+> The extracted information could later be used to extract more information about the target orginisation.
+
+
+---
 #### Privilege escalation from only view company info to adding and removing staff members.
 
 In this case Lark-suite allowed admins to invite other admin's with the specific permissions. There was a *specific permission set* which comprised of various permissions and among them admin can specify the *permissions with which he wants users on board*.
@@ -232,54 +281,6 @@ In general an unprivileged user was able to manage a staff department without ha
 
 
 
----
-
-
-#### Reflected XSS to Account Takeover
-
-A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
-potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
-
-Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
-
-As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
-
-In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
-
-
-
-
-To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
-
-
-- app_access_token
-- app_access_token
-- tenant_access_token
-- tenant_access_token
-- and more...
-
-
-```js
-function AppGrabber()
-{
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "https:\/\/open.larksuite.com\/api\/v3\/app/\cli_9eb747e4557e9106", true);
-xhr.setRequestHeader("Accept", "application\/json");
-xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
-xhr.setRequestHeader("content-type", "application\/json; charset=utf-8");
-xhr.withCredentials = true;
-xhr.send('{"Body":{},"Head":{}}');
-xhr.onreadystatechange = function() {
-if (xhr.readyState === 4) {
-alert(xhr.response);
-}
-}
-}
-
-```
-
-
-> The extracted information could later be used to extract more information about the target orginisation.
 
 ---
 
