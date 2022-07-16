@@ -381,7 +381,7 @@ We stepped on a new feature on one of the domains of larksuite  which is known a
 An invitation request in a *tenant* when analyzed was as follows:
 
 ```http
-POST /sandbox/AddTestTenantMember HTTP/1.0 
+POST /sandbox/AddTestTenantMember HTTP/1.1
 Host: open.larksuite.com 
 Cookie: Content-Length: 73 
 X-Csrf-Token: XYZ
