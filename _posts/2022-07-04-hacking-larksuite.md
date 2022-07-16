@@ -65,8 +65,8 @@ Although we cannot write about every vulnerability we found, here are some of th
 
 |ID | Title | Severity     |
 |---|---|---|
-|1|- Accessing/Editing Folders of Other Users in the Orginisation       | High  |
-|2|- Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
+|1|Accessing/Editing Folders of Other Users in the Orginisation       | High  |
+|2|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
 |3|Viewer is able to leak the previous versions of the file      | Medium      |
 |4|User without permission can download file's even if it's restricted.       | Medium      |
 |5|IDOR allows viewer to delete bin's files of Admin       | Medium      |
@@ -120,7 +120,8 @@ credentials: same-origin
 Cache-Control: no-cache
 Cookie:[Value]
 ```
-The response of this request returned us all of the *files* inside that parent directoryand we were able to *view the files inside that folder*.
+The response of this request returned us all of the *files* inside that parent directory as well as the unique `token` of each file inside that directory, these Tokens could be later used to download the whole file using this endpoint `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/[token]/` 
+
 
 ![1](/blog/assets/images/lark/1/3.png)
 
@@ -145,18 +146,18 @@ We used the *leaking directory tokens* in this request and response was **200 ok
 
 #### Privilege escalation from only view company info to adding and removing staff members.
 
-Lark-suite allowed admins to invite other admin's with the specific permissions. There was a *specific permission set* which comprised of various permissions and among them admin can specify the *permissions with which he wants users on board*.
+In this case Lark-suite allowed admins to invite other admin's with the specific permissions. There was a *specific permission set* which comprised of various permissions and among them admin can specify the *permissions with which he wants users on board*.
 
 In this case *we added a user with only* view company information as shown in this image.
 
 ![1](/blog/assets/images/lark/2/1.png)
 
-We gave the new user this permission and restricted him from other permissions available, means he should not be able to access other information of the company. An only admin functionality was there and it read as *All staff Group*. This basically *grouped all staff* as per their roles in the *company*, there were various groups and *Admin can create new groups as well*.
+We gave the new user these(company info) permission and restricted him from other permissions available, which means he should not be able to access other but we managed to figure out that an invited admin with limited priveleges can still Edit/Access/Delete All-staff group in the organisation.
 
-We sent this `http` request and returned us the *data of the* all of the groups and *unauthorized user was abel to access* the *staff group information*.
+We sent this `http` request and returned us the *data of the* all of the groups and *unauthorized user was abel to access All staff groups information*.
 
 ```http
-GET  /suite/admin/tenant/chatSetting?_t=1603952121293  HTTP/1.1
+GET  /suite/admin/tenant/chatSetting  HTTP/1.1
 Host: unzftv7n88.larksuite.com
 Connection: close
 X-Csrf-Token: [Value]
@@ -165,7 +166,7 @@ credentials: same-origin
 Content-Type: application/json;charset=UTF-8
 Cookie: [Value]
 ```
-Spending a time with this *unusual behaviour* we found a few more *issues* on this feature. As an unprivileged user we were ablt to escalate our *privileges* and we identified various issues which are as *under*:
+Spending a time with this *unusual behaviour* we found a few more *issues* on this feature. As an unprivileged user we were able to escalate our *privileges* and we identified various issues which are as *under*:
 
 - Creating new staff groups in the organization using this HTTP request
 
@@ -229,7 +230,79 @@ Cookie: [Value]
 
 In general an unprivileged user was able to manage a staff department without having access on it. 
 
-> __TIP:__ Add A tip Here
+
+
+---
+
+
+#### Reflected XSS to Account Takeover
+
+A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
+potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
+
+Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
+
+As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
+
+In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
+
+
+
+
+To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+
+
+- app_access_token
+- app_access_token
+- tenant_access_token
+- tenant_access_token
+- and more...
+
+
+```js
+function AppGrabber()
+{
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https:\/\/open.larksuite.com\/api\/v3\/app/\cli_9eb747e4557e9106", true);
+xhr.setRequestHeader("Accept", "application\/json");
+xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+xhr.setRequestHeader("content-type", "application\/json; charset=utf-8");
+xhr.withCredentials = true;
+xhr.send('{"Body":{},"Head":{}}');
+xhr.onreadystatechange = function() {
+if (xhr.readyState === 4) {
+alert(xhr.response);
+}
+}
+}
+
+```
+
+
+> The extracted information could later be used to extract more information about the target orginisation.
+
+---
+
+### [IDOR] - Access to anyone's ticket's of helpdesk 
+
+![1](/blog/assets/images/lark/rest/xxx2.png)
+
+
+In enterprise collaboration, employees often have questions and don't know who to ask. Even they make lot of efforts and find someone who can answer the questions, they may not receive replies in time. To avoid such process, larksuite had a feature called designed called HelpDesk.
+
+Any department or individual in the enterprise can create and use Help Desk, and set auto Q&As regarding their business. When employees have a question, they can quickly find the corresponding Help Desk by searching the question type, and the intelligent customer service will answer immediately. If the intelligent customer service can not resolve the employee's questions, Help Desk will quickly call the corresponding agents to answer it. We found that this paticular functionality was vulnerable to an IDOR attack.
+
+
+```http
+GET /saipan/v2/api/worksheet/get?worksheet_id=[target-id] HTTP/1.1
+Host: subdomain.larksuite.com 
+Connection: close Content-Length: 29 
+
+```
+
+to execute the attack all we had to do is change the the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
+
+
 
 ---
 
@@ -265,6 +338,23 @@ Browsing this *url in browser* we were able to download all of the *previosu ver
 ---
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### User without permission can download file's even if it's restricted.
 
 In previous issue we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by ceratin *permissions* which only *Admins of the file* can set.
@@ -286,6 +376,27 @@ In the response of this request we got the *downlaod url of the file* and pastin
 Download URL will look something like this:
 
 Url will look like `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/[file-id]/`
+
+
+---
+
+
+#### DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter
+
+DOM-based open redirection arises when a script writes controllable data into the target of a redirection in an unsafe way. An attacker may be able to use the vulnerability to construct a URL that, if visited by another application user, will cause a redirection to an arbitrary external domain
+
+The interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
+
+
+![1](/blog/assets/images/lark/rest/xxx1.png)
+
+
+
+What we found in this issue is that "back_uri" parameter was vulnerable to DOM based Open Redirection, The logic behind this issue was very simple, When the user visited the following link `https://www.larksuite.com/create/?back_uri=javascript:alert(document.cookie)`, A `Go Back` Button was Displayed on his screen and the button was calling a JS function which was updating the `document.location.href` of the current page to the value set to the /?back_uri= parameter. 
+
+Hence passing `javascript:alert('snapsec')` would have allowed attacker to escalate this Open redirection into an DOM based XSS.
+
+
 
 ---
 
@@ -407,127 +518,8 @@ Inside that *tenant attacker can access* the files, conversations and other sens
 
 ---
 
-#### Low privileged user is abel to access the Admin log
-
-A permission in a larksuite permission set named as  **internal risk control** when assigned to any user he is able to view all the admin logs of the company.
-
-![1](/blog/assets/images/lark/rest/2.png)
 
 
-Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access teh company logs* via broken authentication on mentioned api endpoint.
-
-
-The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
-
-```http
-GET /suite/admin/logs/?count=30&offset=0&min_time=1586025000&max_time=1649356199&_t=1649312050201 HTTP/1.0
-Host: Subdomain.larksuite.com
-X-Csrf-Token: XYZ
-Cookie:[Value]
-
-```
-
-
----
-
-####  Viewing comments on files and documents.
-
-Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue tehy are external users on the *file/document* and not collaborators.
-
-Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as following:
-`/space/api/message/get_message.v3/`. We tried to sedn this request from an *unauthorized role* and we got **403**.
-
- In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the commenst to the attacker.
-
-
-#### DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter
-
-DOM-based open redirection arises when a script writes controllable data into the target of a redirection in an unsafe way. An attacker may be able to use the vulnerability to construct a URL that, if visited by another application user, will cause a redirection to an arbitrary external domain
-
-The interesting thing about the DOM based open redirection is that if an attacker is able to control the start of the string that is passed to the redirection API, then it may be possible to escalate this vulnerability into a JavaScript injection attack, by using a URL with the javascript: pseudo-protocol to execute arbitrary script code when the URL is processed by the browser.
-
-
-![1](/blog/assets/images/lark/rest/xxx1.png)
-
-
-
-What we found in this issue is that "back_uri" parameter was vulnerable to DOM based Open Redirection, The logic behind this issue was very simple, When the user visited the following link `https://www.larksuite.com/create/?back_uri=javascript:alert(document.cookie)`, A `Go Back` Button was Displayed on his screen and the button was calling a JS function which was updating the `document.location.href` of the current page to the value set to the /?back_uri= parameter. 
-
-Hence passing `javascript:alert('snapsec')` would have allowed attacker to escalate this Open redirection into an DOM based XSS.
-
-
----
-
-### [IDOR] - Access to anyone's ticket's of helpdesk 
-
-![1](/blog/assets/images/lark/rest/xxx2.png)
-
-
-In enterprise collaboration, employees often have questions and don't know who to ask. Even they make lot of efforts and find someone who can answer the questions, they may not receive replies in time. To avoid such process, larksuite had a feature called designed called HelpDesk.
-
-Any department or individual in the enterprise can create and use Help Desk, and set auto Q&As regarding their business. When employees have a question, they can quickly find the corresponding Help Desk by searching the question type, and the intelligent customer service will answer immediately. If the intelligent customer service can not resolve the employee's questions, Help Desk will quickly call the corresponding agents to answer it. We found that this paticular functionality was vulnerable to an IDOR attack.
-
-
-```http
-GET /saipan/v2/api/worksheet/get?worksheet_id=[target-id] HTTP/1.1
-Host: subdomain.larksuite.com 
-Connection: close Content-Length: 29 
-
-```
-
-to execute the attack all we had to do is change the the `worksheet_id` to the victims `worksheet_id` and we were able to access the tickets and personal information of other users on Larksuite.
-
-
----
-
-#### Reflected XSS to Account Takeover
-
-A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could
-potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
-
-Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
-
-As far our understanding of lark applications, `open.larksuite.com` was a pretty intresting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
-
-In larksuite while creating an app, an admin can provide a set of Permission to the App which would allow the app to have access to Lark Teams, Chats, Files and much more and we decided to prove its impact by stealing the application credentials of a victim which could be  used for further privilege escalation. 
-
-
-
-
-To do that we wrote the quick Javascript function , Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
-
-
-- app_access_token
-- app_access_token
-- tenant_access_token
-- tenant_access_token
-- and more...
-
-
-```js
-function AppGrabber()
-{
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "https:\/\/open.larksuite.com\/api\/v3\/app/\cli_9eb747e4557e9106", true);
-xhr.setRequestHeader("Accept", "application\/json");
-xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
-xhr.setRequestHeader("content-type", "application\/json; charset=utf-8");
-xhr.withCredentials = true;
-xhr.send('{"Body":{},"Head":{}}');
-xhr.onreadystatechange = function() {
-if (xhr.readyState === 4) {
-alert(xhr.response);
-}
-}
-}
-
-```
-
-
-> The extracted information could later be used to extract more information about the target orginisation.
-
-
----
 
 #### [CSRF] No Csrf protection against sending invitation to join the team.
 
@@ -565,6 +557,46 @@ fetch('https://www.larksuite.com/create/api/v2/invite', {method: 'POST', credent
 
 
 So as soon as someone from the team who has access to Invite Team members functionality visited our poc.html, He would invite Us(attacker) to their orginisation on larksuite.
+
+
+---
+#### Low privileged user is able to access the Admin log
+
+A permission in a larksuite permission set named as  **internal risk control** when assigned to any user he is able to view all the admin logs of the company.
+
+![1](/blog/assets/images/lark/rest/2.png)
+
+
+Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access teh company logs* via broken authentication on mentioned api endpoint.
+
+
+The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
+
+```http
+GET /suite/admin/logs/?count=30&offset=0&min_time=1586025000&max_time=1649356199&_t=1649312050201 HTTP/1.0
+Host: Subdomain.larksuite.com
+X-Csrf-Token: XYZ
+Cookie:[Value]
+
+```
+
+
+---
+
+####  Viewing comments on files and documents.
+
+Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue tehy are external users on the *file/document* and not collaborators.
+
+Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as following:
+`/space/api/message/get_message.v3/`. We tried to sedn this request from an *unauthorized role* and we got **403**.
+
+ In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the commenst to the attacker.
+
+
+
+
+
+
 
 
 
