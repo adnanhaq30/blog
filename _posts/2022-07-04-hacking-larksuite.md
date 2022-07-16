@@ -68,8 +68,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 |12| Bypassing Required Validation on Survey Questions     | Low      |
 
 
-##
-#
+<br><br>
 
 #### Accessing and Editing other users folders in the organization
 
@@ -126,6 +125,7 @@ We used the *leaking directory tokens* in this request and response was **200 ok
 ![1](/blog/assets/images/lark/1/4.png)
 
 
+---
 
 #### Privilege escalation from only view company info to adding and removing staff members.
 
@@ -215,6 +215,7 @@ In general an unprivileged user was able to manage a staff department without ha
 
 > __TIP:__ Add A tip Here
 
+---
 
 #### Viewer is able to download previous versions of a file
 
@@ -245,6 +246,9 @@ Content-Type: application/json
 
 Browsing this *url in browser* we were able to download all of the *previosu versions* of the file.
 
+---
+
+
 #### User without permission can download file's even if it's restricted.
 
 In previous issue we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by ceratin *permissions* which only *Admins of the file* can set.
@@ -267,7 +271,7 @@ Download URL will look something like this:
 
 Url will look like `https://internal-api-space.larksuite.com/space/api/box/stream/download/all/[file-id]/`
 
-
+---
 
 #### Viewer was able to permanentaly delete bin files of Admin
 
@@ -298,6 +302,10 @@ token=123456
 
 We sent this request as a viewer  and using the *folder id*  of the *admisn folder* , we got **200 ok** and upon confirmation, the *folder was permanentaly deleted* from **Admins trash**.
 
+
+---
+
+
 #### Access to private file's of other users in helpdesk conversation.
 
 Remember previously i mentioned helpdesk is a golden nugget of information in every stance and this time we were able to access the *private files* used in conversation with the *larksuite staff*.
@@ -309,6 +317,10 @@ The clicking factor here was that we identified that they were saving the *files
 `https://name.larksuite.com/saipan/v2/api/ticket/image?ticket_id=26678` 
 
 Since *created ticket ids*  were viewable by the *other teammates* and they can just copy the *file url* and paste it in their *browser* and *putting in the random file id*, in link if that file existe they were able to view that file. Eventhough it was private and not accessible by other users.
+
+
+---
+
 
 #### Sub-Dept User Can Add User's To Main Department
 
@@ -326,6 +338,10 @@ Content-Length: 149
 ```
 
 With this *request the sub-department* group member can add the *member only in this sub deparment* but intercepting this *request* and *sending* **departments** key with empty value, we noticed that we got **200 ok** response and the new user was added in the main organization by a low privileged member.
+
+
+---
+
 
 #### Auto approving own apps from a lower level role leading to mass privilege escalations
 
@@ -351,6 +367,8 @@ Sending this request from the *low privileged user* the response was **200 OK** 
 For example let's say an attacker has permissions of App management only he will create app withupdate permission and afterwards will approve this app himself(Bypassing check from admin) he will then use the token in api call's to update any user's contact information Similarly there are numerous permissions that can be attached with the app afterwards he will accept the given app himself and gets a token that will be used in almost all api call's.Which will give him access to all the feature where only admin were allowed.
 
 
+---
+
 #### Attacker can join any tenant on larksuite and view personal files/chats.
 
 We stepped on a new feature on one of the domains of larksuite  which is known as __Test companies and user's__. This feature was basically introduced so that lark user's can create sandbox tenants where they can test their app's in a whole different environment but by bringing new feature we mean bringing new vulnerabilities this feature can be abused in such a way that user's can get access to other user's tenant without any interaction. The lark *admins or tenant admins* can add new memebers *in these tenants* for different testing *puproses*.
@@ -371,6 +389,8 @@ Attacker *simply changed* the _TestTenantID_ value (which was a random numeric i
 Inside that *tenant attacker can access* the files, conversations and other sensitive information. Plus i also noticed that Larksuite internally uses the same platform in order to host their files for example on **App.larksuite.com** we have various app's and their documentation is hosted on the larksuite itself if an attacker will join the team it means that the attacker would be able to get access to those official documentation, Chats and other teams belong to the Larksuite company.
 
 
+---
+
 #### Low privileged user is abel to access the Admin log
 
 A permission in a larksuite permission set named as  **internal risk control** when assigned to any user he is able to view all the admin logs of the company.
@@ -390,6 +410,9 @@ X-Csrf-Token: XYZ
 Cookie:[Value]
 
 ```
+
+
+---
 
 ####  Viewing comments on files and documents.
 
