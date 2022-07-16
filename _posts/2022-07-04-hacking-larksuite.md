@@ -8,7 +8,7 @@ image: assets/images/lark/main/LarkSuite.png
 
 
 
-Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above appreant things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
+Almost a year back in March 2020 shuffling our private invites stock in order to crash into a programe worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
 
 
 - __Bigger application size of Larksuite__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
@@ -17,7 +17,7 @@ Almost a year back in March 2020 shuffling our private invites stock inorder to 
 
 - __File management and sharing systems__ :  One of the *fun and interesting* feature to exploit and fiddle with. Larksuite *implemented file sharing systems* in their product as well which allowed users to **upload and share various files and documents** and they could also *edit/create new versions of those files*.
 
-These were a some of the principal points on basis of which we were very excited to dive deep into different products offered by larksuite.
+These were some of the principal points on basis of which we were very excited to dive deep into different products offered by larksuite.
 
 # Recon
 
@@ -27,14 +27,14 @@ The rule of thumb when it comes to hacking any target is to know it well and col
 > If you give a hacker a new toy, the first thing he’ll do is take it apart to figure out how it works. — Jamie Zawinski
 
 
-Reconnaissance is a set of processes and techniques used to covertly discover and collect information about a target system. In the reconnaissance stage, attackers act like detectives, gathering information to truly understand their target. If you think *Recon is only* the process of the running a set of tools blindly while watcing the *flashing clolors*  with your arms *crossed*, then you need to rethink the *process of recon*. Or you are going to know a different kind of recon in this section.
+Reconnaissance is a set of processes and techniques used to covertly discover and collect information about a target system. In the reconnaissance stage, attackers act like detectives, gathering information to truly understand their target. If you think *Recon is only* the process of running a set of tools blindly while watching the *flashing colors*  with your arms *crossed*, then you need to rethink the *process of recon*. Or you are going to know a different kind of recon in this section.
 
-Prior to running tools and gathering data our recon comprises of **Reading product documenatation, checking their youtube channels, third party product walkthroughs and tutorials. webinars etc**. We will be briefly describing the mentioned approaches in our *Recon process*.
+Prior to running tools and gathering data our recon comprises of **Reading product documentation, checking their youtube channels, third-party product walkthroughs and tutorials. webinars etc**. We will be briefly describing the mentioned approaches in our *Recon process*.
 
--  __Reading Product documentation__: These are one of the accurate and simplified resources you can get your hands on. They are built or documented for the users/customers of this application and the've simplified it to the level that anyone can understand it. The perks of reading this documentation that *you get to understand* the application from a *user's perspective* and all of the *features get revealed to you*, their use and dependence. Moreover the logic of the application gets clear to you. We spent a few days reading the documentation and using the application as *simple users* and meanwhile if any test case came to our mind we just noted it down. 
+-  __Reading Product documentation__: These are one of the accurate and simplified resources you can get your hands on. They are built or documented for the users/customers of this application and they've simplified it to the level that anyone can understand it. The perks of reading this documentation that *you get to understand* the application from a *user's perspective* and all of the *features get revealed to you*, their use and dependence. Moreover the logic of the application gets clear to you. We spent a few days reading the documentation and using the application as *simple users* and meanwhile if any test case came to our mind we just noted it down. 
 
 
-- __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words it is visual docementation of the product. We went through almost all of the Videos thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
+- __Browsing their youtube channels__ :  In this case we *visited the official channel of larksuite*  which is under the name of *Lark* on youtube, there was again a treasure of information. Step by step tutorials explaining difficult features, in other words, it is a visual documentation of the product. We went through almost all of the Videos thoroughly and it sedimented the *understanding of product* and we were able to understand it better.
 
     > Lark youtube Channel : [https://www.youtube.com/c/Larksuite/videos](https://www.youtube.com/c/Larksuite/videos)
 
@@ -561,13 +561,12 @@ So as soon as someone from the team who has access to Invite Team members functi
 ---
 #### Low privileged user is able to access the Admin log
 
-A permission in a larksuite permission set named as  **internal risk control** when assigned to any user he is able to view all the admin logs of the company.
+In this issue we managed to figure our that when an permission named as **internal risk control** is assigned to any user he is able to view all the admin logs of the company, Which shouldn't be the case generally, So we decided to dig the further and leter on found it was an security issue.
 
 ![1](/blog/assets/images/lark/rest/2.png)
 
 
-Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access the company logs* via broken authentication on mentioned api endpoint.
-
+Admin logs contain all the sensitive information like recent changes made, Permission changes,  View newly added or removed users, and View newly created files and deleted files. It keeps a record of all the recent activities in the organization. We found a user *without the above-mentioned permission* was able to *access the company logs* via broken authentication on mentioned API endpoint.
 
 The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
 
@@ -584,9 +583,9 @@ Cookie:[Value]
 
 ####  Viewing comments on files and documents.
 
-Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue they are external users on the *file/document* and not collaborators.
+Lark file systems let users to share files and documents and collaborate on them. The collaborators on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue they are external users on the *file/document* and not collaborators.
 
-Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as following:
+Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as follows:
 `/space/api/message/get_message.v3/`. We tried to send this request from an *unauthorized role* and we got **403**.
 
  In an instance we changed the *v3 to v2* and we got all of the comments of the *file in a response*. This is how *another version of api* leaked the comments to the attacker.
@@ -596,7 +595,7 @@ Analyzing the *comment request* of a file, we found a **GET request**  returned 
 
 ---
 
-Thats all for now and If you have any questions, suggestions or requests, Pleas contact us on Twitter([@snap_sec](https://twitter.com/snap_sec))
+That's all for now and If you have any questions, suggestions or requests, Please contact us on Twitter([@snap_sec](https://twitter.com/snap_sec))
 See you next time.
 
 
@@ -607,8 +606,8 @@ See you next time.
 
 #### About us
 
-Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology which ensures in-depth testing of your business logic and other latest vulnerabilities. 
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
 
- If you are looking for a team which values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+ If you are looking for a team that values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
  
  
