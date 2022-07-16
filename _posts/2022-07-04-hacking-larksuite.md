@@ -54,7 +54,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 |id   | Title | Severity     |
 |---|---|---|
-|1| Accessing/Editing Folders of Other Users in the Orginisation       | High  |
+|1| [Accessing/Editing Folders of Other Users in the Orginisation](#Accessing-and-editing-other-users-folders-in-the-organization)       | High  |
 |2| Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
 |3| Viewer is able to leak the previous versions of the file      | Medium      |
 |4| User without permission can download file's even if it's restricted.       | Medium      |
@@ -68,7 +68,8 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 |12| Bypassing Required Validation on Survey Questions     | Low      |
 
 
-
+##
+#
 
 #### Accessing and Editing other users folders in the organization
 
