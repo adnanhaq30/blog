@@ -8,7 +8,7 @@ image: assets/images/lark/main/LarkSuite.png
 
 
 
-Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above apparaent things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
+Almost a year back in March 2020 shuffling our private invites stock inorder to crash into a programme worthy of our time and excitement. In a while we stumbled upon a programme by name of **Lark Technologies**. Larksuite is basically a _collaborrative platform_ where users can collaborate on various tasks. This *product comprised of various interconnected services and functionalities* and hence the name _suite_. The stats on the bugbounty page spoke that they were *responsive and were unselfish* with their bounties. All this was interesting and solidified the notion of choosing *larksuite* as our next target for some time to hack on. Choosing a *programme/target only on above appreant things* can't be an intelligent step one should take. So, we started exploring the *target* and we found enough reasons to deem it as our next target, as an example:
 
 
 - __Bigger application size of Larksuite__: This in simple terms means a **larger attack surface**, _more depth_ and *less burnouts*. With respect to above *programme* it provided various services like _messenger, meetings, calendars, email services, docs and cloud storage_ .
@@ -307,14 +307,14 @@ to execute the attack all we had to do is change the the `worksheet_id` to the v
 
 #### Viewer is able to download previous versions of a file
 
-As mentioned earlier *larksuite allows* users to share *files with others* .A file can have *multiple versions* and from documentation we *remember that previous versions should not be accessible* to the *viewers* of the file. But in this case we abused that *functionality and were able to download teh previous versions of the files* as viewers. 
+As mentioned earlier *larksuite allows* users to share *files with others* .A file can have *multiple versions* and from documentation we *remember that previous versions should not be accessible* to the *viewers* of the file. But in this case we abused that *functionality and were able to download the previous versions of the files* as viewers. 
 
-While *browsing* a file as a user and at the same tiem analyzingteh requests via burp we *saw an* `http` request  which leaked the *current version id* of the *file* including the *previous versions id's of file*.
+While *browsing* a file as a user and at the same time analyzing the requests via burp we *saw an* `http` request  which leaked the *current version id* of the *file* including the *previous versions id's of file*.
 
 ![1](/blog/assets/images/lark/3/2.PNG)
 
 
-We also found another `http` POST request and in its body we *posted* the leaked *previous version id* and in the *response* it gave us variosu details of teh *previous version* alongwith the *download url of that file*.
+We also found another `http` POST request and in its body we *posted* the leaked *previous version id* and in the *response* it gave us various details of the *previous version* along with the *download url of that file*.
 
 Request is as below:
 
@@ -356,9 +356,9 @@ Browsing this *url in browser* we were able to download all of the *previosu ver
 
 #### User without permission can download file's even if it's restricted.
 
-In previous issue we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by ceratin *permissions* which only *Admins of the file* can set.
+In previous issue we mentioned that larksuite allowed users to *share files* and the *file access* was controlled by certain *permissions* which only *Admins of the file* can set.
 
-In this case *we shared our file* with a user and *restricted the download permissions* , iplying that the user with whom file is being shared will be unable to download (as seen download button is disabled) the *file* but can *only view it*.
+In this case *we shared our file* with a user and *restricted the download permissions* , implying that the user with whom file is being shared will be unable to download (as seen download button is disabled) the *file* but can *only view it*.
 
 ![1](/blog/assets/images/lark/4/1.png)
 
@@ -410,7 +410,7 @@ Logically *viewers access from that folder* should be removed when it is *moved 
 ![1](/blog/assets/images/lark/5/1.PNG)
 
 
-HTTP request we *analyzed* that was responsibel for *deleting permanentaly* a *folder looked something* like this:
+HTTP request we *analyzed* that was responsible for *deleting permanentaly* a *folder looked something* like this:
 
 ```http
 POST /space/api/explorer/trash/delete/ HTTP/1.1
@@ -442,7 +442,7 @@ The clicking factor here was that we identified that they were saving the *files
 
 `https://name.larksuite.com/saipan/v2/api/ticket/image?ticket_id=26678` 
 
-Since *created ticket ids*  were viewable by the *other teammates* and they can just copy the *file url* and paste it in their *browser* and *putting in the random file id*, in link if that file existe they were able to view that file. Eventhough it was private and not accessible by other users.
+Since *created ticket ids*  were viewable by the *other teammates* and they can just copy the *file url* and paste it in their *browser* and *putting in the random file id*, in link if that file exist they were able to view that file. Eventhough it was private and not accessible by other users.
 
 
 ---
@@ -450,9 +450,9 @@ Since *created ticket ids*  were viewable by the *other teammates* and they can 
 
 #### Sub-Dept User Can Add User's To Main Department
 
-In larksuite an owner of the tenant can create sub-department's for convenience and user management. It can only be done by the owner of the tenant. If a user is *added ina  subdepartment* he can only access that department and *he won't be able to access* other departments of the organization or add *new users* in them.
+In larksuite an owner of the tenant can create sub-department's for convenience and user management. It can only be done by the owner of the tenant. If a user is *added in a subdepartment* he can only access that department and *he won't be able to access* other departments of the organization or add *new users* in them.
 
-When adding a suer in a sub-department we observed the http request and it looks like this:
+When adding a user in a sub-department we observed the http request and it looks like this:
 
 ```http
 POST /suite/admin/employees/ HTTP/1.1
@@ -566,7 +566,7 @@ A permission in a larksuite permission set named as  **internal risk control** w
 ![1](/blog/assets/images/lark/rest/2.png)
 
 
-Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access teh company logs* via broken authentication on mentioned api endpoint.
+Admin logs contains all the senstive information like recent changes made, Permission changes,  View newly added or removed users,  View newly created files and deleted files. It keeps record of all the recent activities in the organization. We found a user *without the above mentioned permission* was able to *access the company logs* via broken authentication on mentioned api endpoint.
 
 
 The restriction was only *implemented on the UI but not on the pai request*, sending that request we were able to *fetch all logs of the organization* in burpsuite. The `http` request was as follows:
@@ -584,7 +584,7 @@ Cookie:[Value]
 
 ####  Viewing comments on files and documents.
 
-Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue tehy are external users on the *file/document* and not collaborators.
+Lark file systems let users to share files and documents and collaborate on them. The collaborators on  on a file can post comments on the file as well. But the *unauthorized users* or the users with whom the *file is shared* via an external link can *only view the file and not post or view comments on it*. This is becasue they are external users on the *file/document* and not collaborators.
 
 Analyzing the *comment request* of a file, we found a **GET request**  returned us all comments in the response. The request was as following:
 `/space/api/message/get_message.v3/`. We tried to send this request from an *unauthorized role* and we got **403**.
