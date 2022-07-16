@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "We Hacked Lark for 1 month and Here is what we found" 
+title:  "We Hacked Larksuite for 1 month and Here is what we found" 
 author: imran
 categories: [ article,broken-access-control ]
 image: assets/images/lark/main/LarkSuite.png
@@ -57,7 +57,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 
 ## Vulnerabilities Discovered
 
-Although we cannot write and publish about every vulnerability we found, because some of those vulnerabilities are still in traige or unresolved state, But here are some of the most interesting/Fixed ones.
+Although we cannot write and publish about every vulnerability we found, because we have found alot of them and some of those them are still in traige or unresolved state, But here are some of the most interesting/Fixed ones.
 
 
 
