@@ -9,7 +9,7 @@ image: assets/images/BD/0.png
 
 
 
-Working with a target having various *access roles* and functionalities always gives us goosebumps. This time it was a design flaw in the *application logic* that we reformed to create a *backdoor* which revealed us all of the *response details* submitted on the *form or survey* created by the admin.
+Working with a target [having](https://google.com) various *access roles* and functionalities always gives us goosebumps. This time it was a design flaw in the *application logic* that we reformed to create a *backdoor* which revealed us all of the *response details* submitted on the *form or survey* created by the admin.
 
 ![1](/blog/assets/images/BD/1.png)
 
