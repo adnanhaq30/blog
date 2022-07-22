@@ -8,4 +8,4 @@ image: assets/images/lark/main/LarkSuite.png
 
 
 
-__The Writeup was taken-down by team-snapsec for further updates, The Writeup will be online back soon on the same URL__
+__The Writeup was taken-down by team-snapsec for further updates, and will be online back soon on the same URL, Meanwhile you can go ahead and read more of our blog-posts at [https://snapsec.co/blog](https://snapsec.co/blog)__.
