@@ -1,4 +1,11 @@
-## Nmap
+---
+layout: post
+title:  "Effective Network Scanning with Nmap"
+author: snapsec
+categories: [ network-scanning,nmap ]
+image: assets/images/nmap/0.png
+---
+
 
 Nmap acronym is Network Mapper. This tool is best known as a scanning tool for doing pentesting. In this blog, we are going to see its features along with some important useful commands.
 
