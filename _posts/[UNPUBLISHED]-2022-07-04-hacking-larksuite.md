@@ -61,6 +61,7 @@ Surely our recon doesn't end here but this forms the *fundamentals* of our recon
 Although we cannot write and publish about every vulnerability we found, because we have found a lot of them and some of those are still in triage or unresolved state, here are some of the most interesting/Fixed ones.
 
 
+> ⚠️ Please note that all these security issues were resolved and fixed by Lark team.
 
 |ID | Title | Severity     |
 |---|---|---|
