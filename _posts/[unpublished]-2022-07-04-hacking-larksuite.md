@@ -77,7 +77,7 @@ Although we cannot write and publish about every vulnerability we found, but her
 |10|Sub-Dept User Can Add User's To Main Department |Medium|
 |11|Auto approving own apps from a lower level role leading to mass privilege escalations | High|
 |12|Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
-|13|No Csrf protection against sending invitation to join the team. | High|
+|13|No Csrf protection against sending invitation to join the team. | Medium|
 |14|Low privileged user is abel to access the Admin log | Medium |
 |15|Viewing comments on files and documents. | Medium|
 
@@ -88,7 +88,7 @@ Although we cannot write and publish about every vulnerability we found, but her
 
 #### Accessing and Editing other users folders in the organization
 
-We Started with their access control model which included tons of permission on each level and just after spending a few hours we found that Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a security issue that allows other users to view/modify the directory structure of other users in the organization, without having any access on those files.
+We Started with their access control model which included tons of permission on each level and just after spending a few hours we found that Lark-suite allows Super-admins to invite other admin's/users. The invited users are allowed to view/modify their folders in the lark app. But we found a security issue that could have allowed other users to view/modify the directory structure of other users in the organization, without having any access on those files.
 
 ![1](/blog/assets/images/lark/1/1.png)
 
@@ -149,7 +149,7 @@ We used the *leaking directory tokens* in this request and the response was **20
 
 A reflected cross-site scripting (XSS) vulnerability was found on a Lark Suite endpoint via the 'next' parameter which an attacker could potentially use to obtain app credentials (must first know the app ID) of any larksuite user.
 
-Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence allowed us to perform an XSS attack.
+Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way. Such was the case here on this following endpoint `https://open.larksuite.com/officialapp/cli_9c4cd0ee44b81106/url/callback?next=<script>alert('snapsec')</script>`, The callback parameter was being reflected in the context of `open.larksuite.com` and hence could have allowed us to perform an XSS attack.
 
 As far as our understanding of lark applications, `open.larksuite.com` was a pretty interesting target. We couldn't perform any direct impact of the user account since there are very limited endpoints and functionalities hosted under `open.larksuite.com`, One of the features that caught our attention was the `Application`.
 
@@ -157,7 +157,7 @@ In larksuite while creating an app, an admin can provide a set of Permission to 
 
 
 
-To do that we wrote the quick Javascript function, Which extracts user information from the Larksuite app, and hence allowed us to extract the following information about the apps:
+To do that we wrote the quick Javascript function, Which extracts user information from the Larksuite app, and hence could have allowed us to extract the following information about the apps:
 
 
 - app_access_token
