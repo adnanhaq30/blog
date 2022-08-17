@@ -63,23 +63,23 @@ Although we cannot write and publish about every vulnerability we found, but her
 
 > ⚠️ Please note that all these security issues were resolved and fixed by Lark team.
 
-|ID | Title | Severity     |
+|ID | Title |  
 |---|---|---|
-|1|Accessing/Editing Folders of Other Users in the Orginisation       | High  |
-|2|Stealing app credentials by reflected xss on Lark Suite | Medium |
-|3|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       | Medium      |
-|4|IDOR - Access to private file's and Tickets of helpdesk. | High |
-|5|Viewer is able to leak the previous versions of the file      | Medium      |
-|6|User without permission can download file's even if it's restricted.       | Medium      |
-|7|DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter | High |
-|8|IDOR allows viewer to delete bin's files of Admin       | Medium      |
-|9|Access to private file's of other users in helpdesk conversation | High |
-|10|Sub-Dept User Can Add User's To Main Department |Medium|
-|11|Auto approving own apps from a lower level role leading to mass privilege escalations | High|
-|12|Attacker can join any tenant on larksuite and view personal files/chats. | Critical |
-|13|No Csrf protection against sending invitation to join the team. | Medium|
-|14|Low privileged user is abel to access the Admin log | Medium |
-|15|Viewing comments on files and documents. | Medium|
+|1|Accessing/Editing Folders of Other Users in the Orginisation       | 
+|2|Stealing app credentials by reflected xss on Lark Suite |  
+|3|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       |  
+|4|IDOR - Access to private Tickets of helpdesk. |  
+|5|Viewer is able to leak the previous versions of the file      |  
+|6|User without permission can download file's even if it's restricted.       |  
+|7|DOM based open redirect leads to XSS on larksuite.com using /?back_uri= parameter |  
+|8|IDOR allows viewer to delete bin's files of Admin       | 
+|9|Access to private file's of other users in helpdesk conversation |  
+|10|Sub-Dept User Can Add User's To Main Department | 
+|11|Auto approving own apps from a lower level role leading to mass privilege escalations |  
+|12|Attacker can join any tenant on larksuite and view personal files/chats. |  
+|13|No Csrf protection against sending invitation to join the team. | 
+|14|Low privileged user is abel to access the Admin log |  
+|15|Viewing comments on files and documents. |  
 
 
 <br><br>
