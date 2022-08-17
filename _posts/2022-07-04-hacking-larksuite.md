@@ -64,7 +64,7 @@ Although we cannot write and publish about every vulnerability we found, but her
 > ⚠️ Please note that all these security issues were resolved and fixed by Lark team.
 
 |ID | Title |  
-|---|---|---|
+|---|---|
 |1|Accessing/Editing Folders of Other Users in the Orginisation       | 
 |2|Stealing app credentials by reflected xss on Lark Suite |  
 |3|Privilege Escalation to All-staff group (editing/accessing/deleting All-staff group)       |  
