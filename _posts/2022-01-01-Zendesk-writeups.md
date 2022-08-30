@@ -1,4 +1,11 @@
-## Multiple privilege escalations on zendesk
+---
+layout: post
+title:  "Multiple privilege escalations on zendesk"
+author: snapsec
+categories: [ article,broken-access-control ]
+image: assets/images/ABACM/8.png
+---
+
 
 Another expedition to choose a new target to hack at snapsec stopped on Zendesk. Zendek was complacent to most of our principles which we consider while choosing a new target to hack. Their available metrics remarked that the *zendesk security team* was responsive and acknowledged the work of security reserachers and pentesters without any bias. The application size was vast and there was hardly any restrictions on scope of testing. The quest began on **Zendesk** and the rest(a mojor part of what we did) will be documented along this blog.
 
@@ -62,7 +69,33 @@ In this phase we create several assumptions about many things in the app, For ex
 ```
 
 
-BUG1:
+
+## Bypassing CSRF using Cache Deception Attack
+
+Cache deception attack  is often caused by a non-standard server-side setting overriding recommended Cache-Control directives. Due to the cache misconfiguration, an attacker may send a specially crafted link to users, which will result in the leak of sensitive data. In this case we were able to bypass **csrf protection by leveraging the cache decption attack**.
+
+The key component of the attack is "path confusion," which involves altering URL routes to trick the cache server into identifying private HTTP answers as publicly cacheable documents.
+
+
+For example In Zendesk the URL `https://developer.zendesk.com/account` refers to content containing sensitive data that should not be cached. The attacker tricks the target user into making a request to https://developer.zendesk.com/account/<Anything>.css causing the server to respond with response containing sensitive information specific to the victim.
+ 
+ However, the proxy interprets the request to https://developer.zendesk.com/account/<Anything>.css as being a request for a non-existent-cacheable '<anything>.css' file, which in turn causes the sensitive content stored in the cache and accessible by others.
+ 
+ Which means an Attacker can trick the victim to visit https://developer.zendesk.com/account/<Anything>.css .and later visit the same url and to get the cached response of the page which contains name,email and CSRF token of the victim. later, The CSRF TOKEN can be used to perform appilication wide csrf attack.
+
+
+ Here is a quick Video POC :
+ 
+ 
+ <div class="row post-image-bg" markdown="1">
+    <video width="99%" height="540" autoplay loop muted markdown="1">
+        <source src="/images/posts/send-cancel.mp4" type="video/mp4" markdown="1" >
+        <source src="/images/posts/send-cancel.webm" type="video/webm" markdown="1">
+    </video>
+</div>
+ 
+ 
+
  ## Adding/removing tags from restricted contacts,deals and leads
 
 Zendesk Sell is a CRM software focused on empowering sales teams to win more deals. so the main functionality is to generate deals. Deal generation goes through various steps : _from gathering contacts, leads and then the cycle finally end upon deal generation._
@@ -162,9 +195,6 @@ platform=web
 This could lead to *uanuthorized creation of appointments* in an organization and also could have impacted the *integrity and availability  of the contacts and appointments*.
 
 
-4. ## CSRF via cache deception
-
-Cache deception attack  is often caused by a non-standard server-side setting overriding recommended Cache-Control directives. Due to the cache misconfiguration, an attacker may send a specially crafted link to users of your site, which will result in the leak of sensitive data. In this case we were able to bypass **csrf protection by leveraging the cache decption attack**.
 
 
 5. ## Exposing restricted documents on private contacts.
