@@ -69,14 +69,14 @@ Cache deception attack  is often caused by a non-standard server-side setting ov
 The key component of the attack is "path confusion," which involves altering URL routes to trick the cache server into identifying private HTTP answers as publicly cacheable documents.
 
 
-For example In Zendesk the URL `https://developer.zendesk.com/account` refers to content containing sensitive data that should not be cached. The attacker tricks the target user into making a request to https://developer.zendesk.com/account/<Anything>.css causing the server to respond with response containing sensitive information specific to the victim.
+For example In Zendesk the URL `https://developer.zendesk.com/account` refers to content containing sensitive data that should not be cached. The attacker tricks the target user into making a request to `https://developer.zendesk.com/account/<Anything>.css` causing the server to respond with response containing sensitive information specific to the victim.
  
- However, the proxy interprets the request to https://developer.zendesk.com/account/<Anything>.css as being a request for a non-existent-cacheable '<anything>.css' file, which in turn causes the sensitive content stored in the cache and accessible by others.
+ However, the proxy interprets the request to `https://developer.zendesk.com/account/<Anything>.css` as being a request for a non-existent-cacheable '<anything>.css' file, which in turn causes the sensitive content stored in the cache and accessible by others.
  
- Which means an Attacker can trick the victim to visit https://developer.zendesk.com/account/<Anything>.css .and later visit the same url and to get the cached response of the page which contains name,email and CSRF token of the victim. later, The CSRF TOKEN can be used to perform appilication wide csrf attack.
+ Which means an Attacker can trick the victim to visit `https://developer.zendesk.com/account/<Anything>.css` and later visit the same url and to get the cached response of the page which contains name,email and CSRF token of the victim. later, The CSRF TOKEN can be used to perform appilication wide csrf attack.
 
 
- Here is a quick Video POC :
+__Here is a quick Video POC for the vulnerability:__
  
  
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NeAbTaalP9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
