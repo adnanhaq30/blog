@@ -91,15 +91,19 @@ So it is in fact a process involving huge sets of data. Zendesk uses the concept
 The intended behaviour of the application is that a user has read/write access to his tags i,e the tags he owns. So the user can add/remove/modify the tags he has ownership over.
 We identified a vulnerable endpoint through which a user was able to get read/write access on the tags created by other users.
 
+ 
 - Adding tags to contacts/leads/deals 
-```http
+
+ ```http
 POST /apis/tags/api/v1/taggings/batch_add.json
 
 {"tagid":"3","dealid":"231"}
 ```
+ 
 - Removing tags from contacts/leads/deals
-```http
 
+ 
+ ```http
 POST /apis/tags/api/v1/taggings/batch_untag.json
 
 {"tagid":"2"}
@@ -119,9 +123,11 @@ As the admin has full authority over invited users , the admin can revoke the ow
 But we identified a vulnerable endpoint through which we were still able to gain edit access on the documents attached with the contacts even after the admin has revoked our access.
 
 - Editing documents on contacts
+ 
 ```http
 PUT /apis/uploader/api/v2/uploads/<upload_id>.json 
 ```
+ 
 So we were able to effect the integrity of the documents as we were able to edit the names of documents and even change their extensions.
 
 
