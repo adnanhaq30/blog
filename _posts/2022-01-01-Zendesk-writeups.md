@@ -3,7 +3,7 @@ layout: post
 title:  "Multiple privilege escalations on zendesk"
 author: snapsec
 categories: [ article,broken-access-control ]
-image: assets/images/ABACM/8.png
+image: assets/images/zendesk/zendesk.png
 ---
 
 
