@@ -87,12 +87,7 @@ For example In Zendesk the URL `https://developer.zendesk.com/account` refers to
  Here is a quick Video POC :
  
  
- <div class="row post-image-bg" markdown="1">
-    <video width="99%" height="540" autoplay loop muted markdown="1">
-        <source src="/images/posts/send-cancel.mp4" type="video/mp4" markdown="1" >
-        <source src="/images/posts/send-cancel.webm" type="video/webm" markdown="1">
-    </video>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NeAbTaalP9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
  
 
