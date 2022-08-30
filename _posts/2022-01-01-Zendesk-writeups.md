@@ -34,39 +34,31 @@ Zendesk provided various business related services which include **sales, market
 
 We have a general methodology by whcih we approach to any target, it covers all from recon to learning intended behaviours and then finally abusing the flow in various forms. Various principles comprising our methodology are as under:
 
-1. 𝐔𝐧𝐝𝐞𝐫𝐬𝐭𝐚𝐧𝐝 𝐭𝐡𝐞 𝐩𝐮𝐫𝐩𝐨𝐬𝐞 𝐨𝐟 𝐀𝐩𝐩(𝐧𝐨𝐧 𝐭𝐞𝐜𝐡𝐧𝐢𝐜𝐚𝐥)
+#### 1. Understand the Purpose of the App
 
 At this point the we will try to figure out what is the purpose of app, For example zendesk is used for management of various processes in sales and business. We will learn it and then we will try to emulate the process in the app.
 
-2. 𝐔𝐧𝐝𝐞𝐫𝐬𝐭𝐚𝐧𝐝𝐢𝐧𝐠 𝐭𝐡𝐞 𝐚𝐩𝐩(𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐚𝐥𝐥𝐲)
 
-In this phase we  figure out how things work technically for the application. For  Example: what kind of information is being published about deals/contacts in the zendesk. And Do the target app have access control model or any kind of technology like markdown or other stuff.
 
-3. 𝐔𝐧𝐝𝐞𝐫𝐬𝐭𝐚𝐧𝐝𝐢𝐧𝐠 𝐡𝐨𝐰 𝐭𝐡𝐞𝐲 𝐝𝐨 𝐢𝐭
+#### 2. Understand the App Logically
+
 
 At this point we look into several feature separately and try to understand how they have implemented them, For example in zendesk deals we will keep a watch on the *various stages* a deal goes through in the application like *lead, meeting, responses, comments, collaborators* etc.
 
-4. 𝐂𝐫𝐞𝐚𝐭𝐢𝐧𝐠 𝐀𝐬𝐬𝐮𝐦𝐩𝐭𝐢𝐨𝐧𝐬
 
+#### 3. Understand How they do it Technically 
+
+In this phase we  figure out how things work technically for the application. For  Example: what kind of information is being published about deals/contacts in the zendesk. And Do the target app have access control model or any kind of technology like markdown or other stuff.
+
+
+#### 4. Creating Assumptions 
+ 
 In this phase we create several assumptions about many things in the app, For example if the deal is private to a user can we still send a response via HTTP requests which can change it , can this deal be made public by sending various http request on it. We keep notes  of all of the generated assumption so that we don't miss anything.
 
-5. 𝐀𝐭𝐭𝐚𝐜𝐤𝐢𝐧𝐠 𝐭𝐡𝐞 𝐚𝐩𝐩
+#### 5. Attacking The App
 
  At this point we will use all of our assumptions that can create abnormal behavior in the app, For example can we post comments on the private deals of a user, Can we get the contact details of other users.
 
-## Vulnerabilities Discovered
-
-1. Adding/removing tags from restricted contacts,deals and leads
->Please add the list of bugs in table and their titles here.
-
-
-
-```
-| Bug| Priority |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
-```
 
 
 
@@ -90,8 +82,9 @@ For example In Zendesk the URL `https://developer.zendesk.com/account` refers to
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NeAbTaalP9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
  
+---
 
- ## Adding/removing tags from restricted contacts,deals and leads
+## Addingremoving tags from restricted contacts,deals and leads
 
 Zendesk Sell is a CRM software focused on empowering sales teams to win more deals. so the main functionality is to generate deals. Deal generation goes through various steps : _from gathering contacts, leads and then the cycle finally end upon deal generation._
 So it is in fact a process involving huge sets of data. Zendesk uses the concept of tags to gather a particular data set under a particular tag for ease of management.
@@ -116,7 +109,8 @@ POST /apis/tags/api/v1/taggings/batch_untag.json
 But we are  able to add/modify/remove the tags of other users that the we are not supposed to be authorised over. This could lead to  quite a chaotic situation as we can add tags on any unauthorised deal or even render a particular data set(contacts/leads/deals) tag less by removing the tags.
 
 
-BUG2:
+---
+
 ## Changing Documents on contacts after admin removes our access to contacts
 
 In Zendesk an admin can invite a user to a limited access role through which the user can view/update/delete and convert their own contacts,leads and deals in their account.
@@ -131,9 +125,9 @@ PUT /apis/uploader/api/v2/uploads/<upload_id>.json
 So we were able to effect the integrity of the documents as we were able to edit the names of documents and even change their extensions.
 
 
+---
 
-
-### Bug 3: Privilege escalations leads to add/remove appointments on restricted contacts.
+## Privilege escalations leads to add/remove appointments on restricted contacts.
 
 Since zendesk allows users to collaborate on various functionalities in the app. This was accomplished by various roles for performing different functions in the app. One role in the app was defined as *limitted permission user* which has access to limktted features in the app. The following user was *unable to create* the *contacts* nor could he add any appointments on them.
 
@@ -190,9 +184,9 @@ platform=web
 This could lead to *uanuthorized creation of appointments* in an organization and also could have impacted the *integrity and availability  of the contacts and appointments*.
 
 
+---
 
-
-5. ## Exposing restricted documents on private contacts.
+## Exposing restricted documents on private contacts.
 
 As mentioned the permissions restricted the *various roles* from accessing different features on the account. In this case a permission we were testing for was **limitted user permissions** which restricted the assigned user from accessing the *contacts or documents associated with those contacts*. 
 
@@ -202,8 +196,8 @@ This issue lead a user to *access the documents associated with the private cont
 
 On analyzing the process we came to conclusion that an http request was responsible for uplaoding a document to any *contact* but the *limitted user was unable to exploit this feature to upload documents on private contacts*. We then changed the *above request method* and appeneded *the contact's id* with the api path and it gave us the *information of the contact in json response*. And in response it leaked the **Public S3 url to access the admin private documents in the json response of this contact**.  We were able to get those *documents without having any permissions on them*.
 
-BUG6:
-## Unauthorised user is able to leak the sales pipeline and move deals into them
+
+ ## Unauthorised user is able to leak the sales pipeline and move deals into them
 
 
 A sales pipeline is a visual illustration of how customers move through the [sales process] stages—from prospecting for leads to making the final sale. It provides valuable insights into each deal, allowing your agents to track their progress, identify any gaps in their process, and form strategies to hit their sales targets.
@@ -223,7 +217,6 @@ So, here due to broken access control on this endpoint we were able to gain an u
 
 
 
-BUG7:
 ## A simple user in the organisations able to create loss reasons with restricted permissions
 
 When a deal is lost, it is moved into the Lost stage of the sales pipeline. To gain additional information about why this happened, admin can prompt the Sell users to provide a reason for why the deal was lost.This prompt is enabled by a user with admin rights. Admin users can also edit and add other loss reasons.
@@ -235,3 +228,23 @@ POST /apis/sales/api/v1/loss_reasons.json HTTP/1.1
 
 {"loss_reason":{"name":"My reason"}}
 ```
+
+ 
+
+ 
+That's all for now and If you have any questions, suggestions or requests, Please contact us on Twitter([@snap_sec](https://twitter.com/snap_sec))
+See you next time.
+
+
+
+
+
+
+
+#### About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team that values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+ 
+ 
