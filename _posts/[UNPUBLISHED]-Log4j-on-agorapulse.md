@@ -54,7 +54,7 @@ So the steps to reproduce were as follows
 
 - On going back to burp collaborator Client you will see a Pingback on it
 
-![3.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/3.png)
+![3.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/Three.png)
 
 
   
