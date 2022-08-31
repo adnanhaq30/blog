@@ -93,7 +93,8 @@ we were able just able to extract the environment variables of the server.
 ![4.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/4.png)
   
 
-We stopped right after extracting the path variables of the vulnerable server just to keep the exploitation ethical.
+We stopped right after extracting the path variables of the vulnerable server just to keep the exploitation ethical. And Hence no sensitive , Confidential or any information related to their users were extracted.
+
 
 ## Response of Agora Team
 
